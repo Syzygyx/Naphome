@@ -109,7 +109,7 @@ Phase 0.9 bridges the proven Prototype 0 (Raspberry Pi 5) and Phase I (custom PC
 | Breadboard/Jumper Wires | — | $5.00 |
 | **Total COTS BOM** | | **≈ $89.50 / unit** |
 
-**Timeline:** 2–4 weeks for assembly, firmware porting, and validation testing.
+**Timeline:** 2–3 weeks for assembly, firmware porting, and validation testing (concurrent with manufacturer negotiations).
 
 **Outcome:** A fully functional COTS prototype that validates all Phase I features before committing to custom PCB manufacturing.
 
@@ -319,7 +319,7 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 
 | Phase | Duration | Key Deliverables |
 |--------|-----------|-----------------|
-| **Phase 0.9 (COTS Validation)** | 2–4 weeks | ESP32-S3 DevKit + Grove sensors, firmware porting (ESP-IDF + ESP-ADF), MQTT + AWS IoT integration, sensor validation |
+| **Phase 0.9 (COTS Validation)** | 2–3 weeks | ESP32-S3 DevKit + Grove sensors, firmware porting (ESP-IDF + ESP-ADF), MQTT + AWS IoT integration, sensor validation (concurrent with manufacturer negotiations) |
 | **Phase I (Retrofit Pilot)** | 12–16 weeks | Custom PCB design, 200 retrofit units, far-field mic array, sensor integration, IR blaster validation |
 | **EVT (Engineering Validation)** | 8 weeks | PCB Rev A + mic validation + RGB firmware demo |
 | **DVT (Design Validation)** | 6 weeks | Mold T0 samples + acoustic tuning + sensor calibration |
@@ -362,13 +362,19 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 - IR transmitter implementation and device control database
 - Quality assurance planning and test fixture specifications
 
-**Rate:** $1,000 per week retainer  
+**Rate Structure:**
+- **Active Development:** $1,000 per week (hands-on firmware, PCB design, testing)
+- **Maintenance/Support:** $500 per week (during manufacturer negotiations, waiting periods)
+
 **Estimated Duration:**  
-- Phase 0.9: 4–6 weeks  
-- Phase I: 12–16 weeks  
+- Phase 0.9: 2–3 weeks active development
+- Phase I: 8–12 weeks active development + 4–6 weeks maintenance (manufacturer lead times)
 - Phase II: Ongoing support (as needed)
 
-**Total Estimated Consulting (Phase 0.9 + Phase I):** $16,000 – $22,000
+**Estimated Consulting Costs:**
+- Phase 0.9: $2,000 – $3,000
+- Phase I: $10,000 – $15,000
+- **Total (Phase 0.9 + Phase I):** $12,000 – $18,000
 
 ---
 
