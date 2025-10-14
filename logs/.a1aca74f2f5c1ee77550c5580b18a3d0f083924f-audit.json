@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/danielmcshan/GitHub/Naphome/logs/.a1aca74f2f5c1ee77550c5580b18a3d0f083924f-audit.json",
+    "files": [
+        {
+            "date": 1760472235392,
+            "name": "/Users/danielmcshan/GitHub/Naphome/logs/mcp-puppeteer-2025-10-14.log",
+            "hash": "1ae49783d6724fba3f4a7211f076c99424263af6e0ff8d5de0dfd125625f70df"
+        }
+    ],
+    "hashType": "sha256"
+}

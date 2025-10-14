@@ -1,0 +1,54 @@
+name: Sync Markdown to Notion
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.md'
+  workflow_dispatch:
+
+jobs:
+  sync-to-notion:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install NotionIt
+        run: |
+          pip install notionit
+      
+      - name: Sync Naphome_Prototype_I_II.md to Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: |
+          notionit upload \
+            --token "$NOTION_TOKEN" \
+            --page-id "${{ secrets.NOTION_PAGE_ID_PROTOTYPE }}" \
+            Naphome_Prototype_I_II.md
+      
+      - name: Sync P0.md to Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: |
+          notionit upload \
+            --token "$NOTION_TOKEN" \
+            --page-id "${{ secrets.NOTION_PAGE_ID_P0 }}" \
+            P0.md
+      
+      - name: Sync SPECS.md to Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: |
+          notionit upload \
+            --token "$NOTION_TOKEN" \
+            --page-id "${{ secrets.NOTION_PAGE_ID_SPECS }}" \
+            SPECS.md
+
