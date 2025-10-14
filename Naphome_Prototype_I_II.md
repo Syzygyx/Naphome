@@ -347,10 +347,24 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 
 ---
 
-## 11. Consulting & Development Services
+## 11. Cost Summary & Consulting Services
 
-### Technical Leadership Retainer
-**Daniel McShane** – Hardware/Firmware Development Lead
+### A. Hardware & Manufacturing Costs (Paid to Manufacturers)
+
+| Phase | Units | Cost per Unit | Total Hardware Cost |
+|-------|-------|---------------|---------------------|
+| **Phase 0.9 (COTS)** | 10–25 | $89.50 | $895 – $2,238 |
+| **Phase I (Retrofit)** | 200 | $95.70 | $19,140 |
+| **Phase II (Production)** | 10,000 | $40–58 | $400,000 – $580,000 |
+| **NRE (Tooling/Certification)** | — | — | $30,500 |
+
+**Note:** Hardware costs are paid directly to manufacturers (DB-Way, Kaiji, Xiteyou, etc.) and cover materials, PCBA, assembly, testing, and shipping.
+
+---
+
+### B. Technical Consulting Services (Daniel McShane)
+
+**Hardware/Firmware Development Lead**
 
 **Scope of Services:**
 - Phase 0.9 COTS prototype development and firmware porting (ESP-IDF + ESP-ADF)
@@ -371,10 +385,20 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 - Phase I: 8–12 weeks active development + 4–6 weeks maintenance (manufacturer lead times)
 - Phase II: Ongoing support (as needed)
 
-**Estimated Consulting Costs:**
+**Consulting Fees:**
 - Phase 0.9: $2,000 – $3,000
 - Phase I: $10,000 – $15,000
-- **Total (Phase 0.9 + Phase I):** $12,000 – $18,000
+- **Total Consulting (Phase 0.9 + Phase I):** $12,000 – $18,000
+
+---
+
+### C. Total Project Investment Summary
+
+| Phase | Consulting | Hardware/Manufacturing | Total |
+|-------|-----------|----------------------|-------|
+| **Phase 0.9** | $2,000 – $3,000 | $895 – $2,238 | **$2,895 – $5,238** |
+| **Phase I** | $10,000 – $15,000 | $19,140 | **$29,140 – $34,140** |
+| **Phase II** | TBD | $400,000 – $580,000 + $30,500 NRE | **$430,500 – $610,500+** |
 
 ---
 
