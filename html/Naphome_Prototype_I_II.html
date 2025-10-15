@@ -311,6 +311,10 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <td>SHTC3 (Temp/Humidity), SGP30 or SCD41 (VOC/CO₂), VEML7700 (Ambient Light), PMS5003 (PM2.5 Air Quality), MEMS Sound Sensor.</td>
 </tr>
 <tr>
+<td><strong>Display</strong></td>
+<td>256×64 OLED (SSD1322 or equivalent) for status, time, and visual feedback.</td>
+</tr>
+<tr>
 <td><strong>Controls</strong></td>
 <td>Capacitive touch buttons + rotary encoder (volume knob).</td>
 </tr>
@@ -379,7 +383,8 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <li>ESP32-S3 WROOM (8 MB PSRAM) on custom 2–4 layer PCB.  </li>
 <li>2–3 digital I²S far-field microphones with custom placement and isolation.  </li>
 <li><strong>Utilizes existing RGB lighting and speakers from donor device</strong> (speaker/lamp units with built-in audio and lighting).  </li>
-<li><strong>6 Sensors:</strong> SHTC3 (Temp/Humidity), SGP30 (VOC/eCO₂), VEML7700 (Light), PMS5003 (PM2.5), MEMS Sound Sensor (no display).  </li>
+<li><strong>6 Sensors:</strong> SHTC3 (Temp/Humidity), SGP30 (VOC/eCO₂), VEML7700 (Light), PMS5003 (PM2.5), MEMS Sound Sensor.</li>
+<li><strong>Display:</strong> 256×64 OLED for status, time, and visual feedback.  </li>
 <li>Capacitive touch buttons + rotary encoder (volume control).</li>
 <li><strong>IR LED transmitter</strong> for IoT device control (AC, TV, etc.).</li>
 <li>Battery backup: 18650 Li-ion cell (2–3 hrs runtime).</li>
@@ -406,6 +411,7 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 - ESP32-S3 WROOM-1 with power management
 - 3× Digital I²S MEMS microphones
 - 6× Environmental sensors (temperature, humidity, air quality, PM2.5, light, sound)
+- 256×64 OLED display for status and time
 - IR transmitter and capacitive touch controls
 - Custom 4-layer PCB with assembly
 - Retrofit housing using donor speaker/lamp units</p>
@@ -441,6 +447,7 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 - ESP32-S3 MCU with TAS5825M audio amplifier
 - ND65/ND90 stereo speakers with passive radiators
 - Environmental sensors (temperature, humidity, air quality, light)
+- 256×64 OLED display
 - RGB LED ring with diffuser
 - USB-C power management and custom enclosure</p>
 <p><strong>Estimated costs:</strong>
@@ -561,17 +568,17 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <tr>
 <td><strong>Base</strong></td>
 <td>ND65 + PR</td>
-<td>SHTC3 + SGP30 + VEML7700</td>
+<td>SHTC3 + SGP30 + VEML7700 + OLED</td>
 <td>10 × WS2812B</td>
-<td style="text-align: right;">$40</td>
+<td style="text-align: right;">$42</td>
 <td style="text-align: right;">$129</td>
 </tr>
 <tr>
 <td><strong>Premium</strong></td>
 <td>ND90 + PR</td>
-<td>SHTC3 + SGP30 + SCD41 + VEML7700</td>
+<td>SHTC3 + SGP30 + SCD41 + VEML7700 + OLED</td>
 <td>16 × WS2812B + enhanced diffuser</td>
-<td style="text-align: right;">$55–58</td>
+<td style="text-align: right;">$57–60</td>
 <td style="text-align: right;">$199</td>
 </tr>
 </tbody>

@@ -37,6 +37,7 @@ The Naphome is a premium smart sleep companion that combines:
 | **Speakers** | ND65 (Base) / ND90 (Premium) + Passive Radiators | Dual acoustic chambers |
 | **Microphones** | 2-3× Digital I²S MEMS | Far-field, noise-canceling |
 | **RGB LEDs** | 10× WS2812B (Base) / 16× WS2812B (Premium) | Addressable, 5V |
+| **Display** | 256×64 OLED (SSD1322 or equivalent) | SPI interface, 3.3V |
 | **Power** | USB-C PD 12V + Li-ion backup | 2-3 hours battery runtime |
 | **Connectivity** | Wi-Fi 2.4GHz + BLE | Dual-band support |
 
@@ -49,6 +50,7 @@ The Naphome is a premium smart sleep companion that combines:
 | **Ambient Light** | VEML7700 | I²C | Circadian lighting control |
 | **PM2.5 Air Quality** | PMS5003 | UART | Air quality monitoring |
 | **Sound Level** | MEMS Microphone | Analog | Noise monitoring |
+| **Display** | 256×64 OLED (SSD1322) | SPI | Status, time, visual feedback |
 | **IR Transmitter** | Custom IR LED + Driver | GPIO | IoT device control |
 
 ### Audio Specifications
@@ -103,6 +105,7 @@ The Naphome is a premium smart sleep companion that combines:
 | **Power Input** | USB-C PD (12V, 3A) |
 | **Touch Controls** | 3× capacitive touch buttons |
 | **Volume Control** | Rotary encoder (360°, detented) |
+| **Display** | 256×64 OLED (status, time, feedback) |
 | **Status LEDs** | Power, Wi-Fi, RGB feedback |
 | **Reset Button** | Recessed, factory reset |
 
@@ -128,6 +131,7 @@ The Naphome is a premium smart sleep companion that combines:
 | **MCU Zone** | ESP32-S3, crystal, flash, PSRAM |
 | **Audio Zone** | TAS5825M, audio connectors, filtering |
 | **Sensor Zone** | I²C sensors, level shifters, pull-ups |
+| **Display Zone** | OLED display, SPI interface, level shifters |
 | **Power Zone** | USB-C controller, buck/boost, battery management |
 | **Interface Zone** | Connectors, buttons, LEDs |
 
@@ -138,6 +142,7 @@ The Naphome is a premium smart sleep companion that combines:
 | **VBUS** | 12V (USB-C PD) | 3A | Input from USB-C |
 | **VCC_3V3** | 3.3V | 1A | ESP32-S3, sensors |
 | **VCC_5V** | 5V | 2A | RGB LEDs, audio amp |
+| **VCC_3V3_DISP** | 3.3V | 100mA | OLED display |
 | **VBAT** | 3.7V | 2A | Li-ion battery |
 
 ---
@@ -149,6 +154,7 @@ The Naphome is a premium smart sleep companion that combines:
 | Test | Specification | Method |
 |------|---------------|--------|
 | **Power Consumption** | <15W @ 12V | Digital multimeter |
+| **Display Brightness** | 100-300 cd/m² | Luminance meter |
 | **Audio THD** | <1% @ 1W | Audio analyzer |
 | **Wi-Fi Range** | >30m @ 2.4GHz | RF chamber |
 | **Battery Runtime** | >2 hours | Load testing |
@@ -180,6 +186,16 @@ The Naphome is a premium smart sleep companion that combines:
 | **Brightness** | 100-1000 lux @ 1m | Lux meter |
 | **Diffusion** | Uniform light distribution | Visual inspection |
 | **Power Consumption** | <3W @ full brightness | Power meter |
+
+### Display Testing
+
+| Test | Specification | Method |
+|------|---------------|--------|
+| **Resolution** | 256×64 pixels | Visual inspection |
+| **Contrast Ratio** | >1000:1 | Contrast meter |
+| **Viewing Angle** | >160° horizontal, >120° vertical | Goniometer |
+| **Response Time** | <1ms | Oscilloscope |
+| **Power Consumption** | <50mW @ full brightness | Power meter |
 
 ---
 
@@ -260,6 +276,7 @@ The Naphome is a premium smart sleep companion that combines:
 | **MCU & Audio** | $15 | ESP32-S3, TAS5825M, ND65 speakers |
 | **Sensors** | $8 | SHTC3, SGP30, VEML7700, PMS5003, MEMS mic |
 | **Lighting** | $5 | 10× WS2812B, diffuser, driver |
+| **Display** | $2 | 256×64 OLED, driver, mounting |
 | **Mechanical** | $8 | Enclosure, buttons, connectors |
 | **Power** | $4 | USB-C, battery, power management |
 | **Total** | **$40** | |
@@ -271,6 +288,7 @@ The Naphome is a premium smart sleep companion that combines:
 | **MCU & Audio** | $20 | ESP32-S3, TAS5825M, ND90 speakers |
 | **Sensors** | $12 | SHTC3, SGP30, SCD41, VEML7700, PMS5003, MEMS mic |
 | **Lighting** | $8 | 16× WS2812B, enhanced diffuser, light pipe |
+| **Display** | $2 | 256×64 OLED, driver, mounting |
 | **Mechanical** | $10 | Enhanced enclosure, premium buttons |
 | **Power** | $5 | Enhanced power management |
 | **Total** | **$55** | |

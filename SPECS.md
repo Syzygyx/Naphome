@@ -5,7 +5,7 @@
 - Buttons & Controls: Tap buttons + volume knob
 - Custom PCB
 - Access Point Mode/ Wifi connection
-- Display: E-Ink (minimal light, elegant)
+- Display: 256×64 OLED (status, time, visual feedback)
 - Battery: Compact backup (2–3 hrs)
 - Power Board: Optimized power management HAT
 - Lights: Power + Wi-Fi indicators, soft diffuser
@@ -15,7 +15,7 @@
 - Spotify Integration: Capability to connect and stream Spotify playlists via a pre-configured backend without user login.
 - iOT capabilities- Control everything from cloud / Need API’s
 
-**Sensors (7)**
+**Sensors (6)**
 
 1. Temperature
 2. Humidity
@@ -24,6 +24,9 @@
 5.  Light sensor 
 6. Sound sensor
 7. PM 2.5 (Air Quality)
+
+**Display**
+- 256×64 OLED for status, time, and visual feedback
 
 **Quality & Testing**
 

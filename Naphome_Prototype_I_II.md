@@ -43,6 +43,7 @@ The system evolves from **Prototype 0 (Raspberry Pi 5 + WM8960 HAT)** to a **cos
 | **Audio Subsystem** | Custom far-field 2–3 mic array → ESP-SR AFE + WakeNet model → TAS5825M DSP amp → stereo ND65 drivers + passive radiators. Premium audio (Nest/Bose class). |
 | **Lighting** | 10–12 × WS2812B addressable RGB LEDs under a frosted diffuser for circadian lighting and visual feedback. |
 | **Sensors (6 Total)** | SHTC3 (Temp/Humidity), SGP30 or SCD41 (VOC/CO₂), VEML7700 (Ambient Light), PMS5003 (PM2.5 Air Quality), MEMS Sound Sensor. |
+| **Display** | 256×64 OLED (SSD1322 or equivalent) for status, time, and visual feedback. |
 | **Controls** | Capacitive touch buttons + rotary encoder (volume knob). |
 | **Power** | USB-C PD 12 V primary + Li-ion battery backup (2–3 hrs). |
 | **Connectivity** | Wi-Fi 2.4 GHz, BLE provisioning, secure OTA updates, **IR transmitter for IoT control**. |
@@ -108,7 +109,8 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 - ESP32-S3 WROOM (8 MB PSRAM) on custom 2–4 layer PCB.  
 - 2–3 digital I²S far-field microphones with custom placement and isolation.  
 - **Utilizes existing RGB lighting and speakers from donor device** (speaker/lamp units with built-in audio and lighting).  
-- **6 Sensors:** SHTC3 (Temp/Humidity), SGP30 (VOC/eCO₂), VEML7700 (Light), PMS5003 (PM2.5), MEMS Sound Sensor (no display).  
+- **6 Sensors:** SHTC3 (Temp/Humidity), SGP30 (VOC/eCO₂), VEML7700 (Light), PMS5003 (PM2.5), MEMS Sound Sensor.
+- **Display:** 256×64 OLED for status, time, and visual feedback.  
 - Capacitive touch buttons + rotary encoder (volume control).
 - **IR LED transmitter** for IoT device control (AC, TV, etc.).
 - Battery backup: 18650 Li-ion cell (2–3 hrs runtime).
@@ -134,6 +136,7 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 - ESP32-S3 WROOM-1 with power management
 - 3× Digital I²S MEMS microphones
 - 6× Environmental sensors (temperature, humidity, air quality, PM2.5, light, sound)
+- 256×64 OLED display for status and time
 - IR transmitter and capacitive touch controls
 - Custom 4-layer PCB with assembly
 - Retrofit housing using donor speaker/lamp units
@@ -172,6 +175,7 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 - ESP32-S3 MCU with TAS5825M audio amplifier
 - ND65/ND90 stereo speakers with passive radiators
 - Environmental sensors (temperature, humidity, air quality, light)
+- 256×64 OLED display
 - RGB LED ring with diffuser
 - USB-C power management and custom enclosure
 
@@ -247,8 +251,8 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 
 | SKU | Audio | Sensors | Lighting | BOM | MSRP |
 |------|--------|----------|----------|-----:|-----:|
-| **Base** | ND65 + PR | SHTC3 + SGP30 + VEML7700 | 10 × WS2812B | $40 | $129 |
-| **Premium** | ND90 + PR | SHTC3 + SGP30 + SCD41 + VEML7700 | 16 × WS2812B + enhanced diffuser | $55–58 | $199 |
+| **Base** | ND65 + PR | SHTC3 + SGP30 + VEML7700 + OLED | 10 × WS2812B | $42 | $129 |
+| **Premium** | ND90 + PR | SHTC3 + SGP30 + SCD41 + VEML7700 + OLED | 16 × WS2812B + enhanced diffuser | $57–60 | $199 |
 
 ---
 
