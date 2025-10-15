@@ -220,6 +220,13 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 
 ---
 
+### 🏭 5. **Jetta Electronics Co., Ltd.**
+**Capabilities:** Full turnkey manufacturing with advanced PCB assembly and audio integration expertise.  
+**Specialization:** Consumer electronics, smart devices, and IoT products with strong quality control systems.  
+**Experience:** Established manufacturer with proven track record in audio device production and complex PCB assembly.
+
+---
+
 ## 7. NRE and Certification
 
 | Item | Cost (USD) |
