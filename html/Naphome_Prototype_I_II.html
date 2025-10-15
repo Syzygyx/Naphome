@@ -307,8 +307,8 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <td>10–12 × WS2812B addressable RGB LEDs under a frosted diffuser for circadian lighting and visual feedback.</td>
 </tr>
 <tr>
-<td><strong>Sensors (7 Total)</strong></td>
-<td>SHTC3 (Temp/Humidity), SGP30 or SCD41 (VOC/CO₂), VEML7700 (Ambient Light), PIR (Motion), PMS5003 (PM2.5 Air Quality), MEMS Sound Sensor.</td>
+<td><strong>Sensors (6 Total)</strong></td>
+<td>SHTC3 (Temp/Humidity), SGP30 or SCD41 (VOC/CO₂), VEML7700 (Ambient Light), PMS5003 (PM2.5 Air Quality), MEMS Sound Sensor.</td>
 </tr>
 <tr>
 <td><strong>Controls</strong></td>
@@ -337,7 +337,6 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <li>Grove Air Quality Sensor (SGP30 or equivalent)</li>
 <li>Grove PM2.5 Sensor (PMS5003 compatible)</li>
 <li>Grove Light Sensor (VEML7700 or TSL2561)</li>
-<li>Grove PIR Motion Sensor</li>
 <li>Grove Sound Sensor (MEMS microphone module)</li>
 <li>Grove CO₂ Sensor (SCD30 or SCD40, optional)</li>
 <li><strong>Audio:</strong> Generic I²S MEMS microphone breakout + MAX98357A I²S amp module + small speaker</li>
@@ -351,7 +350,7 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <li>Port P0 functionality to ESP-IDF + ESP-ADF</li>
 <li>Local wake-word detection (ESP-SR WakeNet)</li>
 <li>MQTT connection to AWS IoT Core</li>
-<li>Sensor telemetry publishing (temperature, humidity, VOC, PM2.5, light, motion, sound)</li>
+<li>Sensor telemetry publishing (temperature, humidity, VOC, PM2.5, light, sound)</li>
 <li>RGB LED control via cloud commands</li>
 <li>IR blaster control for AC/TV (test LIRC or ESP32-IR library)</li>
 <li>OTA firmware updates</li>
@@ -367,7 +366,7 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <li>Confirm cloud latency and MQTT message throughput</li>
 </ol>
 <h3 id="estimated-bom-phase-09-per-unit">Estimated BOM (Phase 0.9, per unit)</h3>
-<p><strong>Components include:</strong> ESP32-S3 DevKit, Grove sensors (temperature, humidity, air quality, PM2.5, light, motion, sound), I²S audio modules, RGB LED strip, IR transmitter, and power supply.</p>
+<p><strong>Components include:</strong> ESP32-S3 DevKit, Grove sensors (temperature, humidity, air quality, PM2.5, light, sound), I²S audio modules, RGB LED strip, IR transmitter, and power supply.</p>
 <p><strong>Estimated cost:</strong> ~$90 per unit (varies with supplier and volume)</p>
 <p><strong>Timeline:</strong> 2–3 weeks for assembly, firmware porting, and validation testing (concurrent with manufacturer negotiations).</p>
 <p><strong>Outcome:</strong> A fully functional COTS prototype that validates all Phase I features before committing to custom PCB manufacturing.</p>
@@ -380,7 +379,7 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <li>ESP32-S3 WROOM (8 MB PSRAM) on custom 2–4 layer PCB.  </li>
 <li>2–3 digital I²S far-field microphones with custom placement and isolation.  </li>
 <li><strong>Utilizes existing RGB lighting and speakers from donor device</strong> (speaker/lamp units with built-in audio and lighting).  </li>
-<li><strong>7 Sensors:</strong> SHTC3 (Temp/Humidity), SGP30 (VOC/eCO₂), VEML7700 (Light), PIR (Motion), PMS5003 (PM2.5), MEMS Sound Sensor (no display).  </li>
+<li><strong>6 Sensors:</strong> SHTC3 (Temp/Humidity), SGP30 (VOC/eCO₂), VEML7700 (Light), PMS5003 (PM2.5), MEMS Sound Sensor (no display).  </li>
 <li>Capacitive touch buttons + rotary encoder (volume control).</li>
 <li><strong>IR LED transmitter</strong> for IoT device control (AC, TV, etc.).</li>
 <li>Battery backup: 18650 Li-ion cell (2–3 hrs runtime).</li>
@@ -406,7 +405,7 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <p><strong>Key Components:</strong>
 - ESP32-S3 WROOM-1 with power management
 - 3× Digital I²S MEMS microphones
-- 7× Environmental sensors (temperature, humidity, air quality, PM2.5, light, motion, sound)
+- 6× Environmental sensors (temperature, humidity, air quality, PM2.5, light, sound)
 - IR transmitter and capacitive touch controls
 - Custom 4-layer PCB with assembly
 - Retrofit housing using donor speaker/lamp units</p>
@@ -441,7 +440,7 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <p><strong>Key Subsystems:</strong>
 - ESP32-S3 MCU with TAS5825M audio amplifier
 - ND65/ND90 stereo speakers with passive radiators
-- Environmental sensors (temperature, humidity, air quality, light, motion)
+- Environmental sensors (temperature, humidity, air quality, light)
 - RGB LED ring with diffuser
 - USB-C power management and custom enclosure</p>
 <p><strong>Estimated costs:</strong>
@@ -562,7 +561,7 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <tr>
 <td><strong>Base</strong></td>
 <td>ND65 + PR</td>
-<td>SHTC3 + SGP30 + PIR + VEML7700</td>
+<td>SHTC3 + SGP30 + VEML7700</td>
 <td>10 × WS2812B</td>
 <td style="text-align: right;">$40</td>
 <td style="text-align: right;">$129</td>
@@ -570,7 +569,7 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <tr>
 <td><strong>Premium</strong></td>
 <td>ND90 + PR</td>
-<td>SHTC3 + SGP30 + SCD41 + PIR + VEML7700</td>
+<td>SHTC3 + SGP30 + SCD41 + VEML7700</td>
 <td>16 × WS2812B + enhanced diffuser</td>
 <td style="text-align: right;">$55–58</td>
 <td style="text-align: right;">$199</td>
