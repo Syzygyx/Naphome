@@ -283,8 +283,13 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 - Quality assurance planning and test fixture specifications
 
 **Rate Structure:**
-- **Manufacturing Consultation:** $500 per week (liaison with Chinese manufacturers, specifications, quality control)
+- **Prototype Phase (Phase 0.9 & I):** $1,000 per week (manufacturing consultation, specifications, quality control)
+- **Production Phase (Phase II):** $400 per week (ongoing manufacturing support and optimization)
 - **Firmware Development:** $100 per hour (ESP32-S3 development, testing, debugging, optimization)
+
+**Payment Methods:**
+- **PayPal:** dan@syzygyx.com
+- **Zelle:** dan@syzygyx.com
 
 **Note:** Hardware and manufacturing costs are negotiated directly with manufacturers (DB-Way, Kaiji, Xiteyou, etc.) and vary based on volume, specifications, and market conditions.
 
