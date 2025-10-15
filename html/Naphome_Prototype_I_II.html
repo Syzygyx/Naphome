@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Naphome Smart Sleep Device – Phases 0.9, I &amp; II Proposal - Naphome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background: #34495e;
+            padding: 1rem 0;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+        
+        main {
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #34495e;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        code {
+            background: #f1f2f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            color: #e74c3c;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 2rem 0;
+            padding: 1rem 2rem;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 5px solid #3498db;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            main {
+                padding: 2rem 1rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav a {
+                margin: 0 0.5rem;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 0.8rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌙 Naphome</h1>
+            <p>Smart Sleep Device Documentation</p>
+        </header>
+        
+        <nav>
+            <a href="index.html">Home</a><a href="P0.html">P0 Specs</a><a href="Naphome_Prototype_I_II.html">Prototype I & II</a><a href="Naphome_Audio.html">Audio System</a><a href="SPECS.html">Core Specs</a>
+        </nav>
+        
+        <main>
+            <h1 id="naphome-smart-sleep-device-phases-09-i-ii-proposal">🌙 Naphome Smart Sleep Device – Phases 0.9, I &amp; II Proposal</h1>
+<p><strong>Updated:</strong> October 2025  </p>
+<hr />
+<h2 id="1-overview">1. Overview</h2>
+<p><strong>Naphome</strong> is a next-generation smart sleep companion that unites <strong>light, sound, and environmental sensing</strong> to create a restorative bedroom ecosystem.<br />
+All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient <strong>ESP32-S3</strong> handles real-time wake-word detection, RGB lighting, audio playback, and sensor telemetry.</p>
+<p>The system evolves from <strong>Prototype 0 (Raspberry Pi 5 + WM8960 HAT)</strong> to a <strong>cost-optimized, cloud-connected ESP32-S3 platform</strong> with in-house far-field microphones, stereo sound, and integrated RGB lamp.</p>
+<h3 id="prototype-0-p0-achievements">Prototype 0 (P0) – Achievements</h3>
+<p><strong>Current Hardware:</strong> Raspberry Pi 5 + WM8960 Audio HAT<br />
+<strong>Status:</strong> Fully functional proof-of-concept with cloud integration</p>
+<p><strong>Implemented Features:</strong>
+- ✅ Voice input/output with WM8960 HAT (mic + speaker)
+- ✅ LLM integration (cloud-based conversation processing)
+- ✅ Voice-to-voice capability via ElevenLabs TTS
+- ✅ Addressable LED strip control with dynamic feedback
+- ✅ Temperature &amp; humidity sensor → AWS IoT telemetry
+- ✅ AWS IoT MQTT control (lights, sound, TTS actuation)
+- ✅ IR blaster for AC control (optimal sleep temperature)
+- ✅ Spotifyd integration for music streaming
+- ✅ Access Point mode for device provisioning
+- ✅ User registration flow (first-time setup)
+- ✅ Backend scheduler for routine automation
+- ✅ Python service architecture (auto-start on boot)
+- ✅ OTA-ready architecture</p>
+<p><strong>Transition Goal:</strong> Migrate P0 functionality to ESP32-S3 for cost reduction and mass production.</p>
+<hr />
+<h2 id="2-system-architecture">2. System Architecture</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cloud Layer</strong></td>
+<td>Handles speech recognition, LLM processing, TTS (ElevenLabs), user routines, Spotify streaming, and OTA management via AWS IoT Core.</td>
+</tr>
+<tr>
+<td><strong>Device MCU (ESP32-S3)</strong></td>
+<td>Local wake-word detection, I²S audio streaming, RGB lighting control, sensor polling, IR blaster control, and MQTT messaging.</td>
+</tr>
+<tr>
+<td><strong>Audio Subsystem</strong></td>
+<td>Custom far-field 2–3 mic array → ESP-SR AFE + WakeNet model → TAS5825M DSP amp → stereo ND65 drivers + passive radiators. Premium audio (Nest/Bose class).</td>
+</tr>
+<tr>
+<td><strong>Lighting</strong></td>
+<td>10–12 × WS2812B addressable RGB LEDs under a frosted diffuser for circadian lighting and visual feedback.</td>
+</tr>
+<tr>
+<td><strong>Sensors (7 Total)</strong></td>
+<td>SHTC3 (Temp/Humidity), SGP30 or SCD41 (VOC/CO₂), VEML7700 (Ambient Light), PIR (Motion), PMS5003 (PM2.5 Air Quality), MEMS Sound Sensor.</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>Capacitive touch buttons + rotary encoder (volume knob).</td>
+</tr>
+<tr>
+<td><strong>Power</strong></td>
+<td>USB-C PD 12 V primary + Li-ion battery backup (2–3 hrs).</td>
+</tr>
+<tr>
+<td><strong>Connectivity</strong></td>
+<td>Wi-Fi 2.4 GHz, BLE provisioning, secure OTA updates, <strong>IR transmitter for IoT control</strong>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-phase-09-cots-validation-1025-units">3. Phase 0.9 – COTS Validation (10–25 Units)</h2>
+<h3 id="purpose">Purpose</h3>
+<p>Phase 0.9 bridges the proven Prototype 0 (Raspberry Pi 5) and Phase I (custom PCB) by validating core functionality using <strong>Commercial Off-The-Shelf (COTS)</strong> ESP32 development boards and Grove sensor modules. This rapid prototype phase allows firmware development, cloud integration testing, and sensor validation without custom PCB investment.</p>
+<h3 id="hardware-all-cots">Hardware (All COTS)</h3>
+<ul>
+<li><strong>ESP32-S3 DevKit</strong> (e.g., ESP32-S3-DevKitC-1 or similar) with 8 MB PSRAM</li>
+<li><strong>Grove Base Shield</strong> or breadboard with Grove connectors</li>
+<li><strong>Grove Sensors (7 Total):</strong></li>
+<li>Grove Temperature &amp; Humidity Sensor (SHTC3 or DHT20)</li>
+<li>Grove Air Quality Sensor (SGP30 or equivalent)</li>
+<li>Grove PM2.5 Sensor (PMS5003 compatible)</li>
+<li>Grove Light Sensor (VEML7700 or TSL2561)</li>
+<li>Grove PIR Motion Sensor</li>
+<li>Grove Sound Sensor (MEMS microphone module)</li>
+<li>Grove CO₂ Sensor (SCD30 or SCD40, optional)</li>
+<li><strong>Audio:</strong> Generic I²S MEMS microphone breakout + MAX98357A I²S amp module + small speaker</li>
+<li><strong>RGB Lighting:</strong> WS2812B LED strip or ring (10–12 LEDs)</li>
+<li><strong>IR Transmitter:</strong> Grove IR Emitter module or generic IR LED + transistor circuit</li>
+<li><strong>Power:</strong> USB-C cable (5V) to ESP32 DevKit</li>
+<li><strong>Controls:</strong> Tactile push buttons or capacitive touch breakout module</li>
+</ul>
+<h3 id="firmware-goals">Firmware Goals</h3>
+<ul>
+<li>Port P0 functionality to ESP-IDF + ESP-ADF</li>
+<li>Local wake-word detection (ESP-SR WakeNet)</li>
+<li>MQTT connection to AWS IoT Core</li>
+<li>Sensor telemetry publishing (temperature, humidity, VOC, PM2.5, light, motion, sound)</li>
+<li>RGB LED control via cloud commands</li>
+<li>IR blaster control for AC/TV (test LIRC or ESP32-IR library)</li>
+<li>OTA firmware updates</li>
+<li>Wi-Fi provisioning (Access Point mode)</li>
+</ul>
+<h3 id="validation-objectives">Validation Objectives</h3>
+<ol>
+<li>Confirm ESP32-S3 can handle simultaneous I²S audio, sensor polling, RGB control, and MQTT</li>
+<li>Test Grove sensor accuracy and I²C/UART communication reliability</li>
+<li>Validate IR transmitter range and command database</li>
+<li>Measure power consumption and thermal behavior</li>
+<li>Finalize firmware architecture before custom PCB design</li>
+<li>Confirm cloud latency and MQTT message throughput</li>
+</ol>
+<h3 id="estimated-bom-phase-09-per-unit">Estimated BOM (Phase 0.9, per unit)</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Part Number</th>
+<th style="text-align: right;">Unit Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESP32-S3 DevKit</td>
+<td>ESP32-S3-DevKitC-1</td>
+<td style="text-align: right;">$10.00</td>
+</tr>
+<tr>
+<td>Grove Base Shield or connectors</td>
+<td>—</td>
+<td style="text-align: right;">$8.00</td>
+</tr>
+<tr>
+<td>Grove Temp/Humidity Sensor</td>
+<td>Grove DHT20</td>
+<td style="text-align: right;">$4.50</td>
+</tr>
+<tr>
+<td>Grove Air Quality Sensor</td>
+<td>Grove SGP30</td>
+<td style="text-align: right;">$12.00</td>
+</tr>
+<tr>
+<td>Grove PM2.5 Sensor</td>
+<td>Grove PMS5003</td>
+<td style="text-align: right;">$18.00</td>
+</tr>
+<tr>
+<td>Grove Light Sensor</td>
+<td>Grove VEML7700</td>
+<td style="text-align: right;">$4.00</td>
+</tr>
+<tr>
+<td>Grove PIR Motion Sensor</td>
+<td>—</td>
+<td style="text-align: right;">$5.00</td>
+</tr>
+<tr>
+<td>Grove Sound Sensor</td>
+<td>—</td>
+<td style="text-align: right;">$4.50</td>
+</tr>
+<tr>
+<td>I²S Microphone Breakout</td>
+<td>INMP441 or ICS-43434</td>
+<td style="text-align: right;">$3.00</td>
+</tr>
+<tr>
+<td>I²S Amplifier Module</td>
+<td>MAX98357A</td>
+<td style="text-align: right;">$4.00</td>
+</tr>
+<tr>
+<td>Speaker</td>
+<td>Small 4Ω 3W speaker</td>
+<td style="text-align: right;">$3.00</td>
+</tr>
+<tr>
+<td>WS2812B LED Strip</td>
+<td>12 LEDs</td>
+<td style="text-align: right;">$2.50</td>
+</tr>
+<tr>
+<td>Grove IR Emitter</td>
+<td>IR LED module</td>
+<td style="text-align: right;">$3.00</td>
+</tr>
+<tr>
+<td>USB-C Cable + Power Supply</td>
+<td>5V 2A</td>
+<td style="text-align: right;">$3.00</td>
+</tr>
+<tr>
+<td>Breadboard/Jumper Wires</td>
+<td>—</td>
+<td style="text-align: right;">$5.00</td>
+</tr>
+<tr>
+<td><strong>Total COTS BOM</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>≈ $89.50 / unit</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Timeline:</strong> 2–3 weeks for assembly, firmware porting, and validation testing (concurrent with manufacturer negotiations).</p>
+<p><strong>Outcome:</strong> A fully functional COTS prototype that validates all Phase I features before committing to custom PCB manufacturing.</p>
+<hr />
+<h2 id="4-phase-i-retrofit-pilot-200-units">4. Phase I – Retrofit Pilot (≈ 200 Units)</h2>
+<h3 id="purpose_1">Purpose</h3>
+<p>Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and acoustics by retrofitting 200 existing speaker or lamp units with an <strong>ESP32-S3 retrofit module</strong>. <strong>The donor devices already have built-in speakers and RGB lighting</strong>, which will be integrated with the retrofit control module.</p>
+<h3 id="hardware">Hardware</h3>
+<ul>
+<li>ESP32-S3 WROOM (8 MB PSRAM) on custom 2–4 layer PCB.  </li>
+<li>2–3 digital I²S far-field microphones with custom placement and isolation.  </li>
+<li><strong>Utilizes existing RGB lighting and speakers from donor device</strong> (speaker/lamp units with built-in audio and lighting).  </li>
+<li><strong>7 Sensors:</strong> SHTC3 (Temp/Humidity), SGP30 (VOC/eCO₂), VEML7700 (Light), PIR (Motion), PMS5003 (PM2.5), MEMS Sound Sensor (no display).  </li>
+<li>Capacitive touch buttons + rotary encoder (volume control).</li>
+<li><strong>IR LED transmitter</strong> for IoT device control (AC, TV, etc.).</li>
+<li>Battery backup: 18650 Li-ion cell (2–3 hrs runtime).</li>
+<li>Powered by USB-C PD (12 V primary).  </li>
+</ul>
+<h3 id="firmware">Firmware</h3>
+<ul>
+<li>Built on <strong>ESP-IDF + ESP-ADF + ESP-SR</strong>.  </li>
+<li>Local wake-word recognition, cloud-based speech streaming.  </li>
+<li>MQTT for routines, telemetry, and RGB control.  </li>
+<li>OTA update pipeline with dual partitioning.  </li>
+<li>Access Point Wi-Fi setup and persistent credentials.  </li>
+</ul>
+<h3 id="pilot-goals">Pilot Goals</h3>
+<ol>
+<li>Validate far-field mic performance in real bedrooms.  </li>
+<li>Measure latency for cloud-based voice interaction.  </li>
+<li>Evaluate RGB diffusion and ambient brightness.  </li>
+<li>Gather sensor and thermal behavior data.  </li>
+<li>Finalize firmware and network stack for mass production.  </li>
+</ol>
+<h3 id="detailed-bom-phase-i-retrofit-pilot-200-units">Detailed BOM (Phase I – Retrofit Pilot, 200 units)</h3>
+<h4 id="electronics-mcu">Electronics &amp; MCU</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Part Number</th>
+<th>Qty</th>
+<th>Unit Cost</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESP32-S3 WROOM-1 (8MB PSRAM)</td>
+<td>ESP32-S3-WROOM-1-N8R8</td>
+<td>1</td>
+<td>$3.80</td>
+<td>$3.80</td>
+</tr>
+<tr>
+<td>USB-C PD Controller</td>
+<td>AP33772</td>
+<td>1</td>
+<td>$0.85</td>
+<td>$0.85</td>
+</tr>
+<tr>
+<td>12V to 5V Buck Converter</td>
+<td>TPS54331</td>
+<td>1</td>
+<td>$0.62</td>
+<td>$0.62</td>
+</tr>
+<tr>
+<td>5V to 3.3V LDO Regulator</td>
+<td>AMS1117-3.3</td>
+<td>1</td>
+<td>$0.18</td>
+<td>$0.18</td>
+</tr>
+<tr>
+<td>USB-C Connector</td>
+<td>GCT USB4105-GF-A</td>
+<td>1</td>
+<td>$0.45</td>
+<td>$0.45</td>
+</tr>
+<tr>
+<td>Power Protection &amp; Caps</td>
+<td>Mixed</td>
+<td>—</td>
+<td>$1.20</td>
+<td>$1.20</td>
+</tr>
+<tr>
+<td><strong>Subtotal: MCU &amp; Power</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>$7.10</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="audio-subsystem">Audio Subsystem</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Part Number</th>
+<th>Qty</th>
+<th>Unit Cost</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digital I²S MEMS Mic</td>
+<td>ICS-43434 or SPH0645LM4H</td>
+<td>3</td>
+<td>$1.80</td>
+<td>$5.40</td>
+</tr>
+<tr>
+<td>I²S Audio Codec/DAC</td>
+<td>ES8388 or PCM5102A</td>
+<td>1</td>
+<td>$2.30</td>
+<td>$2.30</td>
+</tr>
+<tr>
+<td>Audio Interface Circuitry</td>
+<td>Connectors to donor speakers</td>
+<td>—</td>
+<td>$1.50</td>
+<td>$1.50</td>
+</tr>
+<tr>
+<td><strong>Subtotal: Audio (mics only, uses donor speakers)</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>$9.20</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="sensors-7-total">Sensors (7 Total)</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Part Number</th>
+<th>Qty</th>
+<th>Unit Cost</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temp/Humidity Sensor</td>
+<td>SHTC3 (I²C)</td>
+<td>1</td>
+<td>$1.20</td>
+<td>$1.20</td>
+</tr>
+<tr>
+<td>Air Quality Sensor (VOC/eCO₂)</td>
+<td>SGP30 (I²C)</td>
+<td>1</td>
+<td>$4.50</td>
+<td>$4.50</td>
+</tr>
+<tr>
+<td>PM2.5 Air Quality Sensor</td>
+<td>PMS5003 (UART)</td>
+<td>1</td>
+<td>$9.50</td>
+<td>$9.50</td>
+</tr>
+<tr>
+<td>Ambient Light Sensor</td>
+<td>VEML7700 (I²C)</td>
+<td>1</td>
+<td>$0.85</td>
+<td>$0.85</td>
+</tr>
+<tr>
+<td>PIR Motion Sensor</td>
+<td>HC-SR501 or EKMC1601111</td>
+<td>1</td>
+<td>$1.25</td>
+<td>$1.25</td>
+</tr>
+<tr>
+<td>MEMS Sound Level Sensor</td>
+<td>INMP441 or similar</td>
+<td>1</td>
+<td>$1.80</td>
+<td>$1.80</td>
+</tr>
+<tr>
+<td>Sensor PCB Breakouts</td>
+<td>Custom</td>
+<td>6</td>
+<td>$0.40</td>
+<td>$2.40</td>
+</tr>
+<tr>
+<td><strong>Subtotal: Sensors</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>$21.50</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ir-transmitter-controls">IR Transmitter &amp; Controls</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Part Number</th>
+<th>Qty</th>
+<th>Unit Cost</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IR LED Transmitter</td>
+<td>940nm IR LED + transistor</td>
+<td>1</td>
+<td>$0.50</td>
+<td>$0.50</td>
+</tr>
+<tr>
+<td>Capacitive Touch Buttons</td>
+<td>TTP223 or similar</td>
+<td>3</td>
+<td>$0.30</td>
+<td>$0.90</td>
+</tr>
+<tr>
+<td>Rotary Encoder</td>
+<td>EC11 or similar</td>
+<td>1</td>
+<td>$0.80</td>
+<td>$0.80</td>
+</tr>
+<tr>
+<td>Control Interface PCB</td>
+<td>Custom 2-layer</td>
+<td>1</td>
+<td>$1.20</td>
+<td>$1.20</td>
+</tr>
+<tr>
+<td><strong>Subtotal: IR &amp; Controls</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>$3.40</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> RGB lighting uses donor device's existing LEDs with control interface from retrofit module.</p>
+<h4 id="pcb-assembly">PCB &amp; Assembly</h4>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Details</th>
+<th>Qty</th>
+<th>Unit Cost</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main Control PCB</td>
+<td>4-layer, FR4, 100×80mm</td>
+<td>1</td>
+<td>$3.20</td>
+<td>$3.20</td>
+</tr>
+<tr>
+<td>PCB Assembly (SMT)</td>
+<td>Stencil + pick-and-place + reflow</td>
+<td>1</td>
+<td>$4.50</td>
+<td>$4.50</td>
+</tr>
+<tr>
+<td>Testing &amp; Programming</td>
+<td>Flash firmware + functional test</td>
+<td>1</td>
+<td>$2.00</td>
+<td>$2.00</td>
+</tr>
+<tr>
+<td>Connectors &amp; Wiring</td>
+<td>JST, headers, wires</td>
+<td>—</td>
+<td>$1.80</td>
+<td>$1.80</td>
+</tr>
+<tr>
+<td><strong>Subtotal: PCB &amp; Assembly</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>$11.50</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="housing-mechanical-retrofit">Housing &amp; Mechanical (Retrofit)</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Details</th>
+<th>Qty</th>
+<th>Unit Cost</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Donor Speaker/Lamp Unit</td>
+<td>Refurbished or surplus units</td>
+<td>1</td>
+<td>$28.00</td>
+<td>$28.00</td>
+</tr>
+<tr>
+<td>Custom Mounting Bracket</td>
+<td>3D-printed or CNC</td>
+<td>1</td>
+<td>$3.50</td>
+<td>$3.50</td>
+</tr>
+<tr>
+<td>Acoustic Foam/Damping</td>
+<td>Isolate mics and speakers</td>
+<td>—</td>
+<td>$2.20</td>
+<td>$2.20</td>
+</tr>
+<tr>
+<td>Fasteners &amp; Adhesives</td>
+<td>Screws, tape, glue</td>
+<td>—</td>
+<td>$1.30</td>
+<td>$1.30</td>
+</tr>
+<tr>
+<td><strong>Subtotal: Housing &amp; Mechanical</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>$35.00</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="phase-i-total-bom">Phase I Total BOM</h4>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th style="text-align: right;">Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCU &amp; Power</td>
+<td style="text-align: right;">$7.10</td>
+</tr>
+<tr>
+<td>Audio Subsystem (mics only)</td>
+<td style="text-align: right;">$9.20</td>
+</tr>
+<tr>
+<td>Sensors (7 total)</td>
+<td style="text-align: right;">$21.50</td>
+</tr>
+<tr>
+<td>IR Transmitter &amp; Controls</td>
+<td style="text-align: right;">$3.40</td>
+</tr>
+<tr>
+<td>PCB &amp; Assembly</td>
+<td style="text-align: right;">$11.50</td>
+</tr>
+<tr>
+<td>Housing &amp; Mechanical (retrofit)</td>
+<td style="text-align: right;">$35.00</td>
+</tr>
+<tr>
+<td><strong>Grand Total (Phase I)</strong></td>
+<td style="text-align: right;"><strong>$87.70 / unit</strong></td>
+</tr>
+<tr>
+<td><strong>Packaging &amp; Shipping</strong></td>
+<td style="text-align: right;"><strong>$8.00</strong></td>
+</tr>
+<tr>
+<td><strong>Final Landed Cost</strong></td>
+<td style="text-align: right;"><strong>$95.70 / unit</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> Cost savings from using donor device speakers and RGB lighting (~$27.50 per unit).</p>
+<hr />
+<h2 id="5-phase-ii-full-production-10000-units">5. Phase II – Full Production (10,000 Units)</h2>
+<h3 id="objectives">Objectives</h3>
+<ul>
+<li>Transition to <strong>fully custom housing and board</strong>.  </li>
+<li>Integrate <strong>in-house far-field mic array</strong> and RGB light dome.  </li>
+<li>Achieve <strong>$40 BOM (base)</strong>, <strong>$55 BOM (premium)</strong>.  </li>
+<li>Establish scalable manufacturing and QA pipeline.  </li>
+</ul>
+<h3 id="hardware-design">Hardware Design</h3>
+<ul>
+<li>ESP32-S3 + TAS5825M on single 4-layer PCB.  </li>
+<li>Integrated microphone array with acoustic isolation geometry.  </li>
+<li>ND65 stereo drivers + passive radiators in dual acoustic chambers.  </li>
+<li>10–12 WS2812B LEDs with internal diffuser and light pipe integration.  </li>
+<li>Molded PC/ABS shell with sensor and mic apertures.  </li>
+</ul>
+<h3 id="firmware-enhancements">Firmware Enhancements</h3>
+<ul>
+<li>Optimized AEC and beamforming (ESP-SR AFE).  </li>
+<li>MQTT connection resilience and watchdog.  </li>
+<li>Adaptive LED states (sleep, wake, alert).  </li>
+<li>Local cache for routines to operate if offline.  </li>
+<li>Secure OTA with fail-safe rollback.  </li>
+</ul>
+<h3 id="bom-10k-volume">BOM (10k Volume)</h3>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th style="text-align: right;">Est. Cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESP32-S3 MCU</td>
+<td style="text-align: right;">3.10</td>
+</tr>
+<tr>
+<td>TAS5825M Amp</td>
+<td style="text-align: right;">3.30</td>
+</tr>
+<tr>
+<td>ND65 Speakers + PRs</td>
+<td style="text-align: right;">15.00</td>
+</tr>
+<tr>
+<td>Sensors (SHTC3 + SGP30 + VEML7700 + PIR)</td>
+<td style="text-align: right;">4.00</td>
+</tr>
+<tr>
+<td>RGB LED Ring + Diffuser</td>
+<td style="text-align: right;">4.10</td>
+</tr>
+<tr>
+<td>Power / USB-C PD</td>
+<td style="text-align: right;">1.50</td>
+</tr>
+<tr>
+<td>PCB + Assembly</td>
+<td style="text-align: right;">4.20</td>
+</tr>
+<tr>
+<td>Enclosure + Hardware</td>
+<td style="text-align: right;">2.60</td>
+</tr>
+<tr>
+<td>Misc / EMI</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr>
+<td><strong>Total (Base SKU)</strong></td>
+<td style="text-align: right;"><strong>≈ $40.0</strong></td>
+</tr>
+<tr>
+<td><strong>Premium (ND90 + CO₂ sensor)</strong></td>
+<td style="text-align: right;"><strong>≈ $55–58</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-manufacturing-partners">6. Manufacturing Partners</h2>
+<p><strong>All partners listed below are capable of end-to-end turnkey manufacturing</strong> (PCB sourcing → PCBA → speaker/LED assembly → plastic housing → final QA → packaging).</p>
+<h3 id="1-zhuhai-db-way-technology-co-ltd">🔧 1. <strong>Zhuhai DB-Way Technology Co., Ltd.</strong></h3>
+<p><strong>Capabilities:</strong> Full turnkey manufacturing including PCBA, audio integration, RGB assembly, plastic housing, and end-of-line testing.<br />
+<strong>Specialization:</strong> EMS with IoT device experience.<br />
+<strong>Relevant Product:</strong> <a href="https://www.alibaba.com/x/B0uBjo?ck=pdp">Wake-up Light Alarm Clock with FM Radio Speaker</a> - Bedside lamp with RGB lighting, touch control, USB rechargeable. Demonstrates capability in audio + lighting integration.</p>
+<p><img alt="DB-Way Wake-up Light Alarm Clock" src="images/db-way-wake-up-light.png" /></p>
+<hr />
+<h3 id="2-shanghai-kaiji-lighting-technology-co-ltd">💡 2. <strong>Shanghai Kaiji Lighting Technology Co., Ltd.</strong></h3>
+<p><strong>Capabilities:</strong> Full turnkey manufacturing with enhanced RGB lighting and diffuser expertise.<br />
+<strong>Specialization:</strong> Smart lighting products; in-house optical design and light pipe molding.<br />
+<strong>Relevant Product:</strong> <a href="https://www.alibaba.com/x/B0uBjy?ck=pdp">Bluetooth Speaker with RGB Dynamic Lighting</a> - Portable bedside table lamp with RGB atmosphere lighting, Bluetooth speaker, rechargeable. Shows expertise in RGB lighting + audio integration (10k units @ $8.29).</p>
+<p><img alt="Kaiji RGB Bluetooth Speaker Lamp" src="images/kaiji-rgb-bluetooth-speaker.png" /></p>
+<hr />
+<h3 id="3-shenzhen-xiteyou-electronic-technology-co-ltd">⚙️ 3. <strong>Shenzhen Xiteyou Electronic Technology Co., Ltd.</strong></h3>
+<p><strong>Capabilities:</strong> Full turnkey manufacturing with strong component sourcing network.<br />
+<strong>Specialization:</strong> Consumer electronics; competitive pricing on sensors, mics, and ICs.<br />
+<strong>Relevant Product:</strong> <a href="https://www.alibaba.com/x/B0uBI9?ck=pdp">Smart Sleep Monitor with 32 Soothing Sounds</a> - Rechargeable nightlight with RGB lighting (7 colors), Bluetooth speaker, white noise machine (105×105×150mm, 8-10hr battery, $19.99 retail). Lead time: 15-35 days for 100-1800 units. Demonstrates strong cost optimization and experience with sleep/audio devices.</p>
+<p><img alt="Xiteyou Smart Sleep Monitor" src="images/xiteyou-smart-sleep-monitor.png" /></p>
+<hr />
+<h3 id="4-dongguan-compro-electronic-technology-co-ltd">🧱 4. <strong>Dongguan Compro Electronic Technology Co., Ltd.</strong></h3>
+<p><strong>Website:</strong> <a href="http://www.comproelec.com">www.comproelec.com</a><br />
+<strong>Capabilities:</strong> Full OEM/ODM turnkey manufacturing with certification support.<br />
+<strong>Specialization:</strong> Smart speakers and IoT audio devices; established supply chain for acoustic components.</p>
+<hr />
+<h2 id="7-nre-and-certification">7. NRE and Certification</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th style="text-align: right;">Cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enclosure Tooling (2-cavity mold + diffuser dome)</td>
+<td style="text-align: right;">18,000</td>
+</tr>
+<tr>
+<td>Test Fixtures / QA Jigs</td>
+<td style="text-align: right;">6,000</td>
+</tr>
+<tr>
+<td>Compliance Testing &amp; DoC (using pre-certified ESP32 module)</td>
+<td style="text-align: right;">2,500</td>
+</tr>
+<tr>
+<td>Engineering Samples &amp; Validation</td>
+<td style="text-align: right;">4,000</td>
+</tr>
+<tr>
+<td><strong>Total NRE</strong></td>
+<td style="text-align: right;"><strong>≈ $30,500 (≈ $3.05/unit @ 10k)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> Using pre-certified ESP32-S3-WROOM-1 module eliminates the need for full FCC/CE certification. Only Declaration of Conformity (DoC) and basic compliance testing required.</p>
+<hr />
+<h2 id="8-timeline">8. Timeline</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Key Deliverables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 0.9 (COTS Validation)</strong></td>
+<td>2–3 weeks</td>
+<td>ESP32-S3 DevKit + Grove sensors, firmware porting (ESP-IDF + ESP-ADF), MQTT + AWS IoT integration, sensor validation (concurrent with manufacturer negotiations)</td>
+</tr>
+<tr>
+<td><strong>Phase I (Retrofit Pilot)</strong></td>
+<td>12–16 weeks</td>
+<td>Custom PCB design, 200 retrofit units, far-field mic array, sensor integration, IR blaster validation</td>
+</tr>
+<tr>
+<td><strong>EVT (Engineering Validation)</strong></td>
+<td>8 weeks</td>
+<td>PCB Rev A + mic validation + RGB firmware demo</td>
+</tr>
+<tr>
+<td><strong>DVT (Design Validation)</strong></td>
+<td>6 weeks</td>
+<td>Mold T0 samples + acoustic tuning + sensor calibration</td>
+</tr>
+<tr>
+<td><strong>PVT (Production Validation)</strong></td>
+<td>4 weeks</td>
+<td>300–500 unit pilot run + certification testing</td>
+</tr>
+<tr>
+<td><strong>MP (Mass Production)</strong></td>
+<td>3–4 months</td>
+<td>10k units + QA inspection</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-sku-summary">9. SKU Summary</h2>
+<table>
+<thead>
+<tr>
+<th>SKU</th>
+<th>Audio</th>
+<th>Sensors</th>
+<th>Lighting</th>
+<th style="text-align: right;">BOM</th>
+<th style="text-align: right;">MSRP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base</strong></td>
+<td>ND65 + PR</td>
+<td>SHTC3 + SGP30 + PIR + VEML7700</td>
+<td>10 × WS2812B</td>
+<td style="text-align: right;">$40</td>
+<td style="text-align: right;">$129</td>
+</tr>
+<tr>
+<td><strong>Premium</strong></td>
+<td>ND90 + PR</td>
+<td>SHTC3 + SGP30 + SCD41 + PIR + VEML7700</td>
+<td>16 × WS2812B + enhanced diffuser</td>
+<td style="text-align: right;">$55–58</td>
+<td style="text-align: right;">$199</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-advantages">10. Advantages</h2>
+<ul>
+<li><strong>ESP32-S3 Efficiency:</strong> Simultaneous I²S, Wi-Fi, LED, and sensor processing.  </li>
+<li><strong>Cloud Architecture:</strong> Offloads heavy LLM/TTS for low-cost hardware.  </li>
+<li><strong>Custom Mic Array:</strong> In-house beamforming and AEC tuning for wake accuracy.  </li>
+<li><strong>Dynamic RGB Lighting:</strong> Circadian lighting and responsive visual feedback.  </li>
+<li><strong>Flexible Vendor Network:</strong> Five capable partners for risk-mitigated scaling.  </li>
+</ul>
+<hr />
+<h2 id="11-cost-summary-consulting-services">11. Cost Summary &amp; Consulting Services</h2>
+<h3 id="a-hardware-manufacturing-costs-paid-to-manufacturers">A. Hardware &amp; Manufacturing Costs (Paid to Manufacturers)</h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Units</th>
+<th>Cost per Unit</th>
+<th>Total Hardware Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 0.9 (COTS)</strong></td>
+<td>10–25</td>
+<td>$89.50</td>
+<td>$895 – $2,238</td>
+</tr>
+<tr>
+<td><strong>Phase I (Retrofit)</strong></td>
+<td>200</td>
+<td>$95.70</td>
+<td>$19,140</td>
+</tr>
+<tr>
+<td><strong>Phase II (Production)</strong></td>
+<td>10,000</td>
+<td>$40–58</td>
+<td>$400,000 – $580,000</td>
+</tr>
+<tr>
+<td><strong>NRE (Tooling/Certification)</strong></td>
+<td>—</td>
+<td>—</td>
+<td>$30,500</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> Hardware costs are paid directly to manufacturers (DB-Way, Kaiji, Xiteyou, etc.) and cover materials, PCBA, assembly, testing, and shipping.</p>
+<hr />
+<h3 id="b-technical-consulting-services-daniel-mcshane">B. Technical Consulting Services (Daniel McShane)</h3>
+<p><strong>Hardware/Firmware Development Lead</strong></p>
+<p><strong>Scope of Services:</strong>
+- Phase 0.9 COTS prototype development and firmware porting (ESP-IDF + ESP-ADF)
+- Phase I custom PCB design, schematic review, and component selection
+- ESP32-S3 firmware architecture (wake-word detection, MQTT, OTA, sensor integration)
+- Cloud integration and AWS IoT Core configuration
+- Manufacturer liaison and technical specifications documentation
+- Acoustic design consultation and microphone array optimization
+- IR transmitter implementation and device control database
+- Quality assurance planning and test fixture specifications</p>
+<p><strong>Rate Structure:</strong>
+- <strong>Active Development:</strong> $1,000 per week (hands-on firmware, PCB design, testing)
+- <strong>Maintenance/Support:</strong> $500 per week (during manufacturer negotiations, waiting periods)</p>
+<p><strong>Estimated Duration:</strong><br />
+- Phase 0.9: 2–3 weeks active development
+- Phase I: 8–12 weeks active development + 4–6 weeks maintenance (manufacturer lead times)
+- Phase II: Ongoing support (as needed)</p>
+<p><strong>Consulting Fees:</strong>
+- Phase 0.9: $2,000 – $3,000
+- Phase I: $10,000 – $15,000
+- <strong>Total Consulting (Phase 0.9 + Phase I):</strong> $12,000 – $18,000</p>
+<hr />
+<h3 id="c-total-project-investment-summary">C. Total Project Investment Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Consulting</th>
+<th>Hardware/Manufacturing</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 0.9</strong></td>
+<td>$2,000 – $3,000</td>
+<td>$895 – $2,238</td>
+<td><strong>$2,895 – $5,238</strong></td>
+</tr>
+<tr>
+<td><strong>Phase I</strong></td>
+<td>$10,000 – $15,000</td>
+<td>$19,140</td>
+<td><strong>$29,140 – $34,140</strong></td>
+</tr>
+<tr>
+<td><strong>Phase II</strong></td>
+<td>TBD</td>
+<td>$400,000 – $580,000 + $30,500 NRE</td>
+<td><strong>$430,500 – $610,500+</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-next-steps">12. Next Steps</h2>
+<ol>
+<li><strong>Phase 0.9:</strong> Procure COTS ESP32-S3 DevKit and Grove sensors, begin firmware porting (2–4 weeks).</li>
+<li>Finalize Phase I PCB design (ESP32-S3 + mic array + sensor integration).  </li>
+<li>Send RFQs and NDAs to DB-Way, Kaiji, Xiteyou, Yingke, and Compro.  </li>
+<li>Build 25–50 COTS validation units for firmware and cloud integration testing.  </li>
+<li>Transition to custom PCB pilot (200 units) for acoustic and thermal validation.  </li>
+<li>Lock enclosure design and begin tooling for Phase II mass production.  </li>
+<li>Conduct PVT (500 units) and transition to 10k MP.</li>
+</ol>
+<hr />
+<p><strong>Result:</strong><br />
+A scalable, cloud-connected smart sleep device with a <strong>$40 BOM</strong>, full RGB lighting, custom audio design, and multi-partner manufacturing capability — ready for global deployment.</p>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Syzygy Labs - Naphome Smart Sleep Device</p>
+        </footer>
+    </div>
+    
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        // Hide back to top button initially
+        document.querySelector('.back-to-top').style.display = 'none';
+    </script>
+</body>
+</html>
