@@ -1,6 +1,12 @@
 {
   "version": 2,
   "outputDirectory": "html",
+  "rewrites": [
+    {
+      "source": "/auth",
+      "destination": "/auth.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
