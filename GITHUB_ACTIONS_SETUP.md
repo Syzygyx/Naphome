@@ -2,6 +2,8 @@
 
 This guide will help you set up automatic deployment of your Naphome documentation to Netlify using GitHub Actions.
 
+> **🔒 Security Note:** This repository is private. Make sure to also set up password protection on your Netlify site for additional security.
+
 ## 📋 Prerequisites
 
 1. **GitHub Repository** - Your code is already in GitHub ✅
@@ -147,6 +149,17 @@ This guide will help you set up automatic deployment of your Naphome documentati
    python3 -m http.server 8000
    ```
 
+## 🔒 Security Setup (Important!)
+
+Since this is a private repository, you should also secure your Netlify site:
+
+1. **Go to Netlify Dashboard** → Your site → **Site settings**
+2. **Access control** → **Password protection**
+3. **Set a strong password** for site access
+4. **Save changes**
+
+This ensures your documentation is protected even if someone discovers the Netlify URL.
+
 ## 🎉 Success!
 
 Once everything is set up, your documentation will automatically deploy to Netlify every time you:
@@ -155,7 +168,7 @@ Once everything is set up, your documentation will automatically deploy to Netli
 - Merge a pull request
 - Update any markdown file
 
-Your site will be available at: `https://[your-site-name].netlify.app`
+Your site will be available at: `https://[your-site-name].netlify.app` *(Password Protected)*
 
 ---
 

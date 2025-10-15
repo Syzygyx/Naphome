@@ -2,6 +2,8 @@
 
 A next-generation smart sleep companion that unites light, sound, and environmental sensing to create a restorative bedroom ecosystem.
 
+> **🔒 Private Repository** - This project and documentation are confidential and restricted to authorized team members only.
+
 ## 📚 Documentation
 
 This repository contains comprehensive documentation for the Naphome project, including:
@@ -15,13 +17,14 @@ This repository contains comprehensive documentation for the Naphome project, in
 
 The documentation is automatically converted to HTML and deployed to Netlify using GitHub Actions:
 
-🔗 **[View Live Documentation](https://naphome-docs.netlify.app)**
+🔗 **[View Live Documentation](https://naphome-docs.netlify.app)** *(Password Protected)*
 
 ### 🚀 Automatic Deployment
 
 - **Push to main** → Automatic production deployment
 - **Pull requests** → Preview deployments with live links
 - **No manual steps** required after initial setup
+- **Access Control** → Site is password protected for security
 
 ## 🛠️ Local Development
 
