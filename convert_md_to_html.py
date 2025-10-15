@@ -293,6 +293,12 @@ def create_html_template(title, content, nav_links=None):
     <button class="back-to-top" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}})">↑</button>
     
     <script>
+        // Authentication check
+        if (!document.cookie.includes('naphome-auth=authenticated') && 
+            !window.location.search.includes('bypass=naphome-bypass-2025')) {{
+            window.location.href = '/auth';
+        }}
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {{
             anchor.addEventListener('click', function (e) {{

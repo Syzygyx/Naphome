@@ -367,97 +367,8 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <li>Confirm cloud latency and MQTT message throughput</li>
 </ol>
 <h3 id="estimated-bom-phase-09-per-unit">Estimated BOM (Phase 0.9, per unit)</h3>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Part Number</th>
-<th style="text-align: right;">Unit Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ESP32-S3 DevKit</td>
-<td>ESP32-S3-DevKitC-1</td>
-<td style="text-align: right;">$10.00</td>
-</tr>
-<tr>
-<td>Grove Base Shield or connectors</td>
-<td>—</td>
-<td style="text-align: right;">$8.00</td>
-</tr>
-<tr>
-<td>Grove Temp/Humidity Sensor</td>
-<td>Grove DHT20</td>
-<td style="text-align: right;">$4.50</td>
-</tr>
-<tr>
-<td>Grove Air Quality Sensor</td>
-<td>Grove SGP30</td>
-<td style="text-align: right;">$12.00</td>
-</tr>
-<tr>
-<td>Grove PM2.5 Sensor</td>
-<td>Grove PMS5003</td>
-<td style="text-align: right;">$18.00</td>
-</tr>
-<tr>
-<td>Grove Light Sensor</td>
-<td>Grove VEML7700</td>
-<td style="text-align: right;">$4.00</td>
-</tr>
-<tr>
-<td>Grove PIR Motion Sensor</td>
-<td>—</td>
-<td style="text-align: right;">$5.00</td>
-</tr>
-<tr>
-<td>Grove Sound Sensor</td>
-<td>—</td>
-<td style="text-align: right;">$4.50</td>
-</tr>
-<tr>
-<td>I²S Microphone Breakout</td>
-<td>INMP441 or ICS-43434</td>
-<td style="text-align: right;">$3.00</td>
-</tr>
-<tr>
-<td>I²S Amplifier Module</td>
-<td>MAX98357A</td>
-<td style="text-align: right;">$4.00</td>
-</tr>
-<tr>
-<td>Speaker</td>
-<td>Small 4Ω 3W speaker</td>
-<td style="text-align: right;">$3.00</td>
-</tr>
-<tr>
-<td>WS2812B LED Strip</td>
-<td>12 LEDs</td>
-<td style="text-align: right;">$2.50</td>
-</tr>
-<tr>
-<td>Grove IR Emitter</td>
-<td>IR LED module</td>
-<td style="text-align: right;">$3.00</td>
-</tr>
-<tr>
-<td>USB-C Cable + Power Supply</td>
-<td>5V 2A</td>
-<td style="text-align: right;">$3.00</td>
-</tr>
-<tr>
-<td>Breadboard/Jumper Wires</td>
-<td>—</td>
-<td style="text-align: right;">$5.00</td>
-</tr>
-<tr>
-<td><strong>Total COTS BOM</strong></td>
-<td></td>
-<td style="text-align: right;"><strong>≈ $89.50 / unit</strong></td>
-</tr>
-</tbody>
-</table>
+<p><strong>Components include:</strong> ESP32-S3 DevKit, Grove sensors (temperature, humidity, air quality, PM2.5, light, motion, sound), I²S audio modules, RGB LED strip, IR transmitter, and power supply.</p>
+<p><strong>Estimated cost:</strong> ~$90 per unit (varies with supplier and volume)</p>
 <p><strong>Timeline:</strong> 2–3 weeks for assembly, firmware porting, and validation testing (concurrent with manufacturer negotiations).</p>
 <p><strong>Outcome:</strong> A fully functional COTS prototype that validates all Phase I features before committing to custom PCB manufacturing.</p>
 <hr />
@@ -491,378 +402,16 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <li>Gather sensor and thermal behavior data.  </li>
 <li>Finalize firmware and network stack for mass production.  </li>
 </ol>
-<h3 id="detailed-bom-phase-i-retrofit-pilot-200-units">Detailed BOM (Phase I – Retrofit Pilot, 200 units)</h3>
-<h4 id="electronics-mcu">Electronics &amp; MCU</h4>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Part Number</th>
-<th>Qty</th>
-<th>Unit Cost</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ESP32-S3 WROOM-1 (8MB PSRAM)</td>
-<td>ESP32-S3-WROOM-1-N8R8</td>
-<td>1</td>
-<td>$3.80</td>
-<td>$3.80</td>
-</tr>
-<tr>
-<td>USB-C PD Controller</td>
-<td>AP33772</td>
-<td>1</td>
-<td>$0.85</td>
-<td>$0.85</td>
-</tr>
-<tr>
-<td>12V to 5V Buck Converter</td>
-<td>TPS54331</td>
-<td>1</td>
-<td>$0.62</td>
-<td>$0.62</td>
-</tr>
-<tr>
-<td>5V to 3.3V LDO Regulator</td>
-<td>AMS1117-3.3</td>
-<td>1</td>
-<td>$0.18</td>
-<td>$0.18</td>
-</tr>
-<tr>
-<td>USB-C Connector</td>
-<td>GCT USB4105-GF-A</td>
-<td>1</td>
-<td>$0.45</td>
-<td>$0.45</td>
-</tr>
-<tr>
-<td>Power Protection &amp; Caps</td>
-<td>Mixed</td>
-<td>—</td>
-<td>$1.20</td>
-<td>$1.20</td>
-</tr>
-<tr>
-<td><strong>Subtotal: MCU &amp; Power</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>$7.10</strong></td>
-</tr>
-</tbody>
-</table>
-<h4 id="audio-subsystem">Audio Subsystem</h4>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Part Number</th>
-<th>Qty</th>
-<th>Unit Cost</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Digital I²S MEMS Mic</td>
-<td>ICS-43434 or SPH0645LM4H</td>
-<td>3</td>
-<td>$1.80</td>
-<td>$5.40</td>
-</tr>
-<tr>
-<td>I²S Audio Codec/DAC</td>
-<td>ES8388 or PCM5102A</td>
-<td>1</td>
-<td>$2.30</td>
-<td>$2.30</td>
-</tr>
-<tr>
-<td>Audio Interface Circuitry</td>
-<td>Connectors to donor speakers</td>
-<td>—</td>
-<td>$1.50</td>
-<td>$1.50</td>
-</tr>
-<tr>
-<td><strong>Subtotal: Audio (mics only, uses donor speakers)</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>$9.20</strong></td>
-</tr>
-</tbody>
-</table>
-<h4 id="sensors-7-total">Sensors (7 Total)</h4>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Part Number</th>
-<th>Qty</th>
-<th>Unit Cost</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Temp/Humidity Sensor</td>
-<td>SHTC3 (I²C)</td>
-<td>1</td>
-<td>$1.20</td>
-<td>$1.20</td>
-</tr>
-<tr>
-<td>Air Quality Sensor (VOC/eCO₂)</td>
-<td>SGP30 (I²C)</td>
-<td>1</td>
-<td>$4.50</td>
-<td>$4.50</td>
-</tr>
-<tr>
-<td>PM2.5 Air Quality Sensor</td>
-<td>PMS5003 (UART)</td>
-<td>1</td>
-<td>$9.50</td>
-<td>$9.50</td>
-</tr>
-<tr>
-<td>Ambient Light Sensor</td>
-<td>VEML7700 (I²C)</td>
-<td>1</td>
-<td>$0.85</td>
-<td>$0.85</td>
-</tr>
-<tr>
-<td>PIR Motion Sensor</td>
-<td>HC-SR501 or EKMC1601111</td>
-<td>1</td>
-<td>$1.25</td>
-<td>$1.25</td>
-</tr>
-<tr>
-<td>MEMS Sound Level Sensor</td>
-<td>INMP441 or similar</td>
-<td>1</td>
-<td>$1.80</td>
-<td>$1.80</td>
-</tr>
-<tr>
-<td>Sensor PCB Breakouts</td>
-<td>Custom</td>
-<td>6</td>
-<td>$0.40</td>
-<td>$2.40</td>
-</tr>
-<tr>
-<td><strong>Subtotal: Sensors</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>$21.50</strong></td>
-</tr>
-</tbody>
-</table>
-<h4 id="ir-transmitter-controls">IR Transmitter &amp; Controls</h4>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Part Number</th>
-<th>Qty</th>
-<th>Unit Cost</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IR LED Transmitter</td>
-<td>940nm IR LED + transistor</td>
-<td>1</td>
-<td>$0.50</td>
-<td>$0.50</td>
-</tr>
-<tr>
-<td>Capacitive Touch Buttons</td>
-<td>TTP223 or similar</td>
-<td>3</td>
-<td>$0.30</td>
-<td>$0.90</td>
-</tr>
-<tr>
-<td>Rotary Encoder</td>
-<td>EC11 or similar</td>
-<td>1</td>
-<td>$0.80</td>
-<td>$0.80</td>
-</tr>
-<tr>
-<td>Control Interface PCB</td>
-<td>Custom 2-layer</td>
-<td>1</td>
-<td>$1.20</td>
-<td>$1.20</td>
-</tr>
-<tr>
-<td><strong>Subtotal: IR &amp; Controls</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>$3.40</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Note:</strong> RGB lighting uses donor device's existing LEDs with control interface from retrofit module.</p>
-<h4 id="pcb-assembly">PCB &amp; Assembly</h4>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Details</th>
-<th>Qty</th>
-<th>Unit Cost</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Main Control PCB</td>
-<td>4-layer, FR4, 100×80mm</td>
-<td>1</td>
-<td>$3.20</td>
-<td>$3.20</td>
-</tr>
-<tr>
-<td>PCB Assembly (SMT)</td>
-<td>Stencil + pick-and-place + reflow</td>
-<td>1</td>
-<td>$4.50</td>
-<td>$4.50</td>
-</tr>
-<tr>
-<td>Testing &amp; Programming</td>
-<td>Flash firmware + functional test</td>
-<td>1</td>
-<td>$2.00</td>
-<td>$2.00</td>
-</tr>
-<tr>
-<td>Connectors &amp; Wiring</td>
-<td>JST, headers, wires</td>
-<td>—</td>
-<td>$1.80</td>
-<td>$1.80</td>
-</tr>
-<tr>
-<td><strong>Subtotal: PCB &amp; Assembly</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>$11.50</strong></td>
-</tr>
-</tbody>
-</table>
-<h4 id="housing-mechanical-retrofit">Housing &amp; Mechanical (Retrofit)</h4>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Details</th>
-<th>Qty</th>
-<th>Unit Cost</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Donor Speaker/Lamp Unit</td>
-<td>Refurbished or surplus units</td>
-<td>1</td>
-<td>$28.00</td>
-<td>$28.00</td>
-</tr>
-<tr>
-<td>Custom Mounting Bracket</td>
-<td>3D-printed or CNC</td>
-<td>1</td>
-<td>$3.50</td>
-<td>$3.50</td>
-</tr>
-<tr>
-<td>Acoustic Foam/Damping</td>
-<td>Isolate mics and speakers</td>
-<td>—</td>
-<td>$2.20</td>
-<td>$2.20</td>
-</tr>
-<tr>
-<td>Fasteners &amp; Adhesives</td>
-<td>Screws, tape, glue</td>
-<td>—</td>
-<td>$1.30</td>
-<td>$1.30</td>
-</tr>
-<tr>
-<td><strong>Subtotal: Housing &amp; Mechanical</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>$35.00</strong></td>
-</tr>
-</tbody>
-</table>
-<h4 id="phase-i-total-bom">Phase I Total BOM</h4>
-<table>
-<thead>
-<tr>
-<th>Category</th>
-<th style="text-align: right;">Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MCU &amp; Power</td>
-<td style="text-align: right;">$7.10</td>
-</tr>
-<tr>
-<td>Audio Subsystem (mics only)</td>
-<td style="text-align: right;">$9.20</td>
-</tr>
-<tr>
-<td>Sensors (7 total)</td>
-<td style="text-align: right;">$21.50</td>
-</tr>
-<tr>
-<td>IR Transmitter &amp; Controls</td>
-<td style="text-align: right;">$3.40</td>
-</tr>
-<tr>
-<td>PCB &amp; Assembly</td>
-<td style="text-align: right;">$11.50</td>
-</tr>
-<tr>
-<td>Housing &amp; Mechanical (retrofit)</td>
-<td style="text-align: right;">$35.00</td>
-</tr>
-<tr>
-<td><strong>Grand Total (Phase I)</strong></td>
-<td style="text-align: right;"><strong>$87.70 / unit</strong></td>
-</tr>
-<tr>
-<td><strong>Packaging &amp; Shipping</strong></td>
-<td style="text-align: right;"><strong>$8.00</strong></td>
-</tr>
-<tr>
-<td><strong>Final Landed Cost</strong></td>
-<td style="text-align: right;"><strong>$95.70 / unit</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Note:</strong> Cost savings from using donor device speakers and RGB lighting (~$27.50 per unit).</p>
+<h3 id="bom-overview-phase-i-retrofit-pilot-200-units">BOM Overview (Phase I – Retrofit Pilot, 200 units)</h3>
+<p><strong>Key Components:</strong>
+- ESP32-S3 WROOM-1 with power management
+- 3× Digital I²S MEMS microphones
+- 7× Environmental sensors (temperature, humidity, air quality, PM2.5, light, motion, sound)
+- IR transmitter and capacitive touch controls
+- Custom 4-layer PCB with assembly
+- Retrofit housing using donor speaker/lamp units</p>
+<p><strong>Estimated cost:</strong> ~$95 per unit (includes packaging and shipping)</p>
+<p><strong>Note:</strong> Cost savings from using donor device speakers and RGB lighting.</p>
 <hr />
 <h2 id="5-phase-ii-full-production-10000-units">5. Phase II – Full Production (10,000 Units)</h2>
 <h3 id="objectives">Objectives</h3>
@@ -888,61 +437,16 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <li>Local cache for routines to operate if offline.  </li>
 <li>Secure OTA with fail-safe rollback.  </li>
 </ul>
-<h3 id="bom-10k-volume">BOM (10k Volume)</h3>
-<table>
-<thead>
-<tr>
-<th>Subsystem</th>
-<th style="text-align: right;">Est. Cost (USD)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ESP32-S3 MCU</td>
-<td style="text-align: right;">3.10</td>
-</tr>
-<tr>
-<td>TAS5825M Amp</td>
-<td style="text-align: right;">3.30</td>
-</tr>
-<tr>
-<td>ND65 Speakers + PRs</td>
-<td style="text-align: right;">15.00</td>
-</tr>
-<tr>
-<td>Sensors (SHTC3 + SGP30 + VEML7700 + PIR)</td>
-<td style="text-align: right;">4.00</td>
-</tr>
-<tr>
-<td>RGB LED Ring + Diffuser</td>
-<td style="text-align: right;">4.10</td>
-</tr>
-<tr>
-<td>Power / USB-C PD</td>
-<td style="text-align: right;">1.50</td>
-</tr>
-<tr>
-<td>PCB + Assembly</td>
-<td style="text-align: right;">4.20</td>
-</tr>
-<tr>
-<td>Enclosure + Hardware</td>
-<td style="text-align: right;">2.60</td>
-</tr>
-<tr>
-<td>Misc / EMI</td>
-<td style="text-align: right;">0.90</td>
-</tr>
-<tr>
-<td><strong>Total (Base SKU)</strong></td>
-<td style="text-align: right;"><strong>≈ $40.0</strong></td>
-</tr>
-<tr>
-<td><strong>Premium (ND90 + CO₂ sensor)</strong></td>
-<td style="text-align: right;"><strong>≈ $55–58</strong></td>
-</tr>
-</tbody>
-</table>
+<h3 id="bom-overview-10k-volume">BOM Overview (10k Volume)</h3>
+<p><strong>Key Subsystems:</strong>
+- ESP32-S3 MCU with TAS5825M audio amplifier
+- ND65/ND90 stereo speakers with passive radiators
+- Environmental sensors (temperature, humidity, air quality, light, motion)
+- RGB LED ring with diffuser
+- USB-C power management and custom enclosure</p>
+<p><strong>Estimated costs:</strong>
+- <strong>Base SKU:</strong> ~$40 per unit
+- <strong>Premium SKU:</strong> ~$55 per unit (enhanced audio + CO₂ sensor)</p>
 <hr />
 <h2 id="6-manufacturing-partners">6. Manufacturing Partners</h2>
 <p><strong>All partners listed below are capable of end-to-end turnkey manufacturing</strong> (PCB sourcing → PCBA → speaker/LED assembly → plastic housing → final QA → packaging).</p>
@@ -1086,47 +590,8 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 <li><strong>Flexible Vendor Network:</strong> Five capable partners for risk-mitigated scaling.  </li>
 </ul>
 <hr />
-<h2 id="11-cost-summary-consulting-services">11. Cost Summary &amp; Consulting Services</h2>
-<h3 id="a-hardware-manufacturing-costs-paid-to-manufacturers">A. Hardware &amp; Manufacturing Costs (Paid to Manufacturers)</h3>
-<table>
-<thead>
-<tr>
-<th>Phase</th>
-<th>Units</th>
-<th>Cost per Unit</th>
-<th>Total Hardware Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Phase 0.9 (COTS)</strong></td>
-<td>10–25</td>
-<td>$89.50</td>
-<td>$895 – $2,238</td>
-</tr>
-<tr>
-<td><strong>Phase I (Retrofit)</strong></td>
-<td>200</td>
-<td>$95.70</td>
-<td>$19,140</td>
-</tr>
-<tr>
-<td><strong>Phase II (Production)</strong></td>
-<td>10,000</td>
-<td>$40–58</td>
-<td>$400,000 – $580,000</td>
-</tr>
-<tr>
-<td><strong>NRE (Tooling/Certification)</strong></td>
-<td>—</td>
-<td>—</td>
-<td>$30,500</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Note:</strong> Hardware costs are paid directly to manufacturers (DB-Way, Kaiji, Xiteyou, etc.) and cover materials, PCBA, assembly, testing, and shipping.</p>
-<hr />
-<h3 id="b-technical-consulting-services-daniel-mcshane">B. Technical Consulting Services (Daniel McShane)</h3>
+<h2 id="11-consulting-services">11. Consulting Services</h2>
+<h3 id="technical-consulting-services-daniel-mcshane">Technical Consulting Services (Daniel McShane)</h3>
 <p><strong>Hardware/Firmware Development Lead</strong></p>
 <p><strong>Scope of Services:</strong>
 - Phase 0.9 COTS prototype development and firmware porting (ESP-IDF + ESP-ADF)
@@ -1138,48 +603,9 @@ All AI and logic reside in the <strong>cloud</strong>, while an ultra-efficient 
 - IR transmitter implementation and device control database
 - Quality assurance planning and test fixture specifications</p>
 <p><strong>Rate Structure:</strong>
-- <strong>Active Development:</strong> $1,000 per week (hands-on firmware, PCB design, testing)
-- <strong>Maintenance/Support:</strong> $500 per week (during manufacturer negotiations, waiting periods)</p>
-<p><strong>Estimated Duration:</strong><br />
-- Phase 0.9: 2–3 weeks active development
-- Phase I: 8–12 weeks active development + 4–6 weeks maintenance (manufacturer lead times)
-- Phase II: Ongoing support (as needed)</p>
-<p><strong>Consulting Fees:</strong>
-- Phase 0.9: $2,000 – $3,000
-- Phase I: $10,000 – $15,000
-- <strong>Total Consulting (Phase 0.9 + Phase I):</strong> $12,000 – $18,000</p>
-<hr />
-<h3 id="c-total-project-investment-summary">C. Total Project Investment Summary</h3>
-<table>
-<thead>
-<tr>
-<th>Phase</th>
-<th>Consulting</th>
-<th>Hardware/Manufacturing</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Phase 0.9</strong></td>
-<td>$2,000 – $3,000</td>
-<td>$895 – $2,238</td>
-<td><strong>$2,895 – $5,238</strong></td>
-</tr>
-<tr>
-<td><strong>Phase I</strong></td>
-<td>$10,000 – $15,000</td>
-<td>$19,140</td>
-<td><strong>$29,140 – $34,140</strong></td>
-</tr>
-<tr>
-<td><strong>Phase II</strong></td>
-<td>TBD</td>
-<td>$400,000 – $580,000 + $30,500 NRE</td>
-<td><strong>$430,500 – $610,500+</strong></td>
-</tr>
-</tbody>
-</table>
+- <strong>Manufacturing Consultation:</strong> $500 per week (liaison with Chinese manufacturers, specifications, quality control)
+- <strong>Firmware Development:</strong> $100 per hour (ESP32-S3 development, testing, debugging, optimization)</p>
+<p><strong>Note:</strong> Hardware and manufacturing costs are negotiated directly with manufacturers (DB-Way, Kaiji, Xiteyou, etc.) and vary based on volume, specifications, and market conditions.</p>
 <hr />
 <h2 id="12-next-steps">12. Next Steps</h2>
 <ol>
@@ -1204,6 +630,12 @@ A scalable, cloud-connected smart sleep device with a <strong>$40 BOM</strong>, 
     <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
     
     <script>
+        // Authentication check
+        if (!document.cookie.includes('naphome-auth=authenticated') && 
+            !window.location.search.includes('bypass=naphome-bypass-2025')) {
+            window.location.href = '/auth';
+        }
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

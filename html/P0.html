@@ -305,6 +305,12 @@ Implemented Voice 2 Voice capability (Eleven Labs) where user can have a convers
     <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
     
     <script>
+        // Authentication check
+        if (!document.cookie.includes('naphome-auth=authenticated') && 
+            !window.location.search.includes('bypass=naphome-bypass-2025')) {
+            window.location.href = '/auth';
+        }
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
