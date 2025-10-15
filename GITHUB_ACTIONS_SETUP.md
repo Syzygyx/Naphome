@@ -19,7 +19,7 @@ This guide will help you set up automatic deployment of your Naphome documentati
 3. Choose **"GitHub"** as your Git provider
 4. Select your **Naphome** repository
 5. Configure build settings:
-   - **Build command:** `source venv/bin/activate && python convert_md_to_html.py`
+   - **Build command:** `pip install -r requirements.txt && python convert_md_to_html.py`
    - **Publish directory:** `html`
    - **Branch to deploy:** `main`
 6. Click **"Deploy site"**

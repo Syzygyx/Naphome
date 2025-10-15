@@ -5,7 +5,7 @@
 ### 1. Create Netlify Site
 - Go to [app.netlify.com](https://app.netlify.com)
 - Click "New site from Git" → GitHub → Select Naphome repo
-- Build settings: `source venv/bin/activate && python convert_md_to_html.py`
+- Build settings: `pip install -r requirements.txt && python convert_md_to_html.py`
 - Publish directory: `html`
 
 ### 2. Get Credentials
