@@ -191,7 +191,7 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 **Specialization:** EMS with IoT device experience.  
 **Relevant Product:** [Wake-up Light Alarm Clock with FM Radio Speaker](https://www.alibaba.com/x/B0uBjo?ck=pdp) - Bedside lamp with RGB lighting, touch control, USB rechargeable. Demonstrates capability in audio + lighting integration.
 
-![DB-Way Wake-up Light Alarm Clock](images/db-way-wake-up-light.png)
+![DB-Way Wake-up Light Alarm Clock](images/db-way-wake-up-light.jpg)
 
 ---
 
@@ -200,7 +200,7 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 **Specialization:** Smart lighting products; in-house optical design and light pipe molding.  
 **Relevant Product:** [Bluetooth Speaker with RGB Dynamic Lighting](https://www.alibaba.com/x/B0uBjy?ck=pdp) - Portable bedside table lamp with RGB atmosphere lighting, Bluetooth speaker, rechargeable. Shows expertise in RGB lighting + audio integration (10k units @ $8.29).
 
-![Kaiji RGB Bluetooth Speaker Lamp](images/kaiji-rgb-bluetooth-speaker.png)
+![Kaiji RGB Bluetooth Speaker Lamp](images/kaiji-rgb-bluetooth-speaker.jpg)
 
 ---
 
@@ -209,7 +209,7 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 **Specialization:** Consumer electronics; competitive pricing on sensors, mics, and ICs.  
 **Relevant Product:** [Smart Sleep Monitor with 32 Soothing Sounds](https://www.alibaba.com/x/B0uBI9?ck=pdp) - Rechargeable nightlight with RGB lighting (7 colors), Bluetooth speaker, white noise machine (105×105×150mm, 8-10hr battery, $19.99 retail). Lead time: 15-35 days for 100-1800 units. Demonstrates strong cost optimization and experience with sleep/audio devices.
 
-![Xiteyou Smart Sleep Monitor](images/xiteyou-smart-sleep-monitor.png)
+![Xiteyou Smart Sleep Monitor](images/xiteyou-smart-sleep-monitor.jpg)
 
 ---
 
