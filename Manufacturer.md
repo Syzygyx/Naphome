@@ -2,7 +2,6 @@
 **Document Version:** 1.0  
 **Date:** October 2025  
 **Target Volume:** 10,000 units  
-**BOM Target:** $40 (Base) / $55 (Premium)
 
 ---
 
@@ -269,31 +268,29 @@ The Naphome is a premium smart sleep companion that combines:
 
 ---
 
-## 💰 Cost Targets & BOM
+## 💰 BOM Components
 
-### Base SKU BOM Target: $40
+### Base SKU Components
 
-| Category | Cost | Components |
-|----------|------|------------|
-| **MCU & Audio** | $15 | ESP32-S3, TAS5825M, ND65 speakers |
-| **Sensors** | $8 | SHTC3, SGP30, VEML7700, PMS5003, MEMS mic |
-| **Lighting** | $5 | 10× WS2812B, diffuser, driver |
-| **Display** | $2 | 256×64 OLED, driver, mounting |
-| **Mechanical** | $8 | Enclosure, buttons, connectors |
-| **Power** | $4 | USB-C, battery, power management |
-| **Total** | **$40** | |
+| Category | Components |
+|----------|------------|
+| **MCU & Audio** | ESP32-S3, TAS5825M, ND65 speakers |
+| **Sensors** | SHTC3, SGP30, VEML7700, PMS5003, MEMS mic |
+| **Lighting** | 10× WS2812B, diffuser, driver |
+| **Display** | 256×64 OLED, driver, mounting |
+| **Mechanical** | Enclosure, buttons, connectors |
+| **Power** | USB-C, battery, power management |
 
-### Premium SKU BOM Target: $55
+### Premium SKU Components
 
-| Category | Cost | Components |
-|----------|------|------------|
-| **MCU & Audio** | $20 | ESP32-S3, TAS5825M, ND90 speakers |
-| **Sensors** | $12 | SHTC3, SGP30, SCD41, VEML7700, PMS5003, MEMS mic |
-| **Lighting** | $8 | 16× WS2812B, enhanced diffuser, light pipe |
-| **Display** | $2 | 256×64 OLED, driver, mounting |
-| **Mechanical** | $10 | Enhanced enclosure, premium buttons |
-| **Power** | $5 | Enhanced power management |
-| **Total** | **$55** | |
+| Category | Components |
+|----------|------------|
+| **MCU & Audio** | ESP32-S3, TAS5825M, ND90 speakers |
+| **Sensors** | SHTC3, SGP30, SCD41, VEML7700, PMS5003, MEMS mic |
+| **Lighting** | 16× WS2812B, enhanced diffuser, light pipe |
+| **Display** | 256×64 OLED, driver, mounting |
+| **Mechanical** | Enhanced enclosure, premium buttons |
+| **Power** | Enhanced power management |
 
 ---
 
