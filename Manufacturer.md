@@ -348,14 +348,7 @@ The Naphome is a premium smart sleep companion that combines:
 ### Technical Lead
 **Daniel McShane**  
 **Email:** dan@syzygyx.com  
-**Services:** Hardware design, firmware development, manufacturing liaison  
-**Rate:** $1,000/week (prototype), $400/week (production), $100/hour (firmware)
-
-### Manufacturing Partners
-- **DB-Way Technology** (Zhuhai) - Full turnkey manufacturing
-- **Kaiji Lighting** (Shanghai) - RGB lighting expertise  
-- **Xiteyou Electronic** (Shenzhen) - Cost optimization
-- **Compro Electronic** (Dongguan) - Audio device experience
+**Services:** Hardware design, firmware development, manufacturing liaison
 
 ---
 
