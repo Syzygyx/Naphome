@@ -112,7 +112,7 @@ The Naphome is a premium smart sleep companion that combines:
 
 ---
 
-## 🔌 PCB Specifications
+## PCB Specifications
 
 ### Board Requirements
 
