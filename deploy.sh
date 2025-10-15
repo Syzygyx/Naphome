@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Naphome HTML Deployment Script
-echo "🚀 Deploying Naphome documentation to Netlify..."
+echo "🚀 Deploying Naphome documentation to Vercel..."
 
 # Install dependencies and convert markdown to HTML
 echo "📝 Converting markdown files to HTML..."
@@ -12,7 +12,7 @@ python convert_md_to_html.py
 # Add and commit changes
 echo "📦 Committing changes..."
 git add html/
-git add netlify.toml
+git add vercel.json
 git add convert_md_to_html.py
 git add deploy.sh
 
@@ -20,10 +20,10 @@ git add deploy.sh
 if git diff --staged --quiet; then
     echo "✅ No changes to commit"
 else
-    git commit -m "Update HTML documentation for Netlify deployment
+    git commit -m "Update HTML documentation for Vercel deployment
     
     - Converted all markdown files to styled HTML
-    - Added Netlify configuration
+    - Added Vercel configuration
     - Created deployment script
     - Ready for production deployment"
     echo "✅ Changes committed"
@@ -35,9 +35,9 @@ git push origin main
 
 echo "🎉 Deployment complete!"
 echo "📋 Next steps:"
-echo "   1. Go to https://app.netlify.com"
+echo "   1. Go to https://vercel.com"
 echo "   2. Connect your GitHub repository"
 echo "   3. Set build directory to 'html'"
 echo "   4. Deploy!"
 echo ""
-echo "🔗 Your site will be available at: https://[your-site-name].netlify.app"
+echo "🔗 Your site will be available at: https://[your-project-name].vercel.app"

@@ -1,4 +1,4 @@
-name: Build and Deploy to Netlify
+name: Build and Deploy to Vercel
 
 on:
   push:
@@ -64,25 +64,23 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
     - name: Download build artifacts
       uses: actions/download-artifact@v3
       with:
         name: html-documentation
         path: html/
         
-    - name: Deploy to Netlify
-      uses: nwtgck/actions-netlify@v2.0
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v25
       with:
-        publish-dir: './html'
-        production-branch: main
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        deploy-message: "🚀 Deploy from GitHub Actions - ${{ github.sha }}"
-        enable-pull-request-comment: false
-        enable-commit-comment: true
-        overwrites-pull-request-comment: true
-      env:
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        working-directory: ./
+        vercel-args: '--prod'
 
   deploy-preview:
     name: Deploy Preview
@@ -91,22 +89,20 @@ jobs:
     if: github.event_name == 'pull_request'
     
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
     - name: Download build artifacts
       uses: actions/download-artifact@v3
       with:
         name: html-documentation
         path: html/
         
-    - name: Deploy Preview to Netlify
-      uses: nwtgck/actions-netlify@v2.0
+    - name: Deploy Preview to Vercel
+      uses: amondnet/vercel-action@v25
       with:
-        publish-dir: './html'
-        production-branch: main
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        deploy-message: "🔍 Preview deploy from PR #${{ github.event.number }}"
-        enable-pull-request-comment: true
-        enable-commit-comment: false
-        overwrites-pull-request-comment: true
-      env:
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        working-directory: ./
+        vercel-args: '--no-prod'

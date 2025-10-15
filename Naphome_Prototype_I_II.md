@@ -90,24 +90,9 @@ Phase 0.9 bridges the proven Prototype 0 (Raspberry Pi 5) and Phase I (custom PC
 6. Confirm cloud latency and MQTT message throughput
 
 ### Estimated BOM (Phase 0.9, per unit)
-| Component | Part Number | Unit Cost |
-|-----------|-------------|----------:|
-| ESP32-S3 DevKit | ESP32-S3-DevKitC-1 | $10.00 |
-| Grove Base Shield or connectors | — | $8.00 |
-| Grove Temp/Humidity Sensor | Grove DHT20 | $4.50 |
-| Grove Air Quality Sensor | Grove SGP30 | $12.00 |
-| Grove PM2.5 Sensor | Grove PMS5003 | $18.00 |
-| Grove Light Sensor | Grove VEML7700 | $4.00 |
-| Grove PIR Motion Sensor | — | $5.00 |
-| Grove Sound Sensor | — | $4.50 |
-| I²S Microphone Breakout | INMP441 or ICS-43434 | $3.00 |
-| I²S Amplifier Module | MAX98357A | $4.00 |
-| Speaker | Small 4Ω 3W speaker | $3.00 |
-| WS2812B LED Strip | 12 LEDs | $2.50 |
-| Grove IR Emitter | IR LED module | $3.00 |
-| USB-C Cable + Power Supply | 5V 2A | $3.00 |
-| Breadboard/Jumper Wires | — | $5.00 |
-| **Total COTS BOM** | | **≈ $89.50 / unit** |
+**Components include:** ESP32-S3 DevKit, Grove sensors (temperature, humidity, air quality, PM2.5, light, motion, sound), I²S audio modules, RGB LED strip, IR transmitter, and power supply.
+
+**Estimated cost:** ~$90 per unit (varies with supplier and volume)
 
 **Timeline:** 2–3 weeks for assembly, firmware porting, and validation testing (concurrent with manufacturer negotiations).
 
@@ -144,82 +129,19 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 4. Gather sensor and thermal behavior data.  
 5. Finalize firmware and network stack for mass production.  
 
-### Detailed BOM (Phase I – Retrofit Pilot, 200 units)
+### BOM Overview (Phase I – Retrofit Pilot, 200 units)
 
-#### Electronics & MCU
-| Component | Part Number | Qty | Unit Cost | Total |
-|-----------|-------------|-----|-----------|-------|
-| ESP32-S3 WROOM-1 (8MB PSRAM) | ESP32-S3-WROOM-1-N8R8 | 1 | $3.80 | $3.80 |
-| USB-C PD Controller | AP33772 | 1 | $0.85 | $0.85 |
-| 12V to 5V Buck Converter | TPS54331 | 1 | $0.62 | $0.62 |
-| 5V to 3.3V LDO Regulator | AMS1117-3.3 | 1 | $0.18 | $0.18 |
-| USB-C Connector | GCT USB4105-GF-A | 1 | $0.45 | $0.45 |
-| Power Protection & Caps | Mixed | — | $1.20 | $1.20 |
-| **Subtotal: MCU & Power** | | | | **$7.10** |
+**Key Components:**
+- ESP32-S3 WROOM-1 with power management
+- 3× Digital I²S MEMS microphones
+- 7× Environmental sensors (temperature, humidity, air quality, PM2.5, light, motion, sound)
+- IR transmitter and capacitive touch controls
+- Custom 4-layer PCB with assembly
+- Retrofit housing using donor speaker/lamp units
 
-#### Audio Subsystem
-| Component | Part Number | Qty | Unit Cost | Total |
-|-----------|-------------|-----|-----------|-------|
-| Digital I²S MEMS Mic | ICS-43434 or SPH0645LM4H | 3 | $1.80 | $5.40 |
-| I²S Audio Codec/DAC | ES8388 or PCM5102A | 1 | $2.30 | $2.30 |
-| Audio Interface Circuitry | Connectors to donor speakers | — | $1.50 | $1.50 |
-| **Subtotal: Audio (mics only, uses donor speakers)** | | | | **$9.20** |
+**Estimated cost:** ~$95 per unit (includes packaging and shipping)
 
-#### Sensors (7 Total)
-| Component | Part Number | Qty | Unit Cost | Total |
-|-----------|-------------|-----|-----------|-------|
-| Temp/Humidity Sensor | SHTC3 (I²C) | 1 | $1.20 | $1.20 |
-| Air Quality Sensor (VOC/eCO₂) | SGP30 (I²C) | 1 | $4.50 | $4.50 |
-| PM2.5 Air Quality Sensor | PMS5003 (UART) | 1 | $9.50 | $9.50 |
-| Ambient Light Sensor | VEML7700 (I²C) | 1 | $0.85 | $0.85 |
-| PIR Motion Sensor | HC-SR501 or EKMC1601111 | 1 | $1.25 | $1.25 |
-| MEMS Sound Level Sensor | INMP441 or similar | 1 | $1.80 | $1.80 |
-| Sensor PCB Breakouts | Custom | 6 | $0.40 | $2.40 |
-| **Subtotal: Sensors** | | | | **$21.50** |
-
-#### IR Transmitter & Controls
-| Component | Part Number | Qty | Unit Cost | Total |
-|-----------|-------------|-----|-----------|-------|
-| IR LED Transmitter | 940nm IR LED + transistor | 1 | $0.50 | $0.50 |
-| Capacitive Touch Buttons | TTP223 or similar | 3 | $0.30 | $0.90 |
-| Rotary Encoder | EC11 or similar | 1 | $0.80 | $0.80 |
-| Control Interface PCB | Custom 2-layer | 1 | $1.20 | $1.20 |
-| **Subtotal: IR & Controls** | | | | **$3.40** |
-
-**Note:** RGB lighting uses donor device's existing LEDs with control interface from retrofit module.
-
-#### PCB & Assembly
-| Item | Details | Qty | Unit Cost | Total |
-|------|---------|-----|-----------|-------|
-| Main Control PCB | 4-layer, FR4, 100×80mm | 1 | $3.20 | $3.20 |
-| PCB Assembly (SMT) | Stencil + pick-and-place + reflow | 1 | $4.50 | $4.50 |
-| Testing & Programming | Flash firmware + functional test | 1 | $2.00 | $2.00 |
-| Connectors & Wiring | JST, headers, wires | — | $1.80 | $1.80 |
-| **Subtotal: PCB & Assembly** | | | | **$11.50** |
-
-#### Housing & Mechanical (Retrofit)
-| Component | Details | Qty | Unit Cost | Total |
-|-----------|---------|-----|-----------|-------|
-| Donor Speaker/Lamp Unit | Refurbished or surplus units | 1 | $28.00 | $28.00 |
-| Custom Mounting Bracket | 3D-printed or CNC | 1 | $3.50 | $3.50 |
-| Acoustic Foam/Damping | Isolate mics and speakers | — | $2.20 | $2.20 |
-| Fasteners & Adhesives | Screws, tape, glue | — | $1.30 | $1.30 |
-| **Subtotal: Housing & Mechanical** | | | | **$35.00** |
-
-#### Phase I Total BOM
-| Category | Cost |
-|----------|-----:|
-| MCU & Power | $7.10 |
-| Audio Subsystem (mics only) | $9.20 |
-| Sensors (7 total) | $21.50 |
-| IR Transmitter & Controls | $3.40 |
-| PCB & Assembly | $11.50 |
-| Housing & Mechanical (retrofit) | $35.00 |
-| **Grand Total (Phase I)** | **$87.70 / unit** |
-| **Packaging & Shipping** | **$8.00** |
-| **Final Landed Cost** | **$95.70 / unit** |
-
-**Note:** Cost savings from using donor device speakers and RGB lighting (~$27.50 per unit).
+**Note:** Cost savings from using donor device speakers and RGB lighting.
 
 ---
 
@@ -245,21 +167,18 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 - Local cache for routines to operate if offline.  
 - Secure OTA with fail-safe rollback.  
 
-### BOM (10k Volume)
+### BOM Overview (10k Volume)
 
-| Subsystem | Est. Cost (USD) |
-|------------|----------------:|
-| ESP32-S3 MCU | 3.10 |
-| TAS5825M Amp | 3.30 |
-| ND65 Speakers + PRs | 15.00 |
-| Sensors (SHTC3 + SGP30 + VEML7700 + PIR) | 4.00 |
-| RGB LED Ring + Diffuser | 4.10 |
-| Power / USB-C PD | 1.50 |
-| PCB + Assembly | 4.20 |
-| Enclosure + Hardware | 2.60 |
-| Misc / EMI | 0.90 |
-| **Total (Base SKU)** | **≈ $40.0** |
-| **Premium (ND90 + CO₂ sensor)** | **≈ $55–58** |
+**Key Subsystems:**
+- ESP32-S3 MCU with TAS5825M audio amplifier
+- ND65/ND90 stereo speakers with passive radiators
+- Environmental sensors (temperature, humidity, air quality, light, motion)
+- RGB LED ring with diffuser
+- USB-C power management and custom enclosure
+
+**Estimated costs:**
+- **Base SKU:** ~$40 per unit
+- **Premium SKU:** ~$55 per unit (enhanced audio + CO₂ sensor)
 
 ---
 
@@ -347,22 +266,9 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 
 ---
 
-## 11. Cost Summary & Consulting Services
+## 11. Consulting Services
 
-### A. Hardware & Manufacturing Costs (Paid to Manufacturers)
-
-| Phase | Units | Cost per Unit | Total Hardware Cost |
-|-------|-------|---------------|---------------------|
-| **Phase 0.9 (COTS)** | 10–25 | $89.50 | $895 – $2,238 |
-| **Phase I (Retrofit)** | 200 | $95.70 | $19,140 |
-| **Phase II (Production)** | 10,000 | $40–58 | $400,000 – $580,000 |
-| **NRE (Tooling/Certification)** | — | — | $30,500 |
-
-**Note:** Hardware costs are paid directly to manufacturers (DB-Way, Kaiji, Xiteyou, etc.) and cover materials, PCBA, assembly, testing, and shipping.
-
----
-
-### B. Technical Consulting Services (Daniel McShane)
+### Technical Consulting Services (Daniel McShane)
 
 **Hardware/Firmware Development Lead**
 
@@ -377,28 +283,10 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 - Quality assurance planning and test fixture specifications
 
 **Rate Structure:**
-- **Active Development:** $1,000 per week (hands-on firmware, PCB design, testing)
-- **Maintenance/Support:** $500 per week (during manufacturer negotiations, waiting periods)
+- **Manufacturing Consultation:** $500 per week (liaison with Chinese manufacturers, specifications, quality control)
+- **Firmware Development:** $100 per hour (ESP32-S3 development, testing, debugging, optimization)
 
-**Estimated Duration:**  
-- Phase 0.9: 2–3 weeks active development
-- Phase I: 8–12 weeks active development + 4–6 weeks maintenance (manufacturer lead times)
-- Phase II: Ongoing support (as needed)
-
-**Consulting Fees:**
-- Phase 0.9: $2,000 – $3,000
-- Phase I: $10,000 – $15,000
-- **Total Consulting (Phase 0.9 + Phase I):** $12,000 – $18,000
-
----
-
-### C. Total Project Investment Summary
-
-| Phase | Consulting | Hardware/Manufacturing | Total |
-|-------|-----------|----------------------|-------|
-| **Phase 0.9** | $2,000 – $3,000 | $895 – $2,238 | **$2,895 – $5,238** |
-| **Phase I** | $10,000 – $15,000 | $19,140 | **$29,140 – $34,140** |
-| **Phase II** | TBD | $400,000 – $580,000 + $30,500 NRE | **$430,500 – $610,500+** |
+**Note:** Hardware and manufacturing costs are negotiated directly with manufacturers (DB-Way, Kaiji, Xiteyou, etc.) and vary based on volume, specifications, and market conditions.
 
 ---
 
