@@ -13,9 +13,15 @@ This repository contains comprehensive documentation for the Naphome project, in
 
 ## 🌐 Live Documentation
 
-The documentation is automatically converted to HTML and deployed to Netlify:
+The documentation is automatically converted to HTML and deployed to Netlify using GitHub Actions:
 
 🔗 **[View Live Documentation](https://naphome-docs.netlify.app)**
+
+### 🚀 Automatic Deployment
+
+- **Push to main** → Automatic production deployment
+- **Pull requests** → Preview deployments with live links
+- **No manual steps** required after initial setup
 
 ## 🛠️ Local Development
 
@@ -53,7 +59,11 @@ The documentation is automatically converted to HTML and deployed to Netlify:
 
 ### Deployment
 
-To deploy updates to Netlify:
+#### Automatic Deployment (Recommended)
+The site automatically deploys when you push to GitHub thanks to GitHub Actions. No manual steps required!
+
+#### Manual Deployment
+To deploy updates manually:
 
 ```bash
 ./deploy.sh
@@ -65,10 +75,18 @@ This script will:
 - Push to GitHub
 - Trigger Netlify deployment
 
+#### Setting up GitHub Actions
+For automatic deployment, follow the detailed setup guide:
+
+📖 **[GitHub Actions Setup Guide](GITHUB_ACTIONS_SETUP.md)**
+
 ## 📁 Project Structure
 
 ```
 Naphome/
+├── .github/workflows/             # GitHub Actions workflows
+│   ├── deploy.yml                 # Simple deployment workflow
+│   └── netlify-deploy.yml         # Advanced deployment workflow
 ├── html/                          # Generated HTML files
 │   ├── index.html                 # Main documentation page
 │   ├── P0.html                    # P0 specifications
@@ -77,8 +95,9 @@ Naphome/
 │   └── SPECS.html                 # Core specifications
 ├── *.md                           # Source markdown files
 ├── convert_md_to_html.py          # HTML conversion script
-├── deploy.sh                      # Deployment script
+├── deploy.sh                      # Manual deployment script
 ├── netlify.toml                   # Netlify configuration
+├── GITHUB_ACTIONS_SETUP.md        # GitHub Actions setup guide
 └── README.md                      # This file
 ```
 
