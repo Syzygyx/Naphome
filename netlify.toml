@@ -2,12 +2,14 @@
   # Directory to publish (relative to root)
   publish = "html"
   
-  # Build command (optional - we're pre-generating HTML)
-  command = "source venv/bin/activate && python convert_md_to_html.py"
+  # Build command - install dependencies and convert to HTML
+  command = "pip install -r requirements.txt && python convert_md_to_html.py"
 
 [build.environment]
   # Python version for Netlify
   PYTHON_VERSION = "3.11"
+  # Install markdown package
+  PIP_CACHE_DIR = "/opt/build/cache/pip"
 
 # Redirect rules for clean URLs
 [[redirects]]

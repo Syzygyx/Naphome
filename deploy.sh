@@ -3,9 +3,10 @@
 # Naphome HTML Deployment Script
 echo "🚀 Deploying Naphome documentation to Netlify..."
 
-# Activate virtual environment and convert markdown to HTML
+# Install dependencies and convert markdown to HTML
 echo "📝 Converting markdown files to HTML..."
 source venv/bin/activate
+pip install -r requirements.txt
 python convert_md_to_html.py
 
 # Add and commit changes
