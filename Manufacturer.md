@@ -36,7 +36,7 @@ The Naphome is a premium smart sleep companion that combines:
 | **Audio Amplifier** | TAS5825M (I²S, 2×20W) | TI digital amplifier |
 | **Speakers** | ND65 (Base) / ND90 (Premium) + Passive Radiators | Dual acoustic chambers |
 | **Microphones** | 2-3× Digital I²S MEMS | Far-field, noise-canceling |
-| **RGB LEDs** | 10× WS2812B (Base) / 16× WS2812B (Premium) | Addressable, 5V |
+| **RGB LEDs** | 10× WS2812B (Base) / 16× WS2812B (Premium) in ring configuration | Addressable, 5V |
 | **Display** | 256×64 OLED (SSD1322 or equivalent) | SPI interface, 3.3V |
 | **Power** | USB-C PD 12V + Li-ion backup | 2-3 hours battery runtime |
 | **Connectivity** | Wi-Fi 2.4GHz + BLE | Dual-band support |
@@ -63,6 +63,7 @@ The Naphome is a premium smart sleep companion that combines:
 | **Sensitivity** | 85dB @ 1W/1m | 88dB @ 1W/1m |
 | **Power Handling** | 2×10W RMS | 2×20W RMS |
 | **Acoustic Design** | Dual chamber, ported | Dual chamber, tuned |
+| **LED Ring** | 10× WS2812B in ring configuration | 16× WS2812B in ring configuration |
 
 ### RGB Lighting Specifications
 
@@ -72,6 +73,7 @@ The Naphome is a premium smart sleep companion that combines:
 | **Power** | 5V, 0.3W per LED | 5V, 0.3W per LED |
 | **Diffusion** | Frosted acrylic dome | Enhanced diffuser + light pipe |
 | **Control** | ESP32-S3 PWM | ESP32-S3 PWM |
+| **Configuration** | Ring layout around device perimeter | Ring layout with enhanced spacing |
 | **Features** | Circadian lighting, visual feedback | Enhanced diffusion, color accuracy |
 
 ---

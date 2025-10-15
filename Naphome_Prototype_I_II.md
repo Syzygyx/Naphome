@@ -152,14 +152,14 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 ### Objectives
 - Transition to **fully custom housing and board**.  
 - Integrate **in-house far-field mic array** and RGB light dome.  
-- Achieve **$40 BOM (base)**, **$55 BOM (premium)**.  
+- Achieve **$42 BOM (base)**, **$57-60 BOM (premium)**.  
 - Establish scalable manufacturing and QA pipeline.  
 
 ### Hardware Design
 - ESP32-S3 + TAS5825M on single 4-layer PCB.  
 - Integrated microphone array with acoustic isolation geometry.  
 - ND65 stereo drivers + passive radiators in dual acoustic chambers.  
-- 10–12 WS2812B LEDs with internal diffuser and light pipe integration.  
+- 10–12 WS2812B LEDs in ring configuration with internal diffuser and light pipe integration.  
 - Molded PC/ABS shell with sensor and mic apertures.  
 
 ### Firmware Enhancements
@@ -180,8 +180,8 @@ Phase I aims to validate end-to-end cloud interactions, lighting, sensing, and a
 - USB-C power management and custom enclosure
 
 **Estimated costs:**
-- **Base SKU:** ~$40 per unit
-- **Premium SKU:** ~$55 per unit (enhanced audio + CO₂ sensor)
+- **Base SKU:** ~$42 per unit (includes OLED display)
+- **Premium SKU:** ~$57-60 per unit (enhanced audio + CO₂ sensor + OLED display)
 
 ---
 
