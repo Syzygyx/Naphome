@@ -1,4 +1,4 @@
-# 🏭 Naphome Phase II Manufacturing Specifications
+# Naphome Phase II Manufacturing Specifications
 **Document Version:** 1.0  
 **Date:** October 2025  
 **Target Volume:** 10,000 units  
