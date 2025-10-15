@@ -5,7 +5,7 @@
 
 ---
 
-## 📋 Executive Summary
+## Executive Summary
 
 **Product:** Naphome Smart Sleep Device  
 **Architecture:** ESP32-S3 + Cloud AI + Custom Audio/Lighting  
@@ -14,7 +14,7 @@
 
 ---
 
-## 🎯 Product Overview
+## Product Overview
 
 The Naphome is a premium smart sleep companion that combines:
 - **Voice AI** (cloud-based speech recognition and response)
@@ -25,7 +25,7 @@ The Naphome is a premium smart sleep companion that combines:
 
 ---
 
-## 🔧 Technical Specifications
+## Technical Specifications
 
 ### Core Hardware Requirements
 
@@ -77,7 +77,7 @@ The Naphome is a premium smart sleep companion that combines:
 
 ---
 
-## 📐 Mechanical Specifications
+## Mechanical Specifications
 
 ### Enclosure Requirements
 
@@ -148,7 +148,7 @@ The Naphome is a premium smart sleep companion that combines:
 
 ---
 
-## 🧪 Testing & Quality Assurance
+## Testing & Quality Assurance
 
 ### Electrical Testing
 
@@ -200,7 +200,7 @@ The Naphome is a premium smart sleep companion that combines:
 
 ---
 
-## 📦 Packaging & Labeling
+## Packaging & Labeling
 
 ### Packaging Requirements
 
@@ -268,7 +268,7 @@ The Naphome is a premium smart sleep companion that combines:
 
 ---
 
-## 💰 BOM Components
+## BOM Components
 
 ### Base SKU Components
 
@@ -294,7 +294,7 @@ The Naphome is a premium smart sleep companion that combines:
 
 ---
 
-## 📋 Compliance & Certification
+## Compliance & Certification
 
 ### Required Certifications
 
@@ -340,7 +340,7 @@ The Naphome is a premium smart sleep companion that combines:
 
 ---
 
-## 📞 Contact Information
+## Contact Information
 
 ### Technical Lead
 **Daniel McShan**  
@@ -349,7 +349,7 @@ The Naphome is a premium smart sleep companion that combines:
 
 ---
 
-## 📝 Notes & Assumptions
+## Notes & Assumptions
 
 ### Key Assumptions
 - ESP32-S3-WROOM-1 module is pre-certified (FCC/CE)
