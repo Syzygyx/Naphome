@@ -1,17 +1,6 @@
 {
   "version": 2,
   "outputDirectory": "html",
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/auth",
-      "destination": "/auth.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
