@@ -282,19 +282,22 @@ PM 2.5 (Air Quality)
 Quality &amp; Testing
 All components must pass electrical, acoustic, and thermal testing.
 End-to-end prototype to be validated for acoustic quality, light diffusion, sensor accuracy, and thermal stability before full batch manufacturing.</p>
-<p>What have we used in our current prototypes-</p>
-<p>Progress made so far –</p>
-<p>Integrated the Raspberry Pi 5 with the WM8960 Audio HAT, enabling microphone input and speaker output for user interaction and audio feedback.
-Implemented functionality to process user voice prompts and interact with a Language Learning Model (LLM).
-Connected and controlled an addressable LED strip for visual feedback, triggered dynamically.
-Integrated a temperature and humidity sensor to collect data and send it to AWS IoT for monitoring.
-Configured AWS IoT to send JSON payloads to control the device, triggering light, sound, and text-to-speech actuation.
-Modified the IR blaster functionality to regulate the AC temperature, ensuring the user sleeps in an ideal temperature environment.
-Developed a Python-based system setup that runs as a service, ensuring all functionalities start automatically on boot.
-Implemented backend automation to fetch routines and execute them on the device dynamically. (Scheduler)
-Integrated spotifyd service and connected the same to AWS backend to play music/songs directly on Naphome.
-Access point, Device/User registration working end to end for first time users.
-Implemented Voice 2 Voice capability (Eleven Labs) where user can have a conversation with the device. </p>
+<h2 id="implemented-features">Implemented Features:</h2>
+<ul>
+<li>✅ Voice input/output with WM8960 HAT (mic + speaker)</li>
+<li>✅ LLM integration (cloud-based conversation processing)</li>
+<li>✅ Voice-to-voice capability via ElevenLabs TTS</li>
+<li>✅ Addressable LED strip control with dynamic feedback</li>
+<li>✅ Temperature &amp; humidity sensor → AWS IoT telemetry</li>
+<li>✅ AWS IoT MQTT control (lights, sound, TTS actuation)</li>
+<li>✅ IR blaster for AC control (optimal sleep temperature)</li>
+<li>✅ Spotifyd integration for music streaming</li>
+<li>✅ Access Point mode for device provisioning</li>
+<li>✅ User registration flow (first-time setup)</li>
+<li>✅ Backend scheduler for routine automation</li>
+<li>✅ Python service architecture (auto-start on boot)</li>
+<li>✅ OTA-ready architecture </li>
+</ul>
         </main>
         
         <footer>
