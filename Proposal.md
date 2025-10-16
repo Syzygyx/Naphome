@@ -32,6 +32,9 @@ The system evolves from **Prototype 0 (Raspberry Pi 5 + WM8960 HAT)** to a **cos
 
 **Transition Goal:** Migrate P0 functionality to ESP32-S3 for cost reduction and mass production.
 
+![Naphome Smart Sleep Device](egg.png)
+*Naphome Smart Sleep Device - Modern egg-shaped design with warm ambient lighting*
+
 ---
 
 ## 2. System Architecture

@@ -3,6 +3,9 @@
 **Date:** October 2025  
 **Target Volume:** 10,000 units  
 
+![Naphome Smart Sleep Device](egg.png)
+*Naphome Smart Sleep Device - Modern egg-shaped design with warm ambient lighting*
+
 ---
 
 ## Executive Summary
