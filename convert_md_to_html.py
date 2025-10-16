@@ -16,7 +16,7 @@ def create_html_template(title, content, nav_links=None):
         nav_links = [
             ("Home", "index.html"),
             ("P0 Specs", "P0.html"),
-            ("Prototype I & II", "Naphome_Prototype_I_II.html"),
+            ("Proposal", "Proposal.html"),
             ("Audio System", "Naphome_Audio.html"),
             ("Core Specs", "SPECS.html")
         ]
