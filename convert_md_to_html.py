@@ -374,7 +374,7 @@ def convert_markdown_to_html(md_file_path, output_dir="html"):
     nav_links = [
         ("Home", "index.html"),
         ("P0 Specs", "P0.html"),
-        ("Prototype I & II", "Naphome_Prototype_I_II.html"),
+        ("Proposal", "Proposal.html"),
         ("Audio System", "Naphome_Audio.html"),
         ("Core Specs", "SPECS.html")
     ]
@@ -464,7 +464,7 @@ def create_index_page(output_dir="html"):
     nav_links = [
         ("Home", "index.html"),
         ("P0 Specs", "P0.html"),
-        ("Prototype I & II", "Naphome_Prototype_I_II.html"),
+        ("Proposal", "Proposal.html"),
         ("Audio System", "Naphome_Audio.html"),
         ("Core Specs", "SPECS.html")
     ]
@@ -484,7 +484,7 @@ def main():
     # List of markdown files to convert
     md_files = [
         "P0.md",
-        "Naphome_Prototype_I_II.md", 
+        "Proposal.md", 
         "Naphome_Audio.md",
         "SPECS.md"
     ]
