@@ -345,6 +345,7 @@ The Naphome is a premium smart sleep companion that combines:
 ### Technical Lead
 **Daniel McShan**  
 **Email:** dan@syzygyx.com  
+**Website:** [https://www.naptick.com](https://www.naptick.com)  
 **Services:** Hardware design, firmware development, manufacturing liaison
 
 ---
