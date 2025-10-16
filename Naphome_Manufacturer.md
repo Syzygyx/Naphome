@@ -3,6 +3,9 @@
 **Date:** October 2025  
 **Target Volume:** 10,000 units  
 
+![Naphome Smart Sleep Device](images/naphome_device_product_shot.png)
+*Naphome Smart Sleep Device - Modern egg-shaped design with warm ambient lighting*
+
 ---
 
 ## Executive Summary
@@ -22,9 +25,6 @@ The Naphome is a premium smart sleep companion that combines:
 - **Dynamic RGB Lighting** (circadian lighting with 10-16 WS2812B LEDs)
 - **Environmental Sensing** (6 sensors for bedroom optimization)
 - **IoT Control** (IR blaster for AC/TV control)
-
-![Naphome Smart Sleep Device](images/naphome_device_product_shot.png)
-*Naphome Smart Sleep Device - Modern egg-shaped design with warm ambient lighting*
 
 ---
 
