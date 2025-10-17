@@ -885,43 +885,48 @@ skinparam rectangle {
 rectangle &quot;PCB Layout - 70mm × 45mm (Vertical)&quot; {
 
     rectangle &quot;TOP SECTION&quot; as top {
-        [LED Connector\nJST PH-8] as led_conn
-        [Speaker Connector\nJST PH-4] as spk_conn
-        [Microphone Connector\nJST PH-6] as mic_conn
+        rectangle &quot;Speaker Connector\nJST PH-4&quot; as spk_conn
+        rectangle &quot;Microphone Connector\nJST PH-6&quot; as mic_conn
     }
 
     rectangle &quot;CENTER SECTION&quot; as center {
         rectangle &quot;LEFT&quot; as left {
-            [TAS5805M\nAmplifier] as amp
-            [Audio Filtering] as filter
+            rectangle &quot;TAS5805M\nAmplifier&quot; as amp
+            rectangle &quot;Audio Filtering&quot; as filter
         }
 
         rectangle &quot;RIGHT&quot; as right {
-            [ESP32-S3\nMCU] as mcu
-            [I2C Pull-ups] as pullups
+            rectangle &quot;ESP32-S3\nMCU&quot; as mcu
+            rectangle &quot;I2C Pull-ups&quot; as pullups
         }
     }
 
     rectangle &quot;SENSOR SECTION&quot; as sensors {
-        [SHT45\nT/H Sensor] as sht45
-        [OPT3002\nLight Sensor] as light
-        [SCD41\nCO₂ Sensor] as co2
-        [BME688\nVOC Sensor] as voc
-        [SGP40\nVOC Alt] as sgp40
-        [Sound Level\nDerived] as sound
+        rectangle &quot;SHT45\nT/H Sensor&quot; as sht45
+        rectangle &quot;OPT3002\nLight Sensor&quot; as light
+        rectangle &quot;SCD41\nCO₂ Sensor&quot; as co2
+        rectangle &quot;BME688\nVOC Sensor&quot; as voc
+        rectangle &quot;SGP40\nVOC Alt&quot; as sgp40
+        rectangle &quot;Sound Level\nDerived&quot; as sound
     }
 
     rectangle &quot;BOTTOM SECTION&quot; as bottom {
-        [USB-C Connector] as usb
-        [PD Controller\nCH224K/IP2721] as pd
-        [5V/12V/3.3V Rails] as rails
-        [Grove Connector\nI2C] as grove_conn
-        [Battery Connector\nJST PH-2] as bat_conn
+        rectangle &quot;USB-C Connector&quot; as usb
+        rectangle &quot;PD Controller\nCH224K/IP2721&quot; as pd
+        rectangle &quot;5V/12V/3.3V Rails&quot; as rails
+        rectangle &quot;Grove Connector\nI2C&quot; as grove_conn
+        rectangle &quot;Battery Connector\nJST PH-2&quot; as bat_conn
+    }
+
+    rectangle &quot;BACK SECTION&quot; as back {
+        rectangle &quot;LED Matrix\n8x8 RGBW&quot; as led_matrix
+        rectangle &quot;LED Driver\nIS31FL3731&quot; as led_driver
+        rectangle &quot;LED Connector\nJST PH-8&quot; as led_conn
     }
 
     rectangle &quot;SIDE EDGES&quot; as sides {
-        [Sensor Mounting\nPoints] as sensor_mount
-        [Ground Vias\nEMI Shielding] as vias
+        rectangle &quot;Sensor Mounting\nPoints&quot; as sensor_mount
+        rectangle &quot;Ground Vias\nEMI Shielding&quot; as vias
     }
 }
 
@@ -936,7 +941,8 @@ amp --&gt; spk_conn
 mic_conn --&gt; mcu
 
 ' Digital connections
-mcu --&gt; led_conn
+mcu --&gt; led_driver
+led_driver --&gt; led_matrix
 mcu --&gt; sht45
 mcu --&gt; light
 mcu --&gt; co2
@@ -948,10 +954,11 @@ mcu --&gt; grove_conn
 ' Power connections
 rails --&gt; bat_conn
 
-note top of top : LED matrix and audio connections
+note top of top : Audio connections
 note top of center : Audio and digital processing
 note top of sensors : Environmental sensing
 note top of bottom : Power input and external connectors
+note top of back : LED matrix for 360° diffusion
 note right of sides : EMI mitigation and mounting
 
 @enduml
@@ -1817,6 +1824,11 @@ Separate plenum for T/H, VOC, and CO₂ sensors; external PM sensor.</p>
 <td><strong>Goal</strong></td>
 <td>Tune diffusion &amp; animation patterns</td>
 <td>Finalize lighting profiles</td>
+</tr>
+<tr>
+<td><strong>DNP Option</strong></td>
+<td>N/A</td>
+<td>Can DNP if using window design instead of LED matrix</td>
 </tr>
 </tbody>
 </table>
