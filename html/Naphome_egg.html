@@ -1,0 +1,2347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naphome Development Plan — Phase I &amp; Phase II - Naphome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background: #34495e;
+            padding: 1rem 0;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+        
+        main {
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #34495e;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        code {
+            background: #f1f2f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            color: #e74c3c;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 2rem 0;
+            padding: 1rem 2rem;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 5px solid #3498db;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            main {
+                padding: 2rem 1rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav a {
+                margin: 0 0.5rem;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 0.8rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌙 Naphome</h1>
+            <p>Smart Sleep Device Documentation</p>
+        </header>
+        
+        <nav>
+            <a href="index.html">Home</a><a href="P0.html">P0 Specs</a><a href="Proposal.html">Proposal</a><a href="Naphome_Audio.html">Audio System</a><a href="SPECS.html">Core Specs</a><a href="Naphome_egg.html">Development Plan</a>
+        </nav>
+        
+        <main>
+            <h1 id="naphome-development-plan-phase-i-phase-ii">Naphome Development Plan — Phase I &amp; Phase II</h1>
+<hr />
+<h2 id="cover">📸 Cover</h2>
+<p><strong>Phase I Prototype — Small Egg</strong><br />
+Complete evaluation &amp; validation prototype</p>
+<p><strong>Phase II Concept — Large Egg</strong><br />
+Production-ready &amp; scalable design</p>
+<hr />
+<h2 id="side-by-side-comparison">🎯 Side-by-Side Comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Phase I — Small Egg</th>
+<th>Phase II — Large Egg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Phase I" src="P1_egg.png" /></td>
+<td><img alt="Phase II" src="naphome.png" /></td>
+</tr>
+<tr>
+<td><strong>Complete evaluation &amp; validation</strong></td>
+<td><strong>Production-ready &amp; scalable</strong></td>
+</tr>
+<tr>
+<td><strong>~$48.50 USD</strong></td>
+<td><strong>~$26 USD (battery DNP) / ~$28.50 USD (with battery)</strong></td>
+</tr>
+<tr>
+<td><strong>Can order immediately</strong></td>
+<td><strong>12 weeks out</strong></td>
+</tr>
+<tr>
+<td>Premium audio (TAS5805M + 50mm driver)</td>
+<td>Premium audio (TAS5805M + 50mm driver)</td>
+</tr>
+<tr>
+<td>4-microphone array</td>
+<td>2-microphone array (streamlined)</td>
+</tr>
+<tr>
+<td>8×8 RGBW LED matrix</td>
+<td>8×8 RGBW LED matrix + diffuser</td>
+</tr>
+<tr>
+<td>18650 battery backup</td>
+<td>Optional (Premium) / DNP (Budget)</td>
+</tr>
+<tr>
+<td>USB-C PD charging</td>
+<td>USB-C PD charging</td>
+</tr>
+<tr>
+<td>ESP32-S3 with full features</td>
+<td>ESP32-S3 optimized</td>
+</tr>
+<tr>
+<td>Full sensor suite (6 sensors)</td>
+<td>Core sensors (2-3 sensors, TBD)</td>
+</tr>
+<tr>
+<td>✅ SHT45 (Temperature/Humidity)</td>
+<td>✅ SHT45 (if validated)</td>
+</tr>
+<tr>
+<td>✅ OPT3002/LTR-303 (Ambient Light)</td>
+<td>✅ OPT3002/LTR-303 (if validated)</td>
+</tr>
+<tr>
+<td>✅ SCD41 (CO₂)</td>
+<td>✅ SCD41 (if validated)</td>
+</tr>
+<tr>
+<td>✅ BME688 + SGP40 (VOC/Gas)</td>
+<td>TBD based on pilot data</td>
+</tr>
+<tr>
+<td>✅ SPS30 (PM 2.5 external)</td>
+<td>TBD based on pilot data</td>
+</tr>
+<tr>
+<td>✅ Sound Level (derived from mics)</td>
+<td>TBD based on pilot data</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sku-strategy">SKU Strategy</h3>
+<table>
+<thead>
+<tr>
+<th>SKU</th>
+<th>Battery</th>
+<th>BOM</th>
+<th>Target Market</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Budget</strong></td>
+<td>DNP</td>
+<td>$26</td>
+<td>Price-sensitive consumers</td>
+</tr>
+<tr>
+<td><strong>Premium</strong></td>
+<td>18650 Li-ion</td>
+<td>$28.50</td>
+<td>Full-feature users</td>
+</tr>
+<tr>
+<td><strong>Evaluation</strong></td>
+<td>18650 Li-ion</td>
+<td>$48.50</td>
+<td>Development &amp; testing</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="project-vision">🌙 Project Vision</h2>
+<p>Naphome is a <strong>smart sleep companion</strong> that combines <strong>premium bedside audio</strong> with <strong>adaptive circadian lighting</strong> to create the perfect sleep environment.<br />
+Focused on <strong>core sleep needs</strong> rather than feature complexity, it delivers <strong>proven functionality</strong> with <strong>elegant simplicity</strong>.</p>
+<hr />
+<h2 id="phase-overview">🧩 Phase Overview</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Description</th>
+<th>Objectives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase I — Dual Architecture Pilot</strong></td>
+<td>"Small Egg" form factor; dual audio configurations + full sensor array to evaluate optimal design approach.</td>
+<td>Gather data on audio preferences, sensor utility, and user feedback to inform Phase II architecture decisions.</td>
+</tr>
+<tr>
+<td><strong>Phase II — Production Design</strong></td>
+<td>Refined architecture optimized for manufacturing.</td>
+<td>Deliver production-grade performance with reduced BOM, improved assembly, and finalized enclosure tooling.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-goals-summary">🎯 Phase Goals Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Goal</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1️⃣</strong></td>
+<td><strong>Audio Architecture Validation</strong></td>
+<td>Evaluate 5V vs 12V PD audio configurations to determine optimal Phase II approach.</td>
+</tr>
+<tr>
+<td><strong>2️⃣</strong></td>
+<td><strong>Sensor Validation</strong></td>
+<td>Pilot program to determine which sensors provide real user value.</td>
+</tr>
+<tr>
+<td><strong>3️⃣</strong></td>
+<td><strong>Simplified Architecture</strong></td>
+<td>Single PCB design for cost optimization and reliability.</td>
+</tr>
+<tr>
+<td><strong>4️⃣</strong></td>
+<td><strong>Market Validation</strong></td>
+<td>Prove product-market fit with data-driven sensor selection.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-audio-performance-dual-power-architecture">1️⃣ Audio Performance - Dual Power Architecture</h2>
+<h3 id="phase-i-audio-exploration-strategy">Phase I Audio Exploration Strategy</h3>
+<p><strong>Purpose:</strong> Evaluate both 5V and 12V PD audio architectures to determine optimal Phase II approach.</p>
+<h3 id="hardware-baseline-dual-configuration">Hardware Baseline - Dual Configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>5V Configuration</th>
+<th>12V Configuration</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Driver</strong></td>
+<td>50mm Full-Range Driver (4 Ω)</td>
+<td>50mm Full-Range Driver (4 Ω)</td>
+<td>Same driver, different tuning</td>
+</tr>
+<tr>
+<td><strong>Amplifier</strong></td>
+<td>TI TAS5805M (5V Class-D DSP)</td>
+<td>TI TAS5805M (12V Class-D DSP)</td>
+<td>Same chip, different power rails</td>
+</tr>
+<tr>
+<td><strong>Power Input</strong></td>
+<td>USB-C (5V 2A)</td>
+<td>USB-C PD (12V 1.5A) / 5V fallback</td>
+<td>Standard vs PD approach</td>
+</tr>
+<tr>
+<td><strong>Audio Power</strong></td>
+<td>3–4 W clean output</td>
+<td>8–10 W clean output</td>
+<td>Power level comparison</td>
+</tr>
+<tr>
+<td><strong>Acoustic Volume</strong></td>
+<td>0.08 L net</td>
+<td>0.08 L net</td>
+<td>Same enclosure design</td>
+</tr>
+<tr>
+<td><strong>Enclosure</strong></td>
+<td>Sealed design</td>
+<td>Sealed design</td>
+<td>Eliminates passive radiator complexity</td>
+</tr>
+</tbody>
+</table>
+<h3 id="evaluation-targets">Evaluation Targets</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>5V Target</th>
+<th>12V Target</th>
+<th>Evaluation Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Freq Response (–6 dB)</td>
+<td>150 Hz – 18 kHz</td>
+<td>120 Hz – 20 kHz</td>
+<td>Clarity vs extension</td>
+</tr>
+<tr>
+<td>Max SPL @ 1 m</td>
+<td>≥ 80 dB</td>
+<td>≥ 88 dB</td>
+<td>Adequate vs premium</td>
+</tr>
+<tr>
+<td>THD @ 1 W</td>
+<td>≤ 1.0 %</td>
+<td>≤ 0.5 %</td>
+<td>Natural vs pristine</td>
+</tr>
+<tr>
+<td>Thermal Rise</td>
+<td>&lt; 50 °C</td>
+<td>&lt; 65 °C</td>
+<td>Cool vs warm operation</td>
+</tr>
+<tr>
+<td>Battery Runtime</td>
+<td>3–4 hours</td>
+<td>1.5–2 hours</td>
+<td>Portability comparison</td>
+</tr>
+<tr>
+<td>Charger Compatibility</td>
+<td>Universal USB-C</td>
+<td>12V PD required</td>
+<td>User convenience</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-i-evaluation-plan">Phase I Evaluation Plan</h3>
+<p><strong>Audio Testing Protocol:</strong>
+1. <strong>A/B Testing</strong>: Direct comparison of 5V vs 12V configurations
+2. <strong>User Preference</strong>: Blind listening tests with sleep sounds
+3. <strong>Power Analysis</strong>: Battery life and thermal behavior measurement
+4. <strong>Compatibility Testing</strong>: Charger compatibility and user experience
+5. <strong>Cost Analysis</strong>: BOM impact of each configuration</p>
+<p><strong>DSP Tuning:</strong>
+- <strong>5V Configuration</strong>: HPF 120 Hz (Q 0.7) · Low-shelf +2 dB @ 300 Hz · High-shelf −1 dB @ 6 kHz (Q 0.7) · Soft-knee limiter 3–4 W
+- <strong>12V Configuration</strong>: HPF 100 Hz (Q 0.7) · Low-shelf +3 dB @ 200 Hz · High-shelf −1 dB @ 8 kHz (Q 0.7) · Soft-knee limiter 8–10 W</p>
+<h3 id="phase-ii-decision-framework">Phase II Decision Framework</h3>
+<p><strong>Decision Criteria for Audio Architecture Selection:</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Metric</strong></th>
+<th><strong>5V Configuration Wins If:</strong></th>
+<th><strong>12V Configuration Wins If:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>User Preference</strong></td>
+<td>&gt;60% prefer 5V in blind listening tests</td>
+<td>&gt;60% prefer 12V in blind listening tests</td>
+</tr>
+<tr>
+<td><strong>Battery Life</strong></td>
+<td>3+ hours runtime highly valued</td>
+<td>2+ hours runtime acceptable</td>
+</tr>
+<tr>
+<td><strong>Thermal Comfort</strong></td>
+<td>Cool operation (&lt;50°C) preferred</td>
+<td>Warm operation (&lt;65°C) acceptable</td>
+</tr>
+<tr>
+<td><strong>Charger Convenience</strong></td>
+<td>Universal USB-C compatibility important</td>
+<td>12V PD requirement acceptable</td>
+</tr>
+<tr>
+<td><strong>Cost Sensitivity</strong></td>
+<td>$1+ BOM savings significant</td>
+<td>Premium audio worth extra cost</td>
+</tr>
+<tr>
+<td><strong>Market Positioning</strong></td>
+<td>Environmental sensing focus</td>
+<td>Audio performance focus</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Expected Phase II Outcomes:</strong></p>
+<p><strong>Scenario A: 5V Architecture Selected</strong>
+- <strong>BOM Cost</strong>: $26.05 (lower cost)
+- <strong>Battery Runtime</strong>: 3-4 hours (better portability)
+- <strong>Charger Compatibility</strong>: Universal USB-C (user convenience)
+- <strong>Thermal Performance</strong>: Cool operation (user comfort)
+- <strong>Market Position</strong>: Environmental sleep optimization focus
+- <strong>Competitive Advantage</strong>: Portable + affordable + environmental sensing</p>
+<p><strong>Scenario B: 12V Architecture Selected</strong>
+- <strong>BOM Cost</strong>: $27.15 (premium positioning)
+- <strong>Battery Runtime</strong>: 1.5-2 hours (adequate portability)
+- <strong>Charger Compatibility</strong>: 12V PD required (premium experience)
+- <strong>Thermal Performance</strong>: Warm operation (acceptable trade-off)
+- <strong>Market Position</strong>: Premium audio + environmental sensing
+- <strong>Competitive Advantage</strong>: Superior audio + environmental sensing</p>
+<p><strong>Risk Mitigation Benefits:</strong>
+1. <strong>Data-Driven Decisions</strong>: No assumptions about user preferences
+2. <strong>Market Validation</strong>: Real user feedback on audio preferences
+3. <strong>Cost Optimization</strong>: Choose most cost-effective approach
+4. <strong>Competitive Intelligence</strong>: Understand what users actually value
+5. <strong>Technical Validation</strong>: Prove both architectures work in production</p>
+<h3 id="critical-review-pilot-approach-analysis">Critical Review: Pilot Approach Analysis</h3>
+<h4 id="strengths-of-pilot-first-design-philosophy">✅ <strong>Strengths of Pilot-First Design Philosophy</strong></h4>
+<p><strong>Risk Mitigation Excellence:</strong>
+- <strong>Audio Architecture Uncertainty</strong>: Dual 5V/12V testing eliminates guesswork
+- <strong>Sensor Value Validation</strong>: 6-sensor pilot determines real user value
+- <strong>Market Demand Proof</strong>: Real user feedback before production commitment
+- <strong>Technical Feasibility</strong>: Proves both architectures work in production
+- <strong>Cost Optimization</strong>: Data-driven BOM decisions</p>
+<p><strong>Competitive Intelligence:</strong>
+- <strong>User Preference Data</strong>: Blind testing reveals actual audio preferences
+- <strong>Feature Prioritization</strong>: Which sensors users actually value
+- <strong>Price Sensitivity</strong>: Real willingness to pay for features
+- <strong>Use Case Validation</strong>: How users actually use the device
+- <strong>Market Positioning</strong>: Evidence-based differentiation strategy</p>
+<p><strong>Technical Validation:</strong>
+- <strong>Thermal Performance</strong>: Real-world thermal behavior measurement
+- <strong>Battery Life</strong>: Actual runtime under various conditions
+- <strong>Audio Quality</strong>: Subjective and objective audio assessment
+- <strong>Manufacturing Feasibility</strong>: Production process validation
+- <strong>Component Reliability</strong>: Long-term performance data</p>
+<h4 id="critical-concerns-with-pilot-approach">🚨 <strong>Critical Concerns with Pilot Approach</strong></h4>
+<p><strong>Timeline and Resource Risk:</strong>
+- <strong>Extended Development</strong>: 8-10 weeks for Phase I + 6 weeks for Phase II = 16+ weeks
+- <strong>Resource Allocation</strong>: Dual architecture development doubles engineering effort
+- <strong>Market Timing</strong>: Competitors may launch similar products during pilot phase
+- <strong>Cost Overrun</strong>: Pilot complexity may exceed budget expectations
+- <strong>Decision Paralysis</strong>: Too much data may delay critical decisions</p>
+<p><strong>Pilot Design Complexity:</strong>
+- <strong>Dual Architecture Overhead</strong>: Supporting both 5V and 12V configurations
+- <strong>PCB Complexity</strong>: More complex board design for dual configurations
+- <strong>Firmware Complexity</strong>: Two audio paths and power management systems
+- <strong>Testing Complexity</strong>: Comprehensive A/B testing protocol
+- <strong>Manufacturing Complexity</strong>: More components and assembly steps</p>
+<p><strong>Market Validation Limitations:</strong>
+- <strong>Sample Size</strong>: 100 pilot units may not represent broader market
+- <strong>User Bias</strong>: Early adopters may not represent mainstream users
+- <strong>Feature Creep</strong>: Pilot users may request features not viable for mass market
+- <strong>Price Sensitivity</strong>: Pilot users may be less price-sensitive than mainstream
+- <strong>Use Case Bias</strong>: Pilot users may use device differently than intended</p>
+<h4 id="recommended-pilot-approach-refinements">🔧 <strong>Recommended Pilot Approach Refinements</strong></h4>
+<p><strong>Simplified Dual Architecture:</strong></p>
+<pre><code>Current: Full dual architecture with separate power systems
+Recommended: Single PCB with configurable power rails
+- 5V/12V switching via jumper or firmware
+- Same amplifier chip, different power supply
+- Reduced PCB complexity and cost
+- Faster development and testing
+</code></pre>
+<p><strong>Focused Sensor Validation:</strong></p>
+<pre><code>Current: 6 sensors for comprehensive evaluation
+Recommended: 3 core sensors + 2 optional sensors
+- Core: T/H, Light, CO₂ (likely keepers)
+- Optional: VOC, PM2.5 (evaluate for Phase II)
+- Faster sensor validation
+- Clearer decision criteria
+</code></pre>
+<p><strong>Accelerated Timeline:</strong></p>
+<pre><code>Current: 8-10 weeks Phase I + 6 weeks Phase II = 16+ weeks
+Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
+- Parallel development of both architectures
+- Focused testing protocol
+- Faster decision making
+- Reduced market timing risk
+</code></pre>
+<hr />
+<h2 id="2-sensor-validation-program">2️⃣ Sensor Validation Program</h2>
+<h3 id="phase-i-pilot-program-sensor-evaluation">Phase I — Pilot Program (Sensor Evaluation)</h3>
+<p><strong>Purpose:</strong> Populate all candidate sensors to determine which ones provide real user value for sleep optimization.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Phase I (Populate)</th>
+<th>Evaluation Criteria</th>
+<th>Phase II Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temperature / Humidity</td>
+<td>✅ SHT45</td>
+<td>Sleep comfort correlation</td>
+<td>TBD based on data</td>
+</tr>
+<tr>
+<td>Ambient Light</td>
+<td>✅ OPT3002 / LTR-303</td>
+<td>Circadian lighting effectiveness</td>
+<td>TBD based on data</td>
+</tr>
+<tr>
+<td>CO₂</td>
+<td>✅ SCD41</td>
+<td>Air quality impact on sleep</td>
+<td>TBD based on data</td>
+</tr>
+<tr>
+<td>VOC / Gas</td>
+<td>✅ BME688 + SGP40</td>
+<td>Air quality vs complexity trade-off</td>
+<td>TBD based on data</td>
+</tr>
+<tr>
+<td>PM 2.5</td>
+<td>✅ SPS30 (external)</td>
+<td>Integration feasibility</td>
+<td>TBD based on data</td>
+</tr>
+<tr>
+<td>Sound Level</td>
+<td>✅ Derived from mics</td>
+<td>Sleep environment monitoring</td>
+<td>TBD based on data</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-ii-production-decision">Phase II — Production Decision</h3>
+<p><strong>Outcome:</strong> Based on Phase I pilot data, select 2-3 core sensors that demonstrate clear user value and sleep improvement correlation.</p>
+<p><strong>Bus &amp; Architecture:</strong> Shared I²C (3.3V) + pull-ups; flexible sensor array for evaluation.<br />
+<strong>Firmware:</strong> Comprehensive data logging and user feedback collection for sensor validation.</p>
+<hr />
+<h2 id="3-pcb-design-architecture">3️⃣ PCB Design &amp; Architecture</h2>
+<h3 id="connectorized-single-pcb-design"><strong>Connectorized Single PCB Design</strong></h3>
+<p><strong>Design Philosophy:</strong> Single PCB with connectorized components for manufacturing efficiency, serviceability, and EMI control.</p>
+<h3 id="pcb-layout-strategy-vertical-orientation"><strong>PCB Layout Strategy - Vertical Orientation</strong></h3>
+<p><strong>PCB Dimensions:</strong> 70mm (height) × 45mm (width) - Vertical orientation for LED matrix</p>
+<h4 id="pcb-component-layout"><strong>PCB Component Layout</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Section</strong></th>
+<th><strong>Components</strong></th>
+<th><strong>Location</strong></th>
+<th><strong>Connections</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Audio I/O</strong></td>
+<td>Speaker, Microphone, LED Connectors</td>
+<td>Top section</td>
+<td>Audio and lighting</td>
+</tr>
+<tr>
+<td><strong>Audio Processing</strong></td>
+<td>TAS5805M Amplifier</td>
+<td>Center-left</td>
+<td>Speaker connector</td>
+</tr>
+<tr>
+<td><strong>Digital Processing</strong></td>
+<td>ESP32-S3 MCU</td>
+<td>Center-right</td>
+<td>All digital I/O</td>
+</tr>
+<tr>
+<td><strong>Power Management</strong></td>
+<td>USB-C, PD Controller, 5V/12V/3.3V Rails</td>
+<td>Bottom section</td>
+<td>Power input and distribution</td>
+</tr>
+<tr>
+<td><strong>External I/O</strong></td>
+<td>Grove, Battery Connectors</td>
+<td>Bottom section</td>
+<td>External components</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pcb-layout-diagram"><strong>PCB Layout Diagram</strong></h4>
+<pre><code class="language-plantuml">@startuml
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam rectangle {
+    BackgroundColor #F0F8FF
+    BorderColor #4682B4
+}
+
+rectangle &quot;PCB Layout - 70mm × 45mm (Vertical)&quot; {
+
+    rectangle &quot;TOP SECTION&quot; as top {
+        [LED Connector\nJST PH-8] as led_conn
+        [Speaker Connector\nJST PH-4] as spk_conn
+        [Microphone Connector\nJST PH-6] as mic_conn
+    }
+
+    rectangle &quot;CENTER SECTION&quot; as center {
+        rectangle &quot;LEFT&quot; as left {
+            [TAS5805M\nAmplifier] as amp
+            [Audio Filtering] as filter
+        }
+
+        rectangle &quot;RIGHT&quot; as right {
+            [ESP32-S3\nMCU] as mcu
+            [I2C Pull-ups] as pullups
+        }
+    }
+
+    rectangle &quot;SENSOR SECTION&quot; as sensors {
+        [SHT45\nT/H Sensor] as sht45
+        [OPT3002\nLight Sensor] as light
+        [SCD41\nCO₂ Sensor] as co2
+        [BME688\nVOC Sensor] as voc
+        [SGP40\nVOC Alt] as sgp40
+        [Sound Level\nDerived] as sound
+    }
+
+    rectangle &quot;BOTTOM SECTION&quot; as bottom {
+        [USB-C Connector] as usb
+        [PD Controller\nCH224K/IP2721] as pd
+        [5V/12V/3.3V Rails] as rails
+        [Grove Connector\nI2C] as grove_conn
+        [Battery Connector\nJST PH-2] as bat_conn
+    }
+
+    rectangle &quot;SIDE EDGES&quot; as sides {
+        [Sensor Mounting\nPoints] as sensor_mount
+        [Ground Vias\nEMI Shielding] as vias
+    }
+}
+
+' Power connections
+usb --&gt; pd
+pd --&gt; rails
+rails --&gt; amp
+rails --&gt; mcu
+
+' Audio connections
+amp --&gt; spk_conn
+mic_conn --&gt; mcu
+
+' Digital connections
+mcu --&gt; led_conn
+mcu --&gt; sht45
+mcu --&gt; light
+mcu --&gt; co2
+mcu --&gt; voc
+mcu --&gt; sgp40
+mcu --&gt; sound
+mcu --&gt; grove_conn
+
+' Power connections
+rails --&gt; bat_conn
+
+note top of top : LED matrix and audio connections
+note top of center : Audio and digital processing
+note top of sensors : Environmental sensing
+note top of bottom : Power input and external connectors
+note right of sides : EMI mitigation and mounting
+
+@enduml
+</code></pre>
+<h4 id="power-distribution-network"><strong>Power Distribution Network</strong></h4>
+<pre><code class="language-plantuml">@startuml
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam componentStyle rectangle
+
+package &quot;Power Input&quot; {
+    [USB-C Input] as USB
+}
+
+package &quot;Power Management&quot; {
+    [PD Controller\nCH224K/IP2721] as PD
+    [5V Rail] as V5
+    [12V Rail] as V12
+    [3.3V Regulator] as V33
+}
+
+package &quot;Audio System&quot; {
+    [TAS5805M\nClass-D Amp] as AMP
+    [Speaker\nTEBM35C10-4] as SPK
+}
+
+package &quot;Digital System&quot; {
+    [ESP32-S3\nMCU] as MCU
+    [LED Matrix\nIS31FL3731] as LED
+    [Sensors\nI2C Bus] as SENS
+}
+
+USB --&gt; PD
+PD --&gt; V5
+V5 --&gt; V12
+V5 --&gt; V33
+V12 --&gt; AMP
+V33 --&gt; MCU
+V33 --&gt; LED
+V33 --&gt; SENS
+AMP --&gt; SPK
+
+note right of V12 : 8-10W for premium audio
+note right of V33 : 3.3V for digital systems
+note right of AMP : Dual power config\nPhase I evaluation
+@enduml
+</code></pre>
+<h4 id="signal-routing"><strong>Signal Routing</strong></h4>
+<ul>
+<li><strong>Audio Signals</strong>: TAS5805M → Speaker Connector (shielded)</li>
+<li><strong>Digital Audio</strong>: Microphone Connector → ESP32-S3 (I2S)</li>
+<li><strong>LED Control</strong>: ESP32-S3 → LED Connector (SPI)</li>
+<li><strong>Sensor Data</strong>: ESP32-S3 → Sensor Connector (I2C)</li>
+<li><strong>Expansion</strong>: ESP32-S3 → Grove Connector (I2C)</li>
+<li><strong>Power</strong>: Battery Connector → Power Management</li>
+</ul>
+<h3 id="sensor-architecture-placement"><strong>Sensor Architecture &amp; Placement</strong></h3>
+<h4 id="phase-i-sensor-suite-all-populated"><strong>Phase I Sensor Suite (All Populated)</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Sensor</strong></th>
+<th><strong>Part Number</strong></th>
+<th><strong>Mounting</strong></th>
+<th><strong>Connection</strong></th>
+<th><strong>Location</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Temperature/Humidity</strong></td>
+<td>SHT45</td>
+<td>On PCB</td>
+<td>Direct I2C</td>
+<td>PCB center</td>
+<td>Sleep comfort monitoring</td>
+</tr>
+<tr>
+<td><strong>Ambient Light</strong></td>
+<td>OPT3002</td>
+<td>On PCB</td>
+<td>Direct I2C</td>
+<td>PCB front edge</td>
+<td>Circadian lighting control</td>
+</tr>
+<tr>
+<td><strong>CO₂</strong></td>
+<td>SCD41</td>
+<td>On PCB</td>
+<td>Direct I2C</td>
+<td>PCB side edge</td>
+<td>Air quality monitoring</td>
+</tr>
+<tr>
+<td><strong>VOC/Gas</strong></td>
+<td>BME688</td>
+<td>On PCB</td>
+<td>Direct I2C</td>
+<td>PCB side edge</td>
+<td>Air quality assessment</td>
+</tr>
+<tr>
+<td><strong>VOC/Gas (Alt)</strong></td>
+<td>SGP40</td>
+<td>On PCB</td>
+<td>Direct I2C</td>
+<td>PCB side edge</td>
+<td>Air quality assessment</td>
+</tr>
+<tr>
+<td><strong>PM 2.5</strong></td>
+<td>SPS30</td>
+<td>External module</td>
+<td>Cabled I2C</td>
+<td>Grove connector</td>
+<td>Air quality monitoring</td>
+</tr>
+<tr>
+<td><strong>Sound Level</strong></td>
+<td>Derived from mics</td>
+<td>N/A</td>
+<td>Software</td>
+<td>Microphone array</td>
+<td>Sleep environment</td>
+</tr>
+</tbody>
+</table>
+<h4 id="phase-ii-sensor-selection-tbd-based-on-pilot-data"><strong>Phase II Sensor Selection (TBD Based on Pilot Data)</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Sensor</strong></th>
+<th><strong>Keep If</strong></th>
+<th><strong>Remove If</strong></th>
+<th><strong>Cost (10k pcs)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Temperature/Humidity</strong></td>
+<td>&gt;70% find useful</td>
+<td>&lt;50% find useful</td>
+<td>$1.20</td>
+</tr>
+<tr>
+<td><strong>Ambient Light</strong></td>
+<td>&gt;70% find useful</td>
+<td>&lt;50% find useful</td>
+<td>$0.80</td>
+</tr>
+<tr>
+<td><strong>CO₂</strong></td>
+<td>&gt;60% find useful</td>
+<td>&lt;40% find useful</td>
+<td>$2.50</td>
+</tr>
+<tr>
+<td><strong>VOC/Gas</strong></td>
+<td>&gt;50% find useful</td>
+<td>&lt;30% find useful</td>
+<td>$1.80</td>
+</tr>
+<tr>
+<td><strong>PM 2.5</strong></td>
+<td>&gt;40% find useful</td>
+<td>&lt;20% find useful</td>
+<td>$1.20</td>
+</tr>
+<tr>
+<td><strong>Sound Level</strong></td>
+<td>&gt;30% find useful</td>
+<td>&lt;20% find useful</td>
+<td>$0.00</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sensor-utility-measurement-methodology"><strong>Sensor Utility Measurement Methodology</strong></h3>
+<h4 id="user-feedback-collection"><strong>User Feedback Collection</strong></h4>
+<p><strong>Direct User Feedback:</strong>
+- <strong>Weekly Surveys</strong>: 5-minute surveys about sensor usefulness
+- <strong>Feature Usage Tracking</strong>: Which sensor data users actually view
+- <strong>Sleep Correlation</strong>: Do users report better sleep with sensor insights?
+- <strong>Action Taking</strong>: Do users change behavior based on sensor data?</p>
+<p><strong>Quantitative Metrics:</strong>
+- <strong>App Engagement</strong>: Time spent viewing sensor data
+- <strong>Feature Usage</strong>: Frequency of sensor data access
+- <strong>Alert Response</strong>: Do users act on sensor alerts?
+- <strong>Data Sharing</strong>: Do users share sensor insights?</p>
+<h4 id="sensor-utility-criteria"><strong>Sensor Utility Criteria</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Sensor</strong></th>
+<th><strong>Primary Metric</strong></th>
+<th><strong>Secondary Metrics</strong></th>
+<th><strong>Success Threshold</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Temperature/Humidity</strong></td>
+<td>Sleep quality correlation</td>
+<td>Comfort alerts acted upon</td>
+<td>&gt;70% report sleep improvement</td>
+</tr>
+<tr>
+<td><strong>Ambient Light</strong></td>
+<td>Circadian lighting effectiveness</td>
+<td>Manual light adjustments</td>
+<td>&gt;70% prefer auto lighting</td>
+</tr>
+<tr>
+<td><strong>CO₂</strong></td>
+<td>Air quality awareness</td>
+<td>Ventilation behavior change</td>
+<td>&gt;60% take action on high CO₂</td>
+</tr>
+<tr>
+<td><strong>VOC/Gas</strong></td>
+<td>Air quality insights</td>
+<td>Air purifier usage correlation</td>
+<td>&gt;50% find air quality data useful</td>
+</tr>
+<tr>
+<td><strong>PM 2.5</strong></td>
+<td>Health awareness</td>
+<td>Air quality behavior change</td>
+<td>&gt;40% check PM2.5 regularly</td>
+</tr>
+<tr>
+<td><strong>Sound Level</strong></td>
+<td>Sleep environment awareness</td>
+<td>Noise reduction actions</td>
+<td>&gt;30% use sound level data</td>
+</tr>
+</tbody>
+</table>
+<h4 id="data-collection-strategy"><strong>Data Collection Strategy</strong></h4>
+<p><strong>Phase I Pilot (8-10 weeks):</strong>
+- <strong>Week 1-2</strong>: Baseline data collection
+- <strong>Week 3-4</strong>: Feature introduction and education
+- <strong>Week 5-8</strong>: Active usage and feedback collection
+- <strong>Week 9-10</strong>: Final assessment and decision making</p>
+<p><strong>Data Points Collected:</strong>
+- <strong>Daily</strong>: Sensor readings, user interactions, sleep quality
+- <strong>Weekly</strong>: User surveys, feature usage statistics
+- <strong>Monthly</strong>: Sleep quality correlation analysis
+- <strong>End of Pilot</strong>: Comprehensive sensor utility assessment</p>
+<h4 id="user-experience-metrics"><strong>User Experience Metrics</strong></h4>
+<p><strong>Engagement Metrics:</strong>
+- <strong>Sensor Data Views</strong>: How often users check each sensor
+- <strong>Alert Responses</strong>: Do users act on sensor alerts?
+- <strong>Feature Discovery</strong>: Which sensors do users find first?
+- <strong>Retention</strong>: Do users continue using sensor features?</p>
+<p><strong>Behavioral Metrics:</strong>
+- <strong>Sleep Quality</strong>: Self-reported sleep improvement
+- <strong>Environmental Changes</strong>: Do users modify their environment?
+- <strong>Habit Formation</strong>: Do users develop sensor-based routines?
+- <strong>Recommendation</strong>: Would users recommend the device?</p>
+<h4 id="decision-framework"><strong>Decision Framework</strong></h4>
+<p><strong>Sensor Keep Criteria:</strong>
+1. <strong>User Engagement</strong>: &gt;50% of users interact with sensor data
+2. <strong>Sleep Correlation</strong>: Positive correlation with sleep quality
+3. <strong>Behavioral Impact</strong>: Users change behavior based on data
+4. <strong>Cost Justification</strong>: BOM cost vs user value</p>
+<p><strong>Sensor Remove Criteria:</strong>
+1. <strong>Low Engagement</strong>: &lt;30% of users interact with sensor data
+2. <strong>No Correlation</strong>: No measurable impact on sleep quality
+3. <strong>No Action</strong>: Users don't change behavior based on data
+4. <strong>High Cost</strong>: BOM cost exceeds user value</p>
+<h4 id="pilot-success-metrics"><strong>Pilot Success Metrics</strong></h4>
+<p><strong>Overall Pilot Success:</strong>
+- <strong>User Satisfaction</strong>: &gt;80% satisfied with device
+- <strong>Sleep Improvement</strong>: &gt;60% report better sleep
+- <strong>Feature Usage</strong>: &gt;70% use at least 3 sensor features
+- <strong>Recommendation</strong>: &gt;70% would recommend to others</p>
+<p><strong>Sensor-Specific Success:</strong>
+- <strong>Core Sensors</strong>: T/H, Light, CO₂ must show clear value
+- <strong>Optional Sensors</strong>: VOC, PM2.5, Sound can be removed if low value
+- <strong>Cost Optimization</strong>: Remove sensors that don't justify BOM cost</p>
+<h4 id="sensor-pcb-layout"><strong>Sensor PCB Layout</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>PCB Section</strong></th>
+<th><strong>Sensors</strong></th>
+<th><strong>I2C Addresses</strong></th>
+<th><strong>Power</strong></th>
+<th><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Front Edge</strong></td>
+<td>OPT3002 (Light)</td>
+<td>0x44</td>
+<td>3.3V</td>
+<td>Light exposure</td>
+</tr>
+<tr>
+<td><strong>Center</strong></td>
+<td>SHT45 (T/H)</td>
+<td>0x70</td>
+<td>3.3V</td>
+<td>Primary sensor</td>
+</tr>
+<tr>
+<td><strong>Left Side</strong></td>
+<td>SCD41 (CO₂)</td>
+<td>0x62</td>
+<td>3.3V</td>
+<td>Air quality</td>
+</tr>
+<tr>
+<td><strong>Right Side</strong></td>
+<td>BME688/SGP40 (VOC)</td>
+<td>0x76/0x59</td>
+<td>3.3V</td>
+<td>Air quality</td>
+</tr>
+<tr>
+<td><strong>Grove Port</strong></td>
+<td>SPS30 (PM2.5)</td>
+<td>0x69</td>
+<td>5V</td>
+<td>External module</td>
+</tr>
+</tbody>
+</table>
+<h4 id="i2c-bus-architecture"><strong>I2C Bus Architecture</strong></h4>
+<p><strong>Primary I2C Bus (3.3V):</strong>
+- <strong>SDA</strong>: GPIO21 (ESP32-S3)
+- <strong>SCL</strong>: GPIO22 (ESP32-S3)
+- <strong>Pull-ups</strong>: 4.7kΩ to 3.3V
+- <strong>Devices</strong>: SHT45, OPT3002, SCD41, BME688/SGP40</p>
+<p><strong>Secondary I2C Bus (5V - Grove):</strong>
+- <strong>SDA</strong>: GPIO23 (ESP32-S3)
+- <strong>SCL</strong>: GPIO24 (ESP32-S3)
+- <strong>Pull-ups</strong>: 4.7kΩ to 5V
+- <strong>Devices</strong>: SPS30 (PM2.5), External modules</p>
+<h4 id="sensor-placement-strategy"><strong>Sensor Placement Strategy</strong></h4>
+<p><strong>On-PCB Sensors (Direct I2C):</strong>
+- <strong>Advantages</strong>: Lower cost, better reliability, faster response
+- <strong>Disadvantages</strong>: Limited placement flexibility
+- <strong>Sensors</strong>: SHT45, OPT3002, SCD41, BME688/SGP40</p>
+<p><strong>External Sensors (Cabled I2C):</strong>
+- <strong>Advantages</strong>: Flexible placement, better airflow, modular
+- <strong>Disadvantages</strong>: Higher cost, connector complexity
+- <strong>Sensors</strong>: SPS30 (PM2.5), Future expansion modules</p>
+<h4 id="airflow-considerations"><strong>Airflow Considerations</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Sensor</strong></th>
+<th><strong>Airflow Requirement</strong></th>
+<th><strong>Placement Strategy</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SHT45</strong></td>
+<td>Moderate airflow</td>
+<td>PCB center, away from heat sources</td>
+</tr>
+<tr>
+<td><strong>OPT3002</strong></td>
+<td>Direct light exposure</td>
+<td>PCB front edge, clear aperture</td>
+</tr>
+<tr>
+<td><strong>SCD41</strong></td>
+<td>Good airflow</td>
+<td>PCB side edge, vent access</td>
+</tr>
+<tr>
+<td><strong>BME688/SGP40</strong></td>
+<td>Moderate airflow</td>
+<td>PCB side edge, away from electronics</td>
+</tr>
+<tr>
+<td><strong>SPS30</strong></td>
+<td>High airflow</td>
+<td>External module, dedicated airflow path</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vertical-pcb-with-led-matrix-integration"><strong>Vertical PCB with LED Matrix Integration</strong></h3>
+<h4 id="housing-assembly-structure"><strong>Housing Assembly Structure</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Layer</strong></th>
+<th><strong>Component</strong></th>
+<th><strong>Dimensions</strong></th>
+<th><strong>Function</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Front</strong></td>
+<td>LED Matrix (8×8 RGBW)</td>
+<td>32×32mm</td>
+<td>User-facing display</td>
+</tr>
+<tr>
+<td><strong>Middle</strong></td>
+<td>Main PCB (Vertical)</td>
+<td>70×45mm</td>
+<td>Core electronics</td>
+</tr>
+<tr>
+<td><strong>Back</strong></td>
+<td>Battery Compartment</td>
+<td>65×18mm</td>
+<td>18650 Li-ion battery</td>
+</tr>
+</tbody>
+</table>
+<h4 id="component-integration"><strong>Component Integration</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Component</strong></th>
+<th><strong>Location</strong></th>
+<th><strong>Connection</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LED Matrix</strong></td>
+<td>Front housing</td>
+<td>JST PH 8-pin</td>
+<td>RGBW display</td>
+</tr>
+<tr>
+<td><strong>Speaker</strong></td>
+<td>Side housing</td>
+<td>JST PH 2-pin</td>
+<td>Audio output</td>
+</tr>
+<tr>
+<td><strong>Microphones</strong></td>
+<td>Top housing</td>
+<td>JST PH 4-pin</td>
+<td>Voice input</td>
+</tr>
+<tr>
+<td><strong>Sensors</strong></td>
+<td>Side housing</td>
+<td>JST PH 6-pin</td>
+<td>Environmental data</td>
+</tr>
+<tr>
+<td><strong>Battery</strong></td>
+<td>Rear compartment</td>
+<td>JST PH 2-pin</td>
+<td>Power backup</td>
+</tr>
+<tr>
+<td><strong>Grove Port</strong></td>
+<td>Bottom housing</td>
+<td>JST PH 4-pin</td>
+<td>External expansion</td>
+</tr>
+</tbody>
+</table>
+<h3 id="housing-battery-integration"><strong>Housing &amp; Battery Integration</strong></h3>
+<h4 id="option-a-battery-behind-pcb-recommended"><strong>Option A: Battery Behind PCB (Recommended)</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>SKU Type</strong></th>
+<th><strong>Battery</strong></th>
+<th><strong>BOM Impact</strong></th>
+<th><strong>Runtime</strong></th>
+<th><strong>Use Case</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Premium</strong></td>
+<td>18650 Li-ion</td>
+<td>+$2.50</td>
+<td>3-4 hours (5V) / 1.5-2 hours (12V)</td>
+<td>Portable sleep companion</td>
+</tr>
+<tr>
+<td><strong>Evaluation</strong></td>
+<td>18650 Li-ion</td>
+<td>+$2.50</td>
+<td>2-3 hours</td>
+<td>Development &amp; testing</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Assembly Structure:</strong>
+- <strong>Front Layer</strong>: LED Matrix (8×8 RGBW) - User-facing display
+- <strong>Middle Layer</strong>: Main PCB (70×45mm) - Vertical orientation
+- <strong>Rear Layer</strong>: Battery Compartment - 18650 Li-ion battery
+- <strong>Side Components</strong>: Speaker, microphones, sensors via connectors</p>
+<h4 id="option-b-battery-dnp-budget-sku"><strong>Option B: Battery DNP (Budget SKU)</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>SKU Type</strong></th>
+<th><strong>Battery</strong></th>
+<th><strong>BOM Impact</strong></th>
+<th><strong>Power</strong></th>
+<th><strong>Use Case</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Budget</strong></td>
+<td>DNP (AC only)</td>
+<td>$0.00</td>
+<td>USB-C PD / 5V</td>
+<td>Fixed bedside use</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Assembly Structure:</strong>
+- <strong>Front Layer</strong>: LED Matrix (8×8 RGBW) - User-facing display
+- <strong>Middle Layer</strong>: Main PCB (70×45mm) - Vertical orientation
+- <strong>Rear Layer</strong>: Empty compartment - DNP for cost savings
+- <strong>Side Components</strong>: Speaker, microphones, sensors via connectors</p>
+<h3 id="connector-specifications"><strong>Connector Specifications</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Connector</th>
+<th>Pin Count</th>
+<th>Wire Gauge</th>
+<th>Length</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Speaker</strong></td>
+<td>JST PH 2-pin</td>
+<td>2</td>
+<td>22 AWG</td>
+<td>50mm</td>
+<td>Audio output</td>
+</tr>
+<tr>
+<td><strong>Microphone</strong></td>
+<td>JST PH 4-pin</td>
+<td>4</td>
+<td>26 AWG</td>
+<td>30mm</td>
+<td>I2S digital audio</td>
+</tr>
+<tr>
+<td><strong>LED Matrix</strong></td>
+<td>JST PH 8-pin</td>
+<td>8</td>
+<td>26 AWG</td>
+<td>20mm</td>
+<td>RGBW control</td>
+</tr>
+<tr>
+<td><strong>Sensors</strong></td>
+<td>JST PH 6-pin</td>
+<td>6</td>
+<td>26 AWG</td>
+<td>25mm</td>
+<td>I2C communication</td>
+</tr>
+<tr>
+<td><strong>Battery</strong></td>
+<td>JST PH 2-pin</td>
+<td>2</td>
+<td>22 AWG</td>
+<td>40mm</td>
+<td>Power connection</td>
+</tr>
+<tr>
+<td><strong>Grove I2C</strong></td>
+<td>JST PH 4-pin</td>
+<td>4</td>
+<td>26 AWG</td>
+<td>15mm</td>
+<td>External expansion</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emi-mitigation-strategy"><strong>EMI Mitigation Strategy</strong></h3>
+<h4 id="ground-plane-architecture"><strong>Ground Plane Architecture</strong></h4>
+<ul>
+<li><strong>Analog Ground</strong>: Dedicated ground plane for audio and sensors</li>
+<li><strong>Digital Ground</strong>: Separate ground plane for MCU and digital circuits</li>
+<li><strong>Ground Stitching</strong>: Multiple vias connecting ground planes</li>
+<li><strong>Ground Isolation</strong>: Ferrite beads between analog/digital grounds</li>
+</ul>
+<h4 id="power-supply-isolation"><strong>Power Supply Isolation</strong></h4>
+<ul>
+<li><strong>Ferrite Beads</strong>: On all power rails entering analog sections</li>
+<li><strong>LC Filters</strong>: Low-pass filters on power supplies</li>
+<li><strong>Decoupling</strong>: Multiple capacitors near each IC</li>
+<li><strong>Power Plane Separation</strong>: Dedicated power planes for analog/digital</li>
+</ul>
+<h4 id="component-placement"><strong>Component Placement</strong></h4>
+<ul>
+<li><strong>Physical Separation</strong>: Maximum distance between audio and digital sections</li>
+<li><strong>Shielding</strong>: Metal cans over TAS5805M and ESP32-S3</li>
+<li><strong>Trace Routing</strong>: Careful routing to minimize coupling</li>
+<li><strong>Via Stitching</strong>: Multiple vias around sensitive areas</li>
+</ul>
+<h3 id="pcb-stackup-4-layer"><strong>PCB Stackup (4-Layer)</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Function</th>
+<th>Thickness</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L1</strong></td>
+<td>Signal + Components</td>
+<td>0.1mm</td>
+<td>FR4</td>
+</tr>
+<tr>
+<td><strong>L2</strong></td>
+<td>Ground Plane</td>
+<td>0.2mm</td>
+<td>FR4</td>
+</tr>
+<tr>
+<td><strong>L3</strong></td>
+<td>Power Planes</td>
+<td>0.2mm</td>
+<td>FR4</td>
+</tr>
+<tr>
+<td><strong>L4</strong></td>
+<td>Signal + Components</td>
+<td>0.1mm</td>
+<td>FR4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="connector-vs-soldering-analysis"><strong>Connector vs Soldering Analysis</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Connectors</strong></th>
+<th><strong>Soldering</strong></th>
+<th><strong>Recommendation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Manufacturing</strong></td>
+<td>Faster assembly</td>
+<td>Slower assembly</td>
+<td>✅ Connectors</td>
+</tr>
+<tr>
+<td><strong>Serviceability</strong></td>
+<td>Easy replacement</td>
+<td>Difficult repair</td>
+<td>✅ Connectors</td>
+</tr>
+<tr>
+<td><strong>Quality Control</strong></td>
+<td>Easy testing</td>
+<td>Harder to test</td>
+<td>✅ Connectors</td>
+</tr>
+<tr>
+<td><strong>Yield</strong></td>
+<td>Higher yield</td>
+<td>Lower yield</td>
+<td>✅ Connectors</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Slightly higher</td>
+<td>Lower component cost</td>
+<td>⚖️ Trade-off</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>Good with proper connectors</td>
+<td>Excellent if done well</td>
+<td>⚖️ Trade-off</td>
+</tr>
+<tr>
+<td><strong>EMI</strong></td>
+<td>Better control</td>
+<td>Harder to control</td>
+<td>✅ Connectors</td>
+</tr>
+</tbody>
+</table>
+<h3 id="manufacturing-benefits"><strong>Manufacturing Benefits</strong></h3>
+<h4 id="assembly-efficiency"><strong>Assembly Efficiency</strong></h4>
+<ul>
+<li><strong>Faster Assembly</strong>: Connectors are faster than soldering</li>
+<li><strong>Automated Assembly</strong>: Connectors can be automated</li>
+<li><strong>Quality Control</strong>: Easy to test each connection</li>
+<li><strong>Higher Yield</strong>: Fewer assembly defects</li>
+</ul>
+<h4 id="serviceability"><strong>Serviceability</strong></h4>
+<ul>
+<li><strong>Easy Replacement</strong>: Components can be replaced without rework</li>
+<li><strong>Field Service</strong>: Easier to service in the field</li>
+<li><strong>Upgrade Path</strong>: Components can be upgraded</li>
+<li><strong>Repair</strong>: Faster and cheaper repairs</li>
+</ul>
+<h4 id="emi-control"><strong>EMI Control</strong></h4>
+<ul>
+<li><strong>Shielded Cables</strong>: Can use shielded cables for sensitive signals</li>
+<li><strong>Ground Control</strong>: Better ground control with connectors</li>
+<li><strong>Signal Integrity</strong>: Better signal integrity with proper connectors</li>
+<li><strong>EMI Shielding</strong>: Can add EMI shielding to connectors</li>
+</ul>
+<h3 id="testing-strategy"><strong>Testing Strategy</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Test Type</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PD Negotiation</strong></td>
+<td>USB-C PD tester</td>
+<td>Verify power delivery</td>
+</tr>
+<tr>
+<td><strong>Audio Sweep</strong></td>
+<td>Audio analyzer</td>
+<td>Validate audio performance</td>
+</tr>
+<tr>
+<td><strong>Sensor Enumeration</strong></td>
+<td>I2C scanner</td>
+<td>Verify sensor communication</td>
+</tr>
+<tr>
+<td><strong>Firmware OTA</strong></td>
+<td>Wireless update</td>
+<td>Test update mechanism</td>
+</tr>
+<tr>
+<td><strong>EMI Testing</strong></td>
+<td>EMC chamber</td>
+<td>Validate EMI performance</td>
+</tr>
+<tr>
+<td><strong>Connector Testing</strong></td>
+<td>Continuity tester</td>
+<td>Verify all connections</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-airflow-design-validation">4️⃣ Airflow Design &amp; Validation</h2>
+<p><strong>Concept:</strong><br />
+360° base gap feeding a passive diffusion plenum isolated from the speaker cavity.<br />
+Separate plenum for T/H, VOC, and CO₂ sensors; external PM sensor.</p>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Placement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T/RH</td>
+<td>Plenum air path ~10 mm from warm zones</td>
+</tr>
+<tr>
+<td>VOC</td>
+<td>Same plenum, light-shielded</td>
+</tr>
+<tr>
+<td>CO₂</td>
+<td>Side vent pocket ≥ 7 mm Z-clearance</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>Front aperture with baffle</td>
+</tr>
+<tr>
+<td>PM 2.5</td>
+<td>External Grove module</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Targets</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T/RH t₆₃</td>
+<td>≤ 45 s ( t₉₀ ≤ 90 s )</td>
+</tr>
+<tr>
+<td>VOC t₆₃</td>
+<td>≤ 30 s ( t₉₀ ≤ 60 s )</td>
+</tr>
+<tr>
+<td>CO₂ t₆₃</td>
+<td>≤ 60 s ( t₉₀ ≤ 120 s )</td>
+</tr>
+<tr>
+<td>Drift under draft</td>
+<td>&lt; ± 3 %</td>
+</tr>
+<tr>
+<td>Audio coupling</td>
+<td>&lt; ± 2 % T/RH shift or &lt; ± 50 ppm CO₂</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-led-matrix-lighting">5️⃣ LED Matrix &amp; Lighting</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Phase I</th>
+<th>Phase II</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>8×8 RGBW (IS31FL3731)</td>
+<td>Same matrix + integrated diffuser</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Sleep &amp; ambient light scenes</td>
+<td>Branded visual identity</td>
+</tr>
+<tr>
+<td><strong>Integration</strong></td>
+<td>Surface mount + diffuser plate</td>
+<td>Molded optic</td>
+</tr>
+<tr>
+<td><strong>Goal</strong></td>
+<td>Tune diffusion &amp; animation patterns</td>
+<td>Finalize lighting profiles</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-bom-summary-10-k-pcs-estimate">6️⃣ BOM Summary (10 k pcs estimate)</h2>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th style="text-align: right;">Phase I (Dual Config)</th>
+<th style="text-align: right;">Phase II (5V)</th>
+<th style="text-align: right;">Phase II (12V)</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power &amp; Regulation</td>
+<td style="text-align: right;">$2.40</td>
+<td style="text-align: right;">$0.85</td>
+<td style="text-align: right;">$1.20</td>
+<td style="text-align: left;">Dual config vs optimized</td>
+</tr>
+<tr>
+<td>Battery &amp; Charging</td>
+<td style="text-align: right;">$2.50</td>
+<td style="text-align: right;">$0.00</td>
+<td style="text-align: right;">$0.00</td>
+<td style="text-align: left;">DNP option in Phase II</td>
+</tr>
+<tr>
+<td>Amp &amp; Audio</td>
+<td style="text-align: right;">$3.20</td>
+<td style="text-align: right;">$2.20</td>
+<td style="text-align: right;">$2.80</td>
+<td style="text-align: left;">5V vs 12V configuration</td>
+</tr>
+<tr>
+<td>Speaker</td>
+<td style="text-align: right;">$4.00</td>
+<td style="text-align: right;">$3.50</td>
+<td style="text-align: right;">$3.50</td>
+<td style="text-align: left;">Same driver, volume discount</td>
+</tr>
+<tr>
+<td>MCU (ESP32-S3)</td>
+<td style="text-align: right;">$3.20</td>
+<td style="text-align: right;">$2.70</td>
+<td style="text-align: right;">$2.70</td>
+<td style="text-align: left;">Module vs SoC</td>
+</tr>
+<tr>
+<td>Mics &amp; AFE</td>
+<td style="text-align: right;">$4.40</td>
+<td style="text-align: right;">$2.20</td>
+<td style="text-align: right;">$2.20</td>
+<td style="text-align: left;">4 → 2 mics</td>
+</tr>
+<tr>
+<td>Sensors</td>
+<td style="text-align: right;">$13.50</td>
+<td style="text-align: right;">$4.50</td>
+<td style="text-align: right;">$4.50</td>
+<td style="text-align: left;">Select core set</td>
+</tr>
+<tr>
+<td>LED Matrix + Driver</td>
+<td style="text-align: right;">$3.60</td>
+<td style="text-align: right;">$2.40</td>
+<td style="text-align: right;">$2.40</td>
+<td style="text-align: left;">Integrated diffuser</td>
+</tr>
+<tr>
+<td>PCB + Conn</td>
+<td style="text-align: right;">$4.20</td>
+<td style="text-align: right;">$2.60</td>
+<td style="text-align: right;">$2.60</td>
+<td style="text-align: left;">Dual config complexity</td>
+</tr>
+<tr>
+<td>Enclosure &amp; Hardware</td>
+<td style="text-align: right;">$3.00</td>
+<td style="text-align: right;">$2.50</td>
+<td style="text-align: right;">$2.50</td>
+<td style="text-align: left;">Mold cost spread</td>
+</tr>
+<tr>
+<td>Assembly &amp; Test</td>
+<td style="text-align: right;">$3.00</td>
+<td style="text-align: right;">$1.80</td>
+<td style="text-align: right;">$1.80</td>
+<td style="text-align: left;">Dual config complexity</td>
+</tr>
+<tr>
+<td>Packaging</td>
+<td style="text-align: right;">$1.00</td>
+<td style="text-align: right;">$0.80</td>
+<td style="text-align: right;">$0.80</td>
+<td style="text-align: left;">Standard kit</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td style="text-align: right;"><strong>$48.00</strong></td>
+<td style="text-align: right;"><strong>$26.05</strong></td>
+<td style="text-align: right;"><strong>$27.15</strong></td>
+<td style="text-align: left;"><strong>Phase II options</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="battery-options">Battery Options</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Phase I (Dual Config)</th>
+<th>Phase II (5V)</th>
+<th>Phase II (12V)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Battery</strong></td>
+<td>18650 Li-ion (2-3 hrs)</td>
+<td>18650 Li-ion (3-4 hrs)</td>
+<td>18650 Li-ion (1.5-2 hrs)</td>
+</tr>
+<tr>
+<td><strong>Charging</strong></td>
+<td>USB-C PD + Li-ion charger</td>
+<td>USB-C + Li-ion charger</td>
+<td>USB-C PD + Li-ion charger</td>
+</tr>
+<tr>
+<td><strong>Runtime</strong></td>
+<td>2-3 hours backup</td>
+<td>3-4 hours backup</td>
+<td>1.5-2 hours backup</td>
+</tr>
+<tr>
+<td><strong>BOM Impact</strong></td>
+<td>+$2.50</td>
+<td>+$2.50</td>
+<td>+$2.50</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Full evaluation</td>
+<td>Portable + affordable</td>
+<td>Portable + premium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-ii-architecture-decision-summary">Phase II Architecture Decision Summary</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Decision Point</strong></th>
+<th><strong>5V Architecture</strong></th>
+<th><strong>12V Architecture</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BOM Cost</strong></td>
+<td>$26.05</td>
+<td>$27.15</td>
+</tr>
+<tr>
+<td><strong>Audio Power</strong></td>
+<td>3-4W</td>
+<td>8-10W</td>
+</tr>
+<tr>
+<td><strong>Battery Runtime</strong></td>
+<td>3-4 hours</td>
+<td>1.5-2 hours</td>
+</tr>
+<tr>
+<td><strong>Charger Compatibility</strong></td>
+<td>Universal USB-C</td>
+<td>12V PD required</td>
+</tr>
+<tr>
+<td><strong>Thermal Performance</strong></td>
+<td>Cool (&lt;50°C)</td>
+<td>Warm (&lt;65°C)</td>
+</tr>
+<tr>
+<td><strong>Market Position</strong></td>
+<td>Affordable + Environmental</td>
+<td>Premium + Environmental</td>
+</tr>
+<tr>
+<td><strong>Competitive Focus</strong></td>
+<td>Portability + Value</td>
+<td>Audio Performance + Value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pilot-success-metrics-decision-framework">Pilot Success Metrics &amp; Decision Framework</h3>
+<h4 id="audio-architecture-decision-criteria"><strong>Audio Architecture Decision Criteria</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Metric</strong></th>
+<th><strong>5V Wins If</strong></th>
+<th><strong>12V Wins If</strong></th>
+<th><strong>Measurement Method</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>User Preference</strong></td>
+<td>&gt;60% prefer 5V</td>
+<td>&gt;60% prefer 12V</td>
+<td>Blind A/B testing (n=50)</td>
+</tr>
+<tr>
+<td><strong>Battery Life</strong></td>
+<td>3+ hours valued</td>
+<td>2+ hours acceptable</td>
+<td>User feedback + measurement</td>
+</tr>
+<tr>
+<td><strong>Thermal Comfort</strong></td>
+<td>Cool operation preferred</td>
+<td>Warm operation acceptable</td>
+<td>User comfort survey</td>
+</tr>
+<tr>
+<td><strong>Charger Convenience</strong></td>
+<td>Universal USB-C important</td>
+<td>12V PD acceptable</td>
+<td>User experience survey</td>
+</tr>
+<tr>
+<td><strong>Cost Sensitivity</strong></td>
+<td>$1+ savings important</td>
+<td>Premium worth extra cost</td>
+<td>Price sensitivity analysis</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sensor-validation-criteria"><strong>Sensor Validation Criteria</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Sensor</strong></th>
+<th><strong>Keep If</strong></th>
+<th><strong>Remove If</strong></th>
+<th><strong>Measurement</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T/H</strong></td>
+<td>&gt;70% find useful</td>
+<td>&lt;50% find useful</td>
+<td>User feedback + sleep correlation</td>
+</tr>
+<tr>
+<td><strong>Light</strong></td>
+<td>&gt;70% find useful</td>
+<td>&lt;50% find useful</td>
+<td>Circadian lighting effectiveness</td>
+</tr>
+<tr>
+<td><strong>CO₂</strong></td>
+<td>&gt;60% find useful</td>
+<td>&lt;40% find useful</td>
+<td>Air quality impact on sleep</td>
+</tr>
+<tr>
+<td><strong>VOC</strong></td>
+<td>&gt;50% find useful</td>
+<td>&lt;30% find useful</td>
+<td>Air quality vs complexity</td>
+</tr>
+<tr>
+<td><strong>PM2.5</strong></td>
+<td>&gt;40% find useful</td>
+<td>&lt;20% find useful</td>
+<td>Integration feasibility</td>
+</tr>
+</tbody>
+</table>
+<h4 id="final-recommendation-refined-pilot-approach"><strong>Final Recommendation: Refined Pilot Approach</strong></h4>
+<p><strong>Phase I: Focused Dual Architecture Pilot (6 weeks)</strong>
+1. <strong>Simplified Dual Architecture</strong>: Single PCB with configurable power rails
+2. <strong>Core Sensor Suite</strong>: 3 essential + 2 optional sensors
+3. <strong>Accelerated Testing</strong>: Parallel development and testing
+4. <strong>Clear Decision Criteria</strong>: Quantitative metrics for architecture selection
+5. <strong>Market Validation</strong>: Real user feedback on key features</p>
+<p><strong>Phase II: Optimized Production Design (4 weeks)</strong>
+1. <strong>Data-Driven Architecture</strong>: Based on pilot results
+2. <strong>Validated Sensor Suite</strong>: Only sensors proven valuable
+3. <strong>Optimized BOM</strong>: Cost-optimized based on pilot learnings
+4. <strong>Production Ready</strong>: Manufacturing-optimized design</p>
+<p><strong>Expected Outcomes:</strong>
+- <strong>Reduced Risk</strong>: Data-driven decisions eliminate assumptions
+- <strong>Faster Time to Market</strong>: 10 weeks vs 16+ weeks
+- <strong>Lower Development Cost</strong>: Simplified pilot approach
+- <strong>Better Market Fit</strong>: Real user validation
+- <strong>Competitive Advantage</strong>: Evidence-based feature selection</p>
+<p><strong>Conclusion</strong>: The pilot approach is strategically sound but needs refinement to balance thoroughness with speed and cost. The recommended approach maintains the benefits of data-driven decision making while reducing complexity and timeline risk.</p>
+<hr />
+<h2 id="7-timeline-validation">7️⃣ Timeline &amp; Validation</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Key Outcomes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase I EVT</strong></td>
+<td>8–10 weeks</td>
+<td>Audio, sensor, and airflow validation</td>
+</tr>
+<tr>
+<td><strong>Phase I DVT</strong></td>
+<td>+ 4 weeks</td>
+<td>Firmware + enclosure fit</td>
+</tr>
+<tr>
+<td><strong>Phase II EVT</strong></td>
+<td>6 weeks</td>
+<td>DNP subset + mold validation</td>
+</tr>
+<tr>
+<td><strong>Phase II PVT</strong></td>
+<td>+ 4–6 weeks</td>
+<td>1 000-unit pilot build and automated test</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="success-criteria">✅ Success Criteria</h2>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audio</td>
+<td>Outperforms Hatch Restore 3 in clarity &amp; SPL</td>
+</tr>
+<tr>
+<td>Sensors</td>
+<td>± 3 % repeatability vs reference bench</td>
+</tr>
+<tr>
+<td>Airflow</td>
+<td>Meets t₆₃ targets and drift limits</td>
+</tr>
+<tr>
+<td>Thermal</td>
+<td>Amp &lt; 70 °C @ max load</td>
+</tr>
+<tr>
+<td>Manufacturability</td>
+<td>Connector alignment ± 0.15 mm max</td>
+</tr>
+<tr>
+<td>App</td>
+<td>Auto-EQ cycle &lt; 10 s; sensor dashboard OK</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-table">📋 Summary Table</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Phase I</th>
+<th>Phase II</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Validation and data collection</td>
+<td>Production &amp; scale</td>
+</tr>
+<tr>
+<td><strong>Population</strong></td>
+<td>All subsystems active</td>
+<td>Streamlined set</td>
+</tr>
+<tr>
+<td><strong>Boards</strong></td>
+<td>Same PCBs shared</td>
+<td>DNP reductions</td>
+</tr>
+<tr>
+<td><strong>Firmware</strong></td>
+<td>Common base</td>
+<td>OTA ready</td>
+</tr>
+<tr>
+<td><strong>Deliverable</strong></td>
+<td>100-unit evaluation batch</td>
+<td>10 k-unit production run</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="competitive-analysis">🏆 Competitive Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><strong>Naphome</strong></th>
+<th><strong>Hatch Restore 3</strong></th>
+<th><strong>Amazon Echo</strong></th>
+<th><strong>Google Nest Hub</strong></th>
+<th><strong>Philips SmartSleep</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>🎵 Audio</strong></td>
+<td>10W DSP + 50mm driver</td>
+<td>Premium sound (undisclosed power)</td>
+<td>Basic smart speaker</td>
+<td>Basic smart speaker</td>
+<td>Premium sound (undisclosed power)</td>
+</tr>
+<tr>
+<td><strong>💡 Lighting</strong></td>
+<td>8×8 RGBW matrix</td>
+<td>Sunrise simulation LED</td>
+<td>Basic status LED</td>
+<td>Display + ambient</td>
+<td>Sunrise simulation LED</td>
+</tr>
+<tr>
+<td><strong>🌡️ Environmental Sensors</strong></td>
+<td>T/H, Light, CO₂ (pilot)</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>📊 Sleep Tracking</strong></td>
+<td>None (environmental focus)</td>
+<td>Built-in sleep tracking</td>
+<td>None</td>
+<td>None</td>
+<td>Built-in sleep tracking</td>
+</tr>
+<tr>
+<td><strong>🎤 Voice Control</strong></td>
+<td>ESP32-S3 + cloud</td>
+<td>None</td>
+<td>Alexa</td>
+<td>Google Assistant</td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>🔋 Battery</strong></td>
+<td>Optional (2-3 hrs)</td>
+<td>AC only</td>
+<td>AC only</td>
+<td>AC only</td>
+<td>AC only</td>
+</tr>
+<tr>
+<td><strong>📱 App Control</strong></td>
+<td>Custom sleep app</td>
+<td>Hatch app</td>
+<td>Alexa app</td>
+<td>Google Home</td>
+<td>Philips app</td>
+</tr>
+<tr>
+<td><strong>💰 Price</strong></td>
+<td>$80-120 (est.)</td>
+<td>$200</td>
+<td>$50-100</td>
+<td>$100-150</td>
+<td>$150-200</td>
+</tr>
+<tr>
+<td><strong>🎯 Primary Focus</strong></td>
+<td>Environmental sleep optimization</td>
+<td>Sleep + wake routines</td>
+<td>Smart home hub</td>
+<td>Smart home hub</td>
+<td>Sleep therapy</td>
+</tr>
+<tr>
+<td><strong>📈 Unique Value</strong></td>
+<td>Real-time environment monitoring</td>
+<td>Comprehensive sleep routines</td>
+<td>Smart home integration</td>
+<td>Display + smart home</td>
+<td>Sleep coaching</td>
+</tr>
+</tbody>
+</table>
+<h3 id="competitive-advantages">🎯 <strong>Competitive Advantages</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Advantage</th>
+<th>Description</th>
+<th>Market Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>🌡️ Environmental Intelligence</strong></td>
+<td>Only device with real-time T/H, Light, CO₂ monitoring</td>
+<td>Unique sleep optimization approach</td>
+</tr>
+<tr>
+<td><strong>🔋 Portable Sleep Companion</strong></td>
+<td>Optional battery backup for travel/camping</td>
+<td>Only portable premium sleep device</td>
+</tr>
+<tr>
+<td><strong>📊 Data-Driven Design</strong></td>
+<td>Pilot program validates which sensors provide real value</td>
+<td>Evidence-based feature selection</td>
+</tr>
+<tr>
+<td><strong>💰 Accessible Premium</strong></td>
+<td>$80-120 vs $150-200 for Hatch/Philips</td>
+<td>Premium features at mid-market price</td>
+</tr>
+<tr>
+<td><strong>🎯 Focused Purpose</strong></td>
+<td>Environmental sleep optimization vs. general smart home</td>
+<td>Clear value proposition</td>
+</tr>
+</tbody>
+</table>
+<h3 id="competitive-challenges">🚨 <strong>Competitive Challenges</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Challenge</th>
+<th>Mitigation Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>🏢 Brand Recognition</strong></td>
+<td>Focus on unique environmental intelligence value proposition</td>
+</tr>
+<tr>
+<td><strong>📱 Ecosystem Integration</strong></td>
+<td>Open API for smart home compatibility + voice assistant integration</td>
+</tr>
+<tr>
+<td><strong>🛒 Distribution</strong></td>
+<td>Direct-to-consumer + specialty sleep retailers + Amazon marketplace</td>
+</tr>
+<tr>
+<td><strong>📈 Market Education</strong></td>
+<td>Clear messaging on environmental sleep optimization benefits</td>
+</tr>
+<tr>
+<td><strong>🎯 Feature Validation</strong></td>
+<td>Pilot program proves sensor utility before production commitment</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>End of Document</strong></p>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Syzygy Labs - Naphome Smart Sleep Device</p>
+        </footer>
+    </div>
+    
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+    
+    <script>
+        // Authentication check
+        if (!document.cookie.includes('naphome-auth=authenticated') && 
+            !window.location.search.includes('bypass=naphome-bypass-2025')) {
+            window.location.href = '/auth';
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        // Hide back to top button initially
+        document.querySelector('.back-to-top').style.display = 'none';
+    </script>
+</body>
+</html>

@@ -18,7 +18,8 @@ def create_html_template(title, content, nav_links=None):
             ("P0 Specs", "P0.html"),
             ("Proposal", "Proposal.html"),
             ("Audio System", "Naphome_Audio.html"),
-            ("Core Specs", "SPECS.html")
+            ("Core Specs", "SPECS.html"),
+            ("Development Plan", "Naphome_egg.html")
         ]
     
     nav_html = ""
@@ -376,7 +377,8 @@ def convert_markdown_to_html(md_file_path, output_dir="html"):
         ("P0 Specs", "P0.html"),
         ("Proposal", "Proposal.html"),
         ("Audio System", "Naphome_Audio.html"),
-        ("Core Specs", "SPECS.html")
+        ("Core Specs", "SPECS.html"),
+        ("Development Plan", "Naphome_egg.html")
     ]
     
     # Generate complete HTML
@@ -396,6 +398,12 @@ def create_index_page(output_dir="html"):
     """Create an index page that links to all converted pages."""
     
     pages = [
+        {
+            "title": "Development Plan",
+            "description": "Phase I & Phase II development roadmap with sensor validation and PCB design",
+            "file": "Naphome_egg.html",
+            "icon": "🥚"
+        },
         {
             "title": "P0 Specifications",
             "description": "Current prototype specifications and achievements",
@@ -466,7 +474,8 @@ def create_index_page(output_dir="html"):
         ("P0 Specs", "P0.html"),
         ("Proposal", "Proposal.html"),
         ("Audio System", "Naphome_Audio.html"),
-        ("Core Specs", "SPECS.html")
+        ("Core Specs", "SPECS.html"),
+        ("Development Plan", "Naphome_egg.html")
     ]
     
     full_html = create_html_template("Naphome Documentation", content, nav_links)
@@ -486,7 +495,8 @@ def main():
         "P0.md",
         "Proposal.md", 
         "Naphome_Audio.md",
-        "SPECS.md"
+        "SPECS.md",
+        "Naphome_egg.md"
     ]
     
     print("Converting markdown files to HTML...")
