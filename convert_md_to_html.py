@@ -32,6 +32,7 @@ def create_html_template(title, content, nav_links=None):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} - Naphome</title>
+    <link rel="icon" href="/egg.png" type="image/png">
     <style>
         * {{
             margin: 0;
@@ -42,8 +43,8 @@ def create_html_template(title, content, nav_links=None):
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
             min-height: 100vh;
         }}
         
@@ -56,10 +57,11 @@ def create_html_template(title, content, nav_links=None):
         }}
         
         header {{
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
             color: white;
             padding: 2rem 0;
             text-align: center;
+            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.3);
         }}
         
         header h1 {{
@@ -74,10 +76,10 @@ def create_html_template(title, content, nav_links=None):
         }}
         
         nav {{
-            background: #34495e;
+            background: #6366f1;
             padding: 1rem 0;
             text-align: center;
-            border-bottom: 3px solid #3498db;
+            border-bottom: 3px solid #8b5cf6;
         }}
         
         nav a {{
@@ -91,7 +93,7 @@ def create_html_template(title, content, nav_links=None):
         }}
         
         nav a:hover {{
-            background: #3498db;
+            background: #8b5cf6;
             transform: translateY(-2px);
         }}
         
@@ -110,7 +112,7 @@ def create_html_template(title, content, nav_links=None):
         
         h1 {{
             font-size: 2.2rem;
-            border-bottom: 3px solid #3498db;
+            border-bottom: 3px solid #8b5cf6;
             padding-bottom: 0.5rem;
         }}
         
@@ -131,6 +133,19 @@ def create_html_template(title, content, nav_links=None):
         
         ul, ol {{
             margin: 1rem 0 1rem 2rem;
+            padding-left: 0;
+        }}
+        
+        ul li {{
+            list-style-type: disc;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }}
+        
+        ol li {{
+            list-style-type: decimal;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
         }}
         
         li {{
@@ -154,7 +169,7 @@ def create_html_template(title, content, nav_links=None):
         }}
         
         th {{
-            background: #3498db;
+            background: #8b5cf6;
             color: white;
             font-weight: 600;
             text-transform: uppercase;
@@ -192,7 +207,7 @@ def create_html_template(title, content, nav_links=None):
         }}
         
         blockquote {{
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #8b5cf6;
             margin: 2rem 0;
             padding: 1rem 2rem;
             background: #f8f9fa;
@@ -201,11 +216,11 @@ def create_html_template(title, content, nav_links=None):
         }}
         
         .highlight {{
-            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            background: linear-gradient(120deg, #e0e7ff 0%, #f3e8ff 100%);
             padding: 2rem;
             border-radius: 10px;
             margin: 2rem 0;
-            border-left: 5px solid #3498db;
+            border-left: 5px solid #8b5cf6;
         }}
         
         .emoji {{
@@ -223,7 +238,7 @@ def create_html_template(title, content, nav_links=None):
         }}
         
         footer {{
-            background: #2c3e50;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
             color: white;
             text-align: center;
             padding: 2rem;
@@ -234,7 +249,7 @@ def create_html_template(title, content, nav_links=None):
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: #3498db;
+            background: #8b5cf6;
             color: white;
             border: none;
             border-radius: 50%;
@@ -242,12 +257,12 @@ def create_html_template(title, content, nav_links=None):
             height: 50px;
             cursor: pointer;
             font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
             transition: all 0.3s ease;
         }}
         
         .back-to-top:hover {{
-            background: #2980b9;
+            background: #7c3aed;
             transform: translateY(-3px);
         }}
         
@@ -459,12 +474,12 @@ def create_index_page(output_dir="html"):
     
     for page in pages:
         content += f"""
-        <div style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; border-left: 5px solid #3498db;">
+        <div style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; border-left: 5px solid #8b5cf6;">
             <h3 style="color: #2c3e50; margin-bottom: 1rem;">
                 <span class="emoji">{page['icon']}</span> {page['title']}
             </h3>
             <p style="color: #7f8c8d; margin-bottom: 1.5rem;">{page['description']}</p>
-            <a href="{page['file']}" style="display: inline-block; background: #3498db; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; font-weight: 500; transition: all 0.3s ease;">
+            <a href="{page['file']}" style="display: inline-block; background: #8b5cf6; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; font-weight: 500; transition: all 0.3s ease;">
                 Read More →
             </a>
         </div>
