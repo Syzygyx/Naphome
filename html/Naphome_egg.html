@@ -1073,6 +1073,12 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 * <strong>Voice Streaming:</strong> 1-2MB for ElevenLabs/Spotify PCM chunks during streaming
 * <strong>JSON/API Buffers:</strong> 0.5-1MB for sensor data and API responses
 * <strong>System Overhead:</strong> 1-2MB headroom for RTOS and Wi-Fi stack</p>
+<p><strong>16MB Flash Memory Allocation Strategy:</strong>
+* <strong>Firmware &amp; Bootloader:</strong> 2-3MB (ESP32-S3 system files)
+* <strong>Local Sound Library:</strong> 8-10MB (sleep sounds, white noise, nature sounds)
+* <strong>TTS Cache:</strong> 2-3MB (frequently used voice responses)
+* <strong>User Data &amp; Settings:</strong> 1-2MB (sensor logs, user preferences)
+* <strong>OTA &amp; Recovery:</strong> 1-2MB (firmware update buffer)</p>
 <p><strong>Wi-Fi Optimization:</strong>
 * Disable power save during playback: <code>esp_wifi_set_ps(WIFI_PS_NONE)</code>
 * Lock CPU frequency during critical sections
@@ -1089,6 +1095,12 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 * <strong>Local ML Processing:</strong> Wake-word models and voice embeddings stored entirely in PSRAM
 * <strong>Smooth LED Animations:</strong> Pre-rendered 8×8 RGBW frames (49KB each) with multiple animation sequences
 * <strong>Voice2Voice Integration:</strong> Decoded PCM chunks held in memory while downloading next segments</p>
+<p><strong>Local Sound Storage Benefits:</strong>
+* <strong>Offline Functionality:</strong> Core sleep sounds available without Wi-Fi connection
+* <strong>Instant Playback:</strong> No buffering delays for local sounds (rain, ocean, white noise)
+* <strong>Battery Efficiency:</strong> Reduced Wi-Fi usage during sleep sessions
+* <strong>Reliability:</strong> Fallback sounds if streaming services are unavailable
+* <strong>User Experience:</strong> Immediate response to sleep sound requests</p>
 <h4 id="stress-test-protocol"><strong>Stress Test Protocol</strong></h4>
 <p><strong>"Prove It" Test Suite:</strong>
 1. <strong>Baseline:</strong> 44.1 kHz stereo I²S + LED @ 60 FPS
@@ -1096,15 +1108,17 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 3. <strong>HTTP Burst:</strong> Concurrent HTTP(S) download
 4. <strong>PSRAM Stress:</strong> Large audio buffers + LED frame buffers + ML model loading
 5. <strong>Concurrent Streaming:</strong> ElevenLabs TTS + Spotify playback simultaneously
-6. <strong>Storage:</strong> Periodic NVS writes (avoided during critical loops)
-7. <strong>Duration:</strong> 30-minute continuous test</p>
+6. <strong>Local Sound Storage:</strong> Flash read/write during audio playback (sound library access)
+7. <strong>Storage:</strong> Periodic NVS writes (avoided during critical loops)
+8. <strong>Duration:</strong> 30-minute continuous test</p>
 <p><strong>Success Metrics:</strong>
 * <strong>Audio:</strong> Zero buffer underruns
 * <strong>LED:</strong> Zero frame drops or glitches
 * <strong>ISR Latency:</strong> &lt; 100 μs maximum
 * <strong>Wi-Fi:</strong> Maintained connection, no timeouts
 * <strong>PSRAM Performance:</strong> &lt; 5% memory fragmentation, consistent DMA throughput
-* <strong>Concurrent Operations:</strong> TTS + streaming + LED animations without degradation</p>
+* <strong>Flash Performance:</strong> &lt; 10ms access time for local sound files, no audio glitches during flash reads
+* <strong>Concurrent Operations:</strong> TTS + streaming + LED animations + local sound playback without degradation</p>
 <h4 id="co-mcu-fallback-plan"><strong>Co-MCU Fallback Plan</strong></h4>
 <p><strong>If Single MCU Fails:</strong>
 * <strong>Co-Processor:</strong> RP2040 or ESP32-C3 (RF disabled)
@@ -1170,7 +1184,8 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 * Reserve co-MCU header/footprint regardless of decision
 * Design for both single and dual-MCU configurations
 * Ensure adequate power supply headroom for co-MCU option
-* <strong>ESP32-S3 Module:</strong> Use ESP32-S3-WROOM-1-N16R8 (16MB flash + 8MB PSRAM) or custom module with 16MB PSRAM</p>
+* <strong>ESP32-S3 Module:</strong> Use ESP32-S3-WROOM-1-N16R8 (16MB flash + 8MB PSRAM) or custom module with 16MB PSRAM
+* <strong>Flash Memory Strategy:</strong> 16MB minimum for local sound storage (sleep sounds, alarms, TTS cache)</p>
 <p><strong>Firmware Architecture:</strong>
 * Modular design supporting both configurations
 * Clear separation between real-time and non-real-time tasks
@@ -1179,6 +1194,28 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 * <strong>Week 1-2:</strong> Single MCU optimization and stress testing
 * <strong>Week 3:</strong> Co-MCU prototype if single MCU fails
 * <strong>Week 4:</strong> Final architecture decision and PCB updates</p>
+<h3 id="local-sound-storage-specifications"><strong>Local Sound Storage Specifications</strong></h3>
+<p><strong>Flash Memory Requirements:</strong>
+* <strong>Minimum:</strong> 16MB flash (ESP32-S3-WROOM-1-N16R8)
+* <strong>Recommended:</strong> 32MB flash for expanded sound library
+* <strong>Interface:</strong> QSPI flash with 120 MHz access speed
+* <strong>File System:</strong> SPIFFS or LittleFS for sound file management</p>
+<p><strong>Sound File Specifications:</strong>
+* <strong>Format:</strong> WAV (uncompressed) or MP3 (compressed) for local storage
+* <strong>Quality:</strong> 44.1 kHz, 16-bit stereo for premium sounds
+* <strong>Compression:</strong> MP3 at 128-192 kbps for space efficiency
+* <strong>Library Size:</strong> 8-10MB for comprehensive sleep sound collection</p>
+<p><strong>Local Sound Library Content:</strong>
+* <strong>White Noise:</strong> 5-10 variations (fan, static, pink noise)
+* <strong>Nature Sounds:</strong> Rain, ocean, forest, thunder (2-3 hours each)
+* <strong>Ambient:</strong> City sounds, café, library (1-2 hours each)
+* <strong>Meditation:</strong> Binaural beats, singing bowls, chimes
+* <strong>Alarms:</strong> Gentle wake-up sounds, sunrise simulation audio</p>
+<p><strong>Implementation Strategy:</strong>
+* <strong>Pre-loaded:</strong> Core sounds included in firmware
+* <strong>User Downloads:</strong> Additional sounds via app (stored in flash)
+* <strong>Streaming Fallback:</strong> Local sounds play if Wi-Fi unavailable
+* <strong>Cache Management:</strong> LRU eviction for downloaded sounds</p>
 <hr />
 <h2 id="6-pcb-design-architecture">6️⃣ PCB Design &amp; Architecture</h2>
 <h3 id="connectorized-single-pcb-design"><strong>Connectorized Single PCB Design</strong></h3>
