@@ -9,12 +9,18 @@ source venv/bin/activate
 pip install -r requirements.txt
 python convert_md_to_html.py
 
+# Copy image files to HTML directory
+echo "🖼️ Copying image files..."
+cp *.png html/ 2>/dev/null || true
+cp -r images/ html/ 2>/dev/null || true
+
 # Add and commit changes
 echo "📦 Committing changes..."
 git add html/
 git add vercel.json
 git add convert_md_to_html.py
 git add deploy.sh
+git add *.png 2>/dev/null || true
 
 # Check if there are changes to commit
 if git diff --staged --quiet; then
