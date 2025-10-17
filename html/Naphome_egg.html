@@ -1050,11 +1050,13 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 <p><strong>Purpose:</strong> Determine if single ESP32-S3 can handle all real-time tasks (audio, LED, Wi-Fi) without performance degradation, or if a co-MCU is required.</p>
 <h3 id="challenge-real-time-performance-under-load">Challenge: Real-Time Performance Under Load</h3>
 <p><strong>The Problem:</strong> ESP32-S3 dual-core helps but isn't a silver bullet. Shared resources (SPI flash/PSRAM, caches, AHB bus) and high-priority Wi-Fi/BLE ISRs can still cause audio underruns and LED glitches.</p>
+<p><strong>ESP32-S3 PSRAM Advantage:</strong> 8MB QSPI PSRAM (120 MHz Octal) provides 2× bandwidth vs classic ESP32, enabling large DMA-backed buffers that absorb Wi-Fi latency spikes without audio clicks.</p>
 <p><strong>Critical Performance Requirements:</strong>
 * <strong>Audio:</strong> 44.1 kHz stereo I²S with DMA, zero underruns
 * <strong>LED Matrix:</strong> 60 FPS updates via RMT/SPI, no glitches
 * <strong>Wi-Fi:</strong> Sustained TLS MQTT + HTTP(S) traffic
-* <strong>Sensors:</strong> Real-time I2C polling without blocking</p>
+* <strong>Sensors:</strong> Real-time I2C polling without blocking
+* <strong>ML Models:</strong> Wake-word detection and TTS models in PSRAM</p>
 <h3 id="phase-i-evaluation-strategy">Phase I Evaluation Strategy</h3>
 <h4 id="single-mcu-optimization-approach"><strong>Single MCU Optimization Approach</strong></h4>
 <p><strong>Core Assignment Strategy:</strong>
@@ -1064,6 +1066,13 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 * <strong>Audio:</strong> I²S with DMA (8-12 buffers, generous queue depth)
 * <strong>LEDs:</strong> RMT or SPI-driven (avoid WS2812 bit-bang)
 * <strong>External LED Driver:</strong> IS31FL3731 for 8×8 RGBW matrix</p>
+<p><strong>8MB PSRAM Memory Allocation Strategy:</strong>
+* <strong>Audio Buffers:</strong> 1-2MB for large DMA ring buffers (absorbs Wi-Fi latency spikes)
+* <strong>LED Frame Buffers:</strong> 0.5-1MB for pre-rendered 8×8 RGBW animations
+* <strong>ML Models:</strong> 2-3MB for wake-word detection and TTS models
+* <strong>Voice Streaming:</strong> 1-2MB for ElevenLabs/Spotify PCM chunks during streaming
+* <strong>JSON/API Buffers:</strong> 0.5-1MB for sensor data and API responses
+* <strong>System Overhead:</strong> 1-2MB headroom for RTOS and Wi-Fi stack</p>
 <p><strong>Wi-Fi Optimization:</strong>
 * Disable power save during playback: <code>esp_wifi_set_ps(WIFI_PS_NONE)</code>
 * Lock CPU frequency during critical sections
@@ -1072,19 +1081,30 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 <p><strong>Memory Management:</strong>
 * Critical ISRs and hot paths marked <code>IRAM_ATTR</code>
 * Critical buffers allocated with <code>heap_caps_malloc(MALLOC_CAP_INTERNAL)</code>
+* <strong>8MB QSPI PSRAM</strong> for large audio buffers, LED frame buffers, and ML models
 * Separate stacks/queues for I2S, LED, sensors</p>
+<p><strong>PSRAM Performance Benefits:</strong>
+* <strong>Audio + Wi-Fi Coexistence:</strong> Large DMA-backed ring buffers absorb Wi-Fi latency spikes without audible clicks
+* <strong>Concurrent TTS + Streaming:</strong> Room for both Spotify decoding and ElevenLabs TTS playback simultaneously
+* <strong>Local ML Processing:</strong> Wake-word models and voice embeddings stored entirely in PSRAM
+* <strong>Smooth LED Animations:</strong> Pre-rendered 8×8 RGBW frames (49KB each) with multiple animation sequences
+* <strong>Voice2Voice Integration:</strong> Decoded PCM chunks held in memory while downloading next segments</p>
 <h4 id="stress-test-protocol"><strong>Stress Test Protocol</strong></h4>
 <p><strong>"Prove It" Test Suite:</strong>
 1. <strong>Baseline:</strong> 44.1 kHz stereo I²S + LED @ 60 FPS
 2. <strong>Wi-Fi Load:</strong> Sustained TLS MQTT pub/sub at peak expected rate
 3. <strong>HTTP Burst:</strong> Concurrent HTTP(S) download
-4. <strong>Storage:</strong> Periodic NVS writes (avoided during critical loops)
-5. <strong>Duration:</strong> 30-minute continuous test</p>
+4. <strong>PSRAM Stress:</strong> Large audio buffers + LED frame buffers + ML model loading
+5. <strong>Concurrent Streaming:</strong> ElevenLabs TTS + Spotify playback simultaneously
+6. <strong>Storage:</strong> Periodic NVS writes (avoided during critical loops)
+7. <strong>Duration:</strong> 30-minute continuous test</p>
 <p><strong>Success Metrics:</strong>
 * <strong>Audio:</strong> Zero buffer underruns
 * <strong>LED:</strong> Zero frame drops or glitches
 * <strong>ISR Latency:</strong> &lt; 100 μs maximum
-* <strong>Wi-Fi:</strong> Maintained connection, no timeouts</p>
+* <strong>Wi-Fi:</strong> Maintained connection, no timeouts
+* <strong>PSRAM Performance:</strong> &lt; 5% memory fragmentation, consistent DMA throughput
+* <strong>Concurrent Operations:</strong> TTS + streaming + LED animations without degradation</p>
 <h4 id="co-mcu-fallback-plan"><strong>Co-MCU Fallback Plan</strong></h4>
 <p><strong>If Single MCU Fails:</strong>
 * <strong>Co-Processor:</strong> RP2040 or ESP32-C3 (RF disabled)
@@ -1149,7 +1169,8 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 <p><strong>PCB Design Considerations:</strong>
 * Reserve co-MCU header/footprint regardless of decision
 * Design for both single and dual-MCU configurations
-* Ensure adequate power supply headroom for co-MCU option</p>
+* Ensure adequate power supply headroom for co-MCU option
+* <strong>ESP32-S3 Module:</strong> Use ESP32-S3-WROOM-1-N16R8 (16MB flash + 8MB PSRAM) or custom module with 16MB PSRAM</p>
 <p><strong>Firmware Architecture:</strong>
 * Modular design supporting both configurations
 * Clear separation between real-time and non-real-time tasks
