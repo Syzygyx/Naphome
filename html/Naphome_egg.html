@@ -459,11 +459,16 @@ Focused on <strong>core sleep needs</strong> rather than feature complexity, it 
 </tr>
 <tr>
 <td><strong>5️⃣</strong></td>
+<td><strong>MCU Architecture Validation</strong></td>
+<td>Stress test single ESP32-S3 vs co-MCU approach for audio/LED/Wi-Fi performance.</td>
+</tr>
+<tr>
+<td><strong>6️⃣</strong></td>
 <td><strong>Simplified Architecture</strong></td>
 <td>Single PCB design for cost optimization and reliability.</td>
 </tr>
 <tr>
-<td><strong>6️⃣</strong></td>
+<td><strong>7️⃣</strong></td>
 <td><strong>Market Validation</strong></td>
 <td>Prove product-market fit with data-driven sensor selection.</td>
 </tr>
@@ -1040,6 +1045,120 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 <p><strong>Bus &amp; Architecture:</strong> Shared I²C (3.3V) + pull-ups; flexible sensor array for evaluation.<br />
 <strong>Firmware:</strong> Comprehensive data logging and user feedback collection for sensor validation.</p>
 <hr />
+<h2 id="5-mcu-architecture-validation">5️⃣ MCU Architecture Validation</h2>
+<h3 id="single-esp32-s3-vs-co-mcu-evaluation">Single ESP32-S3 vs Co-MCU Evaluation</h3>
+<p><strong>Purpose:</strong> Determine if single ESP32-S3 can handle all real-time tasks (audio, LED, Wi-Fi) without performance degradation, or if a co-MCU is required.</p>
+<h3 id="challenge-real-time-performance-under-load">Challenge: Real-Time Performance Under Load</h3>
+<p><strong>The Problem:</strong> ESP32-S3 dual-core helps but isn't a silver bullet. Shared resources (SPI flash/PSRAM, caches, AHB bus) and high-priority Wi-Fi/BLE ISRs can still cause audio underruns and LED glitches.</p>
+<p><strong>Critical Performance Requirements:</strong>
+* <strong>Audio:</strong> 44.1 kHz stereo I²S with DMA, zero underruns
+* <strong>LED Matrix:</strong> 60 FPS updates via RMT/SPI, no glitches
+* <strong>Wi-Fi:</strong> Sustained TLS MQTT + HTTP(S) traffic
+* <strong>Sensors:</strong> Real-time I2C polling without blocking</p>
+<h3 id="phase-i-evaluation-strategy">Phase I Evaluation Strategy</h3>
+<h4 id="single-mcu-optimization-approach"><strong>Single MCU Optimization Approach</strong></h4>
+<p><strong>Core Assignment Strategy:</strong>
+* <strong>Core 0:</strong> Wi-Fi/BLE + app logic + sensor polling
+* <strong>Core 1:</strong> Audio I²S ISR + LED timing + DMA feeders</p>
+<p><strong>Peripheral-First Architecture:</strong>
+* <strong>Audio:</strong> I²S with DMA (8-12 buffers, generous queue depth)
+* <strong>LEDs:</strong> RMT or SPI-driven (avoid WS2812 bit-bang)
+* <strong>External LED Driver:</strong> IS31FL3731 for 8×8 RGBW matrix</p>
+<p><strong>Wi-Fi Optimization:</strong>
+* Disable power save during playback: <code>esp_wifi_set_ps(WIFI_PS_NONE)</code>
+* Lock CPU frequency during critical sections
+* Batch NVS writes, avoid flash ops during audio/LED updates
+* Keep heap headroom for TLS operations</p>
+<p><strong>Memory Management:</strong>
+* Critical ISRs and hot paths marked <code>IRAM_ATTR</code>
+* Critical buffers allocated with <code>heap_caps_malloc(MALLOC_CAP_INTERNAL)</code>
+* Separate stacks/queues for I2S, LED, sensors</p>
+<h4 id="stress-test-protocol"><strong>Stress Test Protocol</strong></h4>
+<p><strong>"Prove It" Test Suite:</strong>
+1. <strong>Baseline:</strong> 44.1 kHz stereo I²S + LED @ 60 FPS
+2. <strong>Wi-Fi Load:</strong> Sustained TLS MQTT pub/sub at peak expected rate
+3. <strong>HTTP Burst:</strong> Concurrent HTTP(S) download
+4. <strong>Storage:</strong> Periodic NVS writes (avoided during critical loops)
+5. <strong>Duration:</strong> 30-minute continuous test</p>
+<p><strong>Success Metrics:</strong>
+* <strong>Audio:</strong> Zero buffer underruns
+* <strong>LED:</strong> Zero frame drops or glitches
+* <strong>ISR Latency:</strong> &lt; 100 μs maximum
+* <strong>Wi-Fi:</strong> Maintained connection, no timeouts</p>
+<h4 id="co-mcu-fallback-plan"><strong>Co-MCU Fallback Plan</strong></h4>
+<p><strong>If Single MCU Fails:</strong>
+* <strong>Co-Processor:</strong> RP2040 or ESP32-C3 (RF disabled)
+* <strong>Responsibilities:</strong> LED matrix + sensors + alarms
+* <strong>Main MCU:</strong> ESP32-S3 handles Wi-Fi + audio orchestration
+* <strong>Communication:</strong> I2C or UART between MCUs</p>
+<h3 id="decision-framework">Decision Framework</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Metric</strong></th>
+<th><strong>Single MCU Wins If:</strong></th>
+<th><strong>Co-MCU Required If:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Audio Quality</strong></td>
+<td>Zero underruns in stress test</td>
+<td>Any audio glitches detected</td>
+</tr>
+<tr>
+<td><strong>LED Performance</strong></td>
+<td>Smooth 60 FPS, no glitches</td>
+<td>Frame drops or timing issues</td>
+</tr>
+<tr>
+<td><strong>Wi-Fi Stability</strong></td>
+<td>Maintains connection under load</td>
+<td>Connection drops or timeouts</td>
+</tr>
+<tr>
+<td><strong>Power Efficiency</strong></td>
+<td>&lt; 2W total system power</td>
+<td>&gt; 2.5W with co-MCU overhead</td>
+</tr>
+<tr>
+<td><strong>BOM Cost</strong></td>
+<td>&lt; $1 additional cost</td>
+<td>&gt; $1.50 for co-MCU solution</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Single firmware stack</td>
+<td>Dual firmware coordination</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-ii-architecture-decision">Phase II Architecture Decision</h3>
+<p><strong>Expected Outcomes:</strong></p>
+<p><strong>Scenario A: Single MCU Validated</strong>
+* <strong>BOM Impact:</strong> No additional cost
+* <strong>Firmware:</strong> Single ESP32-S3 codebase
+* <strong>Power:</strong> Optimized single-MCU power management
+* <strong>Reliability:</strong> Proven real-time performance</p>
+<p><strong>Scenario B: Co-MCU Required</strong>
+* <strong>BOM Impact:</strong> +$1.50-2.00 for co-processor
+* <strong>Firmware:</strong> Dual-MCU coordination layer
+* <strong>Power:</strong> Slightly higher due to inter-MCU communication
+* <strong>Reliability:</strong> Guaranteed real-time performance isolation</p>
+<h3 id="implementation-notes">Implementation Notes</h3>
+<p><strong>PCB Design Considerations:</strong>
+* Reserve co-MCU header/footprint regardless of decision
+* Design for both single and dual-MCU configurations
+* Ensure adequate power supply headroom for co-MCU option</p>
+<p><strong>Firmware Architecture:</strong>
+* Modular design supporting both configurations
+* Clear separation between real-time and non-real-time tasks
+* Comprehensive logging for performance analysis</p>
+<p><strong>Validation Timeline:</strong>
+* <strong>Week 1-2:</strong> Single MCU optimization and stress testing
+* <strong>Week 3:</strong> Co-MCU prototype if single MCU fails
+* <strong>Week 4:</strong> Final architecture decision and PCB updates</p>
+<hr />
 <h2 id="6-pcb-design-architecture">6️⃣ PCB Design &amp; Architecture</h2>
 <h3 id="connectorized-single-pcb-design"><strong>Connectorized Single PCB Design</strong></h3>
 <p><strong>Design Philosophy:</strong> Single PCB with connectorized components for manufacturing efficiency, serviceability, and EMI control.</p>
@@ -1440,7 +1559,7 @@ note right of AMP : Dual power config\nPhase I evaluation
 - <strong>Environmental Changes</strong>: Do users modify their environment?
 - <strong>Habit Formation</strong>: Do users develop sensor-based routines?
 - <strong>Recommendation</strong>: Would users recommend the device?</p>
-<h4 id="decision-framework"><strong>Decision Framework</strong></h4>
+<h4 id="decision-framework_1"><strong>Decision Framework</strong></h4>
 <p><strong>Sensor Keep Criteria:</strong>
 1. <strong>User Engagement</strong>: &gt;50% of users interact with sensor data
 2. <strong>Sleep Correlation</strong>: Positive correlation with sleep quality
