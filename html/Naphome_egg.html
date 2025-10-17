@@ -434,11 +434,16 @@ Focused on <strong>core sleep needs</strong> rather than feature complexity, it 
 </tr>
 <tr>
 <td><strong>3️⃣</strong></td>
+<td><strong>Far Field Microphone Design</strong></td>
+<td>Evaluate 4-mic vs 2-mic array for optimal voice pickup and wake word detection.</td>
+</tr>
+<tr>
+<td><strong>4️⃣</strong></td>
 <td><strong>Simplified Architecture</strong></td>
 <td>Single PCB design for cost optimization and reliability.</td>
 </tr>
 <tr>
-<td><strong>4️⃣</strong></td>
+<td><strong>5️⃣</strong></td>
 <td><strong>Market Validation</strong></td>
 <td>Prove product-market fit with data-driven sensor selection.</td>
 </tr>
@@ -685,7 +690,86 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 - Reduced market timing risk
 </code></pre>
 <hr />
-<h2 id="2-sensor-validation-program">2️⃣ Sensor Validation Program</h2>
+<h2 id="2-far-field-microphone-design">2️⃣ Far Field Microphone Design</h2>
+<h3 id="phase-i-microphone-array-evaluation"><strong>Phase I Microphone Array Evaluation</strong></h3>
+<p><strong>Hardware Baseline:</strong>
+- <strong>4-Microphone Array</strong>: Full 360° coverage with beamforming capabilities
+- <strong>2-Microphone Array</strong>: Simplified directional pickup with noise cancellation
+- <strong>Wake Word Detection</strong>: ESP32-S3 integrated processing vs cloud-based</p>
+<h3 id="evaluation-criteria"><strong>Evaluation Criteria</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Metric</strong></th>
+<th><strong>4-Mic Array</strong></th>
+<th><strong>2-Mic Array</strong></th>
+<th><strong>Success Threshold</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wake Word Accuracy</strong></td>
+<td>&gt;95% @ 3m</td>
+<td>&gt;90% @ 3m</td>
+<td>&gt;90% for production</td>
+</tr>
+<tr>
+<td><strong>Noise Rejection</strong></td>
+<td>&gt;15dB SNR</td>
+<td>&gt;10dB SNR</td>
+<td>&gt;10dB for bedroom use</td>
+</tr>
+<tr>
+<td><strong>Power Consumption</strong></td>
+<td>~50mW</td>
+<td>~25mW</td>
+<td>&lt;30mW for battery life</td>
+</tr>
+<tr>
+<td><strong>BOM Cost</strong></td>
+<td>$4.40</td>
+<td>$2.20</td>
+<td>&lt;$3.00 for budget SKU</td>
+</tr>
+<tr>
+<td><strong>Processing Load</strong></td>
+<td>High (beamforming)</td>
+<td>Low (simple filtering)</td>
+<td>&lt;20% CPU usage</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-i-evaluation-plan_1"><strong>Phase I Evaluation Plan</strong></h3>
+<p><strong>Week 1-2: Baseline Testing</strong>
+- Deploy both configurations in test bedrooms
+- Measure wake word detection accuracy at various distances
+- Test noise rejection with common bedroom sounds (AC, fan, traffic)</p>
+<p><strong>Week 3-4: User Experience Testing</strong>
+- Real-world usage scenarios (sleepy voice, pillow muffling)
+- Multiple user testing (different voice characteristics)
+- Background noise tolerance testing</p>
+<p><strong>Week 5-6: Performance Analysis</strong>
+- Power consumption measurement during active listening
+- Processing load analysis on ESP32-S3
+- Cost-benefit analysis for Phase II</p>
+<h3 id="phase-ii-decision-framework_1"><strong>Phase II Decision Framework</strong></h3>
+<p><strong>Keep 4-Mic Array If:</strong>
+- Wake word accuracy &gt;95% at 3+ meters
+- Users report significantly better voice recognition
+- Premium market positioning justifies cost
+- Processing power sufficient for beamforming</p>
+<p><strong>Switch to 2-Mic Array If:</strong>
+- 2-mic performance meets 90% accuracy threshold
+- Cost reduction critical for market competitiveness
+- Power consumption impacts battery life significantly
+- Processing load affects other system performance</p>
+<p><strong>Technical Considerations:</strong>
+- <strong>Beamforming</strong>: 4-mic enables spatial filtering for better noise rejection
+- <strong>Directionality</strong>: 2-mic provides basic directional pickup
+- <strong>Processing</strong>: ESP32-S3 has sufficient power for 2-mic, may struggle with 4-mic beamforming
+- <strong>Cost Impact</strong>: 4-mic adds $2.20 to BOM, significant for budget positioning</p>
+<hr />
+<h2 id="3-sensor-validation-program">3️⃣ Sensor Validation Program</h2>
 <h3 id="phase-i-pilot-program-sensor-evaluation">Phase I — Pilot Program (Sensor Evaluation)</h3>
 <p><strong>Purpose:</strong> Populate all candidate sensors to determine which ones provide real user value for sleep optimization.</p>
 <table>
@@ -741,7 +825,7 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 <p><strong>Bus &amp; Architecture:</strong> Shared I²C (3.3V) + pull-ups; flexible sensor array for evaluation.<br />
 <strong>Firmware:</strong> Comprehensive data logging and user feedback collection for sensor validation.</p>
 <hr />
-<h2 id="3-pcb-design-architecture">3️⃣ PCB Design &amp; Architecture</h2>
+<h2 id="4-pcb-design-architecture">4️⃣ PCB Design &amp; Architecture</h2>
 <h3 id="connectorized-single-pcb-design"><strong>Connectorized Single PCB Design</strong></h3>
 <p><strong>Design Philosophy:</strong> Single PCB with connectorized components for manufacturing efficiency, serviceability, and EMI control.</p>
 <h3 id="pcb-layout-strategy-vertical-orientation"><strong>PCB Layout Strategy - Vertical Orientation</strong></h3>
