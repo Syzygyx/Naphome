@@ -184,6 +184,16 @@
             font-size: 1.2em;
         }
         
+        /* Side-by-side comparison images */
+        .comparison-table img {
+            width: 40%;
+            height: auto;
+            max-width: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
         footer {
             background: #2c3e50;
             color: white;
@@ -259,12 +269,13 @@
 <hr />
 <h2 id="cover">📸 Cover</h2>
 <p><strong>Phase I Prototype — Little Egg</strong><br />
-Complete evaluation &amp; validation prototype</p>
+Complete evaluation &amp; validation prototype<br />
+<em>Form factor inspiration: <a href="https://www.alibaba.com/product-detail/J-R-LED-Night-Light-Silicone_1601400087342.html?spm=a2700.galleryofferlist.normal_offer.d_title.6fb013a0FppB8M&amp;priceId=f8a05ff1674845efb5b6140cdd08deed">J&amp;R LED Night Light Silicone Egg Lamp</a></em></p>
 <p><strong>Phase II Concept — Big Egg</strong><br />
 Production-ready &amp; scalable design</p>
 <hr />
 <h2 id="side-by-side-comparison">🎯 Side-by-Side Comparison</h2>
-<table>
+<table class="comparison-table">
 <thead>
 <tr>
 <th>Phase I — Little Egg</th>

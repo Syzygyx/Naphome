@@ -212,6 +212,16 @@ def create_html_template(title, content, nav_links=None):
             font-size: 1.2em;
         }}
         
+        /* Side-by-side comparison images */
+        .comparison-table img {{
+            width: 40%;
+            height: auto;
+            max-width: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }}
+        
         footer {{
             background: #2c3e50;
             color: white;
@@ -361,6 +371,14 @@ def convert_markdown_to_html(md_file_path, output_dir="html"):
     
     # Convert markdown to HTML
     html_content = md.convert(md_content)
+    
+    # Add CSS class to comparison table for image styling
+    html_content = re.sub(
+        r'<table>\s*<thead>\s*<tr>\s*<th>Phase I — Little Egg</th>\s*<th>Phase II — Big Egg</th>\s*</tr>\s*</thead>',
+        r'<table class="comparison-table">\n<thead>\n<tr>\n<th>Phase I — Little Egg</th>\n<th>Phase II — Big Egg</th>\n</tr>\n</thead>',
+        html_content,
+        flags=re.IGNORECASE | re.DOTALL
+    )
     
     # Get title from first heading or filename
     title_match = re.search(r'<h1[^>]*>(.*?)</h1>', html_content, re.IGNORECASE)
