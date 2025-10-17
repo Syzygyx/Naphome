@@ -1058,9 +1058,9 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 <tbody>
 <tr>
 <td><strong>Audio I/O</strong></td>
-<td>Speaker, Microphone, LED Connectors</td>
+<td>Speaker, Microphone Connectors</td>
 <td>Top section</td>
-<td>Audio and lighting</td>
+<td>Audio connections</td>
 </tr>
 <tr>
 <td><strong>Audio Processing</strong></td>
@@ -1082,9 +1082,15 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 </tr>
 <tr>
 <td><strong>External I/O</strong></td>
-<td>Grove, Battery Connectors</td>
+<td>Grove Connector</td>
 <td>Bottom section</td>
-<td>External components</td>
+<td>External expansion</td>
+</tr>
+<tr>
+<td><strong>Back Components</strong></td>
+<td>LED Matrix, LED Driver, Battery Connector</td>
+<td>Back section</td>
+<td>LED display and battery</td>
 </tr>
 </tbody>
 </table>
@@ -1130,13 +1136,13 @@ rectangle &quot;PCB Layout - 70mm × 45mm (Vertical)&quot; {
         rectangle &quot;PD Controller\nCH224K/IP2721&quot; as pd
         rectangle &quot;5V/12V/3.3V Rails&quot; as rails
         rectangle &quot;Grove Connector\nI2C&quot; as grove_conn
-        rectangle &quot;Battery Connector\nJST PH-2&quot; as bat_conn
     }
 
     rectangle &quot;BACK SECTION&quot; as back {
         rectangle &quot;LED Matrix\n8x8 RGBW&quot; as led_matrix
         rectangle &quot;LED Driver\nIS31FL3731&quot; as led_driver
         rectangle &quot;LED Connector\nJST PH-8&quot; as led_conn
+        rectangle &quot;Battery Connector\nJST PH-2&quot; as bat_conn
     }
 
     rectangle &quot;SIDE EDGES&quot; as sides {
