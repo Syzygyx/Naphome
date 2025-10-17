@@ -454,11 +454,16 @@ Focused on <strong>core sleep needs</strong> rather than feature complexity, it 
 </tr>
 <tr>
 <td><strong>4️⃣</strong></td>
+<td><strong>Thermal Performance Evaluation</strong></td>
+<td>Monitor temperature profiles for 5V vs 12V configurations using thermal imaging.</td>
+</tr>
+<tr>
+<td><strong>5️⃣</strong></td>
 <td><strong>Simplified Architecture</strong></td>
 <td>Single PCB design for cost optimization and reliability.</td>
 </tr>
 <tr>
-<td><strong>5️⃣</strong></td>
+<td><strong>6️⃣</strong></td>
 <td><strong>Market Validation</strong></td>
 <td>Prove product-market fit with data-driven sensor selection.</td>
 </tr>
@@ -784,7 +789,194 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 - <strong>Processing</strong>: ESP32-S3 has sufficient power for 2-mic, may struggle with 4-mic beamforming
 - <strong>Cost Impact</strong>: 4-mic adds $2.20 to BOM, significant for budget positioning</p>
 <hr />
-<h2 id="3-sensor-validation-program">3️⃣ Sensor Validation Program</h2>
+<h2 id="4-thermal-performance-evaluation">4️⃣ Thermal Performance Evaluation</h2>
+<h3 id="phase-i-thermal-monitoring-program"><strong>Phase I Thermal Monitoring Program</strong></h3>
+<p><strong>Objective:</strong> Evaluate thermal performance of 5V vs 12V configurations to ensure safe operation and optimal component placement.</p>
+<h3 id="thermal-monitoring-equipment"><strong>Thermal Monitoring Equipment</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Equipment</strong></th>
+<th><strong>Purpose</strong></th>
+<th><strong>Specifications</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Thermal Camera</strong></td>
+<td>Real-time thermal imaging</td>
+<td>FLIR or similar, 320×240 resolution</td>
+</tr>
+<tr>
+<td><strong>Thermal Probes</strong></td>
+<td>Point temperature measurement</td>
+<td>K-type thermocouples, ±1°C accuracy</td>
+</tr>
+<tr>
+<td><strong>Data Logger</strong></td>
+<td>Continuous temperature recording</td>
+<td>8-channel, 1Hz sampling rate</td>
+</tr>
+<tr>
+<td><strong>Environmental Chamber</strong></td>
+<td>Controlled ambient conditions</td>
+<td>20-40°C, ±2°C stability</td>
+</tr>
+</tbody>
+</table>
+<h3 id="thermal-test-points"><strong>Thermal Test Points</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Component</strong></th>
+<th><strong>Location</strong></th>
+<th><strong>Critical Temperature</strong></th>
+<th><strong>Monitoring Method</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TAS5805M Amplifier</strong></td>
+<td>Center-left PCB</td>
+<td>&lt;85°C (operating)</td>
+<td>Thermal camera + probe</td>
+</tr>
+<tr>
+<td><strong>ESP32-S3 MCU</strong></td>
+<td>Center-right PCB</td>
+<td>&lt;85°C (operating)</td>
+<td>Thermal camera + probe</td>
+</tr>
+<tr>
+<td><strong>PD Controller</strong></td>
+<td>Bottom PCB</td>
+<td>&lt;100°C (operating)</td>
+<td>Thermal camera + probe</td>
+</tr>
+<tr>
+<td><strong>Power Rails</strong></td>
+<td>Bottom PCB</td>
+<td>&lt;70°C (ambient +20°C)</td>
+<td>Thermal camera</td>
+</tr>
+<tr>
+<td><strong>Battery</strong></td>
+<td>Behind PCB</td>
+<td>&lt;60°C (charging)</td>
+<td>Thermal camera + probe</td>
+</tr>
+<tr>
+<td><strong>Enclosure Surface</strong></td>
+<td>External</td>
+<td>&lt;50°C (user contact)</td>
+<td>Thermal camera</td>
+</tr>
+</tbody>
+</table>
+<h3 id="thermal-test-scenarios"><strong>Thermal Test Scenarios</strong></h3>
+<p><strong>Test 1: Idle Operation</strong>
+- <strong>Duration</strong>: 2 hours
+- <strong>Conditions</strong>: 25°C ambient, no audio output
+- <strong>Measurements</strong>: Baseline thermal profile</p>
+<p><strong>Test 2: Continuous Audio (5V Config)</strong>
+- <strong>Duration</strong>: 4 hours
+- <strong>Conditions</strong>: 25°C ambient, 3W continuous output
+- <strong>Measurements</strong>: Thermal steady-state</p>
+<p><strong>Test 3: Continuous Audio (12V Config)</strong>
+- <strong>Duration</strong>: 4 hours
+- <strong>Conditions</strong>: 25°C ambient, 8W continuous output
+- <strong>Measurements</strong>: Thermal steady-state</p>
+<p><strong>Test 4: Thermal Stress Test</strong>
+- <strong>Duration</strong>: 2 hours
+- <strong>Conditions</strong>: 35°C ambient, maximum audio output
+- <strong>Measurements</strong>: Worst-case thermal performance</p>
+<p><strong>Test 5: Enclosure Thermal Coupling</strong>
+- <strong>Duration</strong>: 3 hours
+- <strong>Conditions</strong>: 25°C ambient, various audio levels
+- <strong>Measurements</strong>: External surface temperatures</p>
+<h3 id="thermal-performance-criteria"><strong>Thermal Performance Criteria</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Metric</strong></th>
+<th><strong>5V Configuration</strong></th>
+<th><strong>12V Configuration</strong></th>
+<th><strong>Acceptance Criteria</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Amp Junction Temp</strong></td>
+<td>&lt;70°C</td>
+<td>&lt;80°C</td>
+<td>&lt;85°C (safety margin)</td>
+</tr>
+<tr>
+<td><strong>MCU Junction Temp</strong></td>
+<td>&lt;60°C</td>
+<td>&lt;65°C</td>
+<td>&lt;85°C (safety margin)</td>
+</tr>
+<tr>
+<td><strong>Enclosure Surface</strong></td>
+<td>&lt;40°C</td>
+<td>&lt;45°C</td>
+<td>&lt;50°C (user comfort)</td>
+</tr>
+<tr>
+<td><strong>Battery Temp</strong></td>
+<td>&lt;45°C</td>
+<td>&lt;50°C</td>
+<td>&lt;60°C (charging safety)</td>
+</tr>
+<tr>
+<td><strong>Thermal Rise</strong></td>
+<td>&lt;15°C</td>
+<td>&lt;20°C</td>
+<td>&lt;25°C (ambient +25°C)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="thermal-imaging-analysis"><strong>Thermal Imaging Analysis</strong></h3>
+<p><strong>Key Areas to Monitor:</strong>
+- <strong>Hot Spots</strong>: Identify components exceeding safe temperatures
+- <strong>Thermal Gradients</strong>: Map temperature distribution across PCB
+- <strong>Heat Sink Effectiveness</strong>: Evaluate thermal management solutions
+- <strong>Airflow Impact</strong>: Measure thermal performance with/without ventilation</p>
+<p><strong>Thermal Camera Settings:</strong>
+- <strong>Temperature Range</strong>: 20-100°C
+- <strong>Emissivity</strong>: 0.95 (typical for electronics)
+- <strong>Focus</strong>: Macro lens for component-level detail
+- <strong>Recording</strong>: Time-lapse for thermal transient analysis</p>
+<h3 id="phase-ii-thermal-decision-framework"><strong>Phase II Thermal Decision Framework</strong></h3>
+<p><strong>Keep 12V Configuration If:</strong>
+- All components stay within safe operating temperatures
+- Enclosure surface temperature &lt;50°C for user comfort
+- Thermal performance acceptable for 8+ hour operation
+- Heat management solutions cost-effective</p>
+<p><strong>Switch to 5V Configuration If:</strong>
+- 12V configuration causes thermal issues
+- Enclosure becomes too hot for bedside use
+- Thermal management adds significant cost/complexity
+- 5V performance meets user requirements</p>
+<p><strong>Thermal Management Solutions:</strong>
+- <strong>Heat Sinks</strong>: Add thermal pads to high-power components
+- <strong>Ventilation</strong>: Strategic airflow openings in enclosure
+- <strong>Thermal Interface</strong>: High-conductivity thermal pads
+- <strong>Component Spacing</strong>: Optimize layout for thermal isolation</p>
+<h3 id="thermal-data-collection"><strong>Thermal Data Collection</strong></h3>
+<p><strong>Continuous Monitoring:</strong>
+- <strong>Duration</strong>: 8 hours per configuration
+- <strong>Sampling Rate</strong>: 1Hz for critical components
+- <strong>Data Points</strong>: Temperature, power consumption, ambient conditions
+- <strong>Analysis</strong>: Thermal steady-state, transient response, peak temperatures</p>
+<p><strong>Documentation:</strong>
+- <strong>Thermal Images</strong>: Time-stamped thermal camera captures
+- <strong>Temperature Logs</strong>: Continuous data logging with timestamps
+- <strong>Test Reports</strong>: Detailed analysis of thermal performance
+- <strong>Recommendations</strong>: Thermal management improvements for Phase II</p>
+<hr />
+<h2 id="5-sensor-validation-program">5️⃣ Sensor Validation Program</h2>
 <h3 id="phase-i-pilot-program-sensor-evaluation">Phase I — Pilot Program (Sensor Evaluation)</h3>
 <p><strong>Purpose:</strong> Populate all candidate sensors to determine which ones provide real user value for sleep optimization.</p>
 <table>
@@ -840,7 +1032,7 @@ Recommended: 6 weeks Phase I + 4 weeks Phase II = 10 weeks
 <p><strong>Bus &amp; Architecture:</strong> Shared I²C (3.3V) + pull-ups; flexible sensor array for evaluation.<br />
 <strong>Firmware:</strong> Comprehensive data logging and user feedback collection for sensor validation.</p>
 <hr />
-<h2 id="4-pcb-design-architecture">4️⃣ PCB Design &amp; Architecture</h2>
+<h2 id="6-pcb-design-architecture">6️⃣ PCB Design &amp; Architecture</h2>
 <h3 id="connectorized-single-pcb-design"><strong>Connectorized Single PCB Design</strong></h3>
 <p><strong>Design Philosophy:</strong> Single PCB with connectorized components for manufacturing efficiency, serviceability, and EMI control.</p>
 <h3 id="pcb-layout-strategy-vertical-orientation"><strong>PCB Layout Strategy - Vertical Orientation</strong></h3>
